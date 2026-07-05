@@ -217,4 +217,23 @@ nav.scrolled{background:rgba(var(--color-white),0.6);backdrop-filter:blur(22px);
   filter: blur(80px) brightness(0.6);
 }
 
-
+/* Mobile Performance Optimizations */
+@media (max-width: 768px) {
+  .blob-4, .blob-5, .blob-6 { display: none !important; }
+  .blob { filter: blur(40px) !important; }
+  .dark-mode .blob { filter: blur(50px) brightness(0.6) !important; }
+  
+  /* Reduce expensive backdrop-filter operations on mobile */
+  .glass, .glass-card, .title-glass, .glass-nav { 
+    backdrop-filter: blur(12px) !important; 
+    -webkit-backdrop-filter: blur(12px) !important; 
+  }
+  .glass-strong, .hero-glass, .cta-glass, .mobile-menu { 
+    backdrop-filter: blur(16px) !important; 
+    -webkit-backdrop-filter: blur(16px) !important; 
+  }
+  .chat-panel { 
+    backdrop-filter: blur(16px) !important; 
+    -webkit-backdrop-filter: blur(16px) !important; 
+  }
+}
