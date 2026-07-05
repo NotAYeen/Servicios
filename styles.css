@@ -217,10 +217,15 @@ nav.scrolled{background:rgba(var(--color-white),0.6);backdrop-filter:blur(22px);
   filter: blur(80px) brightness(0.6);
 }
 
+
+
 /* Mobile Performance Optimizations */
 @media (max-width: 768px) {
   .blob-4, .blob-5, .blob-6 { display: none !important; }
-  .blob { filter: blur(40px) !important; }
+  .blob { 
+    filter: blur(40px) !important; 
+    animation: none !important; 
+  }
   .dark-mode .blob { filter: blur(50px) brightness(0.6) !important; }
   
   /* Reduce expensive backdrop-filter operations on mobile */
