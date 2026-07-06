@@ -172,9 +172,9 @@ nav.scrolled{background:rgba(var(--color-white),0.6);backdrop-filter:blur(22px);
 .cta-glass{background:rgba(var(--color-white),0.35);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-top:1px solid rgba(var(--color-white),0.3);border-bottom:1px solid rgba(var(--color-white),0.3)}
 .content-layer{position:relative;z-index:1}
 @media(max-width:480px){
-.chat-panel{right:0;left:0;bottom:0;width:100%;height:100vh;max-height:100vh;border-radius:0;transform:translateY(100%);z-index:2000;background:#fbfcfc}
-.chat-panel.open{transform:translateY(0)}
-.chat-messages{max-height:none}
+.chat-panel{right:16px;left:16px;bottom:80px;width:auto;height:auto;max-height:65vh;border-radius:22px;z-index:2000;transform:scale(.85) translateY(16px)}
+.chat-panel.open{transform:scale(1) translateY(0)}
+.chat-messages{max-height:calc(65vh - 120px)}
 .chat-options{margin-bottom:12px}
 .chat-toggle{bottom:16px;right:16px;width:50px;height:50px;font-size:1.15rem}
 }
@@ -196,7 +196,7 @@ nav.scrolled{background:rgba(var(--color-white),0.6);backdrop-filter:blur(22px);
   --bg-color: #0B0E14;
   --fg: #F3F5F7;
   --muted: #949BA8;
-  --accent: #317e64;
+  --accent: #00E699;
   --accent-soft: rgba(0, 179, 119, 0.12);
   --gold: #DDAA3E;
   --gold-soft: rgba(221, 170, 62, 0.15);
@@ -241,4 +241,28 @@ nav.scrolled{background:rgba(var(--color-white),0.6);backdrop-filter:blur(22px);
     backdrop-filter: blur(16px) !important; 
     -webkit-backdrop-filter: blur(16px) !important; 
   }
+}
+
+/* Chatbot Dark Mode Colors */
+.dark-mode .msg-bot {
+  background: rgba(255, 255, 255, 0.08);
+}
+.dark-mode .msg-user {
+  background: rgba(0, 230, 153, 0.12);
+  border: 1px solid rgba(0, 230, 153, 0.2);
+  color: var(--accent);
+}
+.dark-mode .chat-input-area input {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+.dark-mode .opt-btn {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+.dark-mode .opt-btn:hover {
+  background: rgba(0, 230, 153, 0.1);
+  border-color: rgba(0, 230, 153, 0.25);
+}
+.dark-mode .chat-header {
+  background: rgba(0, 230, 153, 0.08);
+  border-bottom: 1px solid rgba(0, 230, 153, 0.15);
 }
