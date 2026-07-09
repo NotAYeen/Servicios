@@ -1,16 +1,12 @@
-
-// Auto Dark Mode
 (function(){
   const h=new Date().getHours();
   if(h>=20||h<6)document.body.classList.add('dark-mode');
-  setTimeout(updateDarkModeIcon, 100); // Wait for DOM
+  setTimeout(updateDarkModeIcon, 100);
 })();
-
 function toggleDarkMode() {
   document.body.classList.toggle('dark-mode');
   updateDarkModeIcon();
 }
-
 function updateDarkModeIcon() {
   const isDark = document.body.classList.contains('dark-mode');
   document.querySelectorAll('.dark-mode-icon').forEach(icon => {
@@ -23,8 +19,6 @@ function updateDarkModeIcon() {
     }
   });
 }
-
-
 const servicesData = {
   web: {
     title: 'Diseño de Páginas Web', cat: 'Desarrollo de Software', color: 'var(--accent)', bg: 'var(--accent-soft)', icon: 'fa-globe',
