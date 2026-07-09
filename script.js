@@ -168,15 +168,19 @@ function closeMobile(){
   document.body.style.overflow='';
 }
 (function(){
-  const obs=new IntersectionObserver(entries=>{
-    entries.forEach(e=>{
-      if(e.isIntersecting) {
-        e.target.classList.add('visible');
-        obs.unobserve(e.target);
-      }
-    });
-  },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
-  document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  const init = () => {
+    const obs=new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting) {
+          e.target.classList.add('visible');
+          obs.unobserve(e.target);
+        }
+      });
+    },{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+    document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+  };
+  if (window.requestIdleCallback) requestIdleCallback(init);
+  else setTimeout(init, 300);
 })();
 const taskiiBrain={
   start:{msg:"¡Hola! Soy, el asistente virtual de ANTON. ¿En qué área buscas soluciones hoy?",
@@ -224,7 +228,10 @@ const chatToggleIcon=document.getElementById('chatToggleIcon');
 function toggleChat(){
   chatOpen=!chatOpen;
   chatPanel.classList.toggle('open',chatOpen);
-  if(chatToggleIcon) chatToggleIcon.className=chatOpen?'fa-solid fa-xmark':'fa-solid fa-robot';
+  if(document.getElementById('chatToggleIconRobot')){
+    document.getElementById('chatToggleIconRobot').classList.toggle('hidden', chatOpen);
+    document.getElementById('chatToggleIconXmark').classList.toggle('hidden', !chatOpen);
+  }
   if(chatOpen&&!chatInited){chatInited=true;setTimeout(()=>navigateChat('start'),250)}
   if(window.innerWidth <= 480){ document.body.style.overflow = chatOpen ? 'hidden' : ''; }
 }
@@ -331,7 +338,7 @@ async function sendInput(){
 function showToast(msg){
   const c=document.getElementById('toastContainer');
   const t=document.createElement('div');t.className='toast';
-  t.innerHTML='<i class="fa-solid fa-circle-check"></i><span>'+msg+'</span>';
+  t.innerHTML='<svg class="" style="; width: 1em; height: 1em; vertical-align: -0.125em;" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.3.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2026 Fonticons, Inc. --><path fill="currentColor" d="M256 512a256 256 0 1 1 0-512 256 256 0 1 1 0 512zM374 145.7c-10.7-7.8-25.7-5.4-33.5 5.3L221.1 315.2 169 263.1c-9.4-9.4-24.6-9.4-33.9 0s-9.4 24.6 0 33.9l72 72c5 5 11.8 7.5 18.8 7s13.4-4.1 17.5-9.8L379.3 179.2c7.8-10.7 5.4-25.7-5.3-33.5z"/></svg><span>'+msg+'</span>';
   c.appendChild(t);
   requestAnimationFrame(()=>t.classList.add('show'));
   setTimeout(()=>{t.classList.remove('show');setTimeout(()=>t.remove(),400)},4000);
