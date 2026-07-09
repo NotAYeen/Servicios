@@ -4,7 +4,7 @@
   --accent:rgb(0, 97, 135);--accent-soft:#E0F5EC;
   --gold:#150ba5;--gold-soft:#FBF3E3;
   --coral:#c43ea7;--coral-soft:#FDEEEC;
-  --fg:#1E1E2A;--muted:#6E6E82;
+  --fg:#1E1E2A;--muted:#222222;
   --glass:rgba(var(--color-white),0.45);
   --glass-border:rgba(var(--color-white),0.55);
   --glass-strong:rgba(var(--color-white),0.62);
