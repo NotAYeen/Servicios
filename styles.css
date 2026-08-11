@@ -689,12 +689,12 @@ footer {
   }
   
   .huge-text {
-    font-size: clamp(2.5rem, 11vw, 5.5rem);
+    font-size: clamp(2.2rem, 10vw, 4.5rem);
     white-space: normal; /* Permite que el texto se ajuste en pantallas muy pequeñas */
   }
   
   .hero {
-    padding-top: 6rem;
+    padding-top: 9rem; /* Más espacio arriba para evitar colisión con el menú fijo */
     min-height: auto;
   }
   
@@ -702,9 +702,16 @@ footer {
     padding: 0;
   }
   
+  /* Elimina el margen negativo del segundo h1 ("DEVELOPER") en móviles */
+  .hero-content h1:nth-child(2) {
+    margin-top: 0.5rem !important; 
+  }
+  
   .hero-subtitle {
-    font-size: 1.15rem;
+    margin-top: 2rem !important; /* Separación clara después del título */
+    font-size: 1.1rem;
     max-width: 100%;
+    line-height: 1.5;
   }
 
   .project-row {
