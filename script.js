@@ -326,11 +326,19 @@ function initBlobs() {
     let currentIndex = Math.floor(Math.random() * blobShapes.length);
     let isHovered = false;
     fig.style.transition = `border-radius ${duration}ms linear, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)`;
-    fig.addEventListener('mouseenter', () => { isHovered = true; fig.style.transition = ''; });
+    fig.addEventListener('mouseenter', () => { 
+      isHovered = true; 
+      fig.style.transition = 'border-radius 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+    });
     fig.addEventListener('mouseleave', () => { 
       isHovered = false; 
-      fig.style.transition = `border-radius ${duration}ms linear, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)`;
+      fig.style.transition = 'border-radius 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
       updateBlob();
+      setTimeout(() => {
+        if (!isHovered && !fig.matches(':hover')) {
+          fig.style.transition = `border-radius ${duration}ms linear, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)`;
+        }
+      }, 600);
     });
     const updateBlob = () => {
       if (!isHovered && !fig.matches(':hover')) {
