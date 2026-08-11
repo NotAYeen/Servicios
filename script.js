@@ -5,6 +5,7 @@
 document.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initScrollAnimations();
+  initParallax();
 });
 
 /* --------------------------------------------------------------------------
@@ -346,3 +347,31 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     requestAnimationFrame(animation);
   });
 });
+
+/* --------------------------------------------------------------------------
+   Parallax Scroll Effect
+   -------------------------------------------------------------------------- */
+function initParallax() {
+  const parallaxElems = document.querySelectorAll('[data-speed]');
+  
+  function updateParallax() {
+    const scrollTop = window.pageYOffset;
+    parallaxElems.forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-speed')) || 0.1;
+      const parent = el.parentElement;
+      const parentRect = parent.getBoundingClientRect();
+      const elementTop = parentRect.top + scrollTop;
+      const windowHeight = window.innerHeight;
+      
+      if (parentRect.top < windowHeight && parentRect.bottom > 0) {
+        const relativeScroll = scrollTop - elementTop + (windowHeight / 2);
+        const yPos = relativeScroll * speed;
+        el.style.transform = `translate3d(0, ${yPos}px, 0)`;
+      }
+    });
+  }
+  
+  window.addEventListener('scroll', updateParallax);
+  // Run once initially to set starting positions
+  updateParallax();
+}
