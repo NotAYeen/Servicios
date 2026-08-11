@@ -1,42 +1,34 @@
-/* ==========================================================================
-   Art Direction / Brutalist Portfolio Styles
-   ========================================================================== */
 @import url('https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap');
-
 :root {
   --bg-color: #f0f0e6;
   --text-color: #111111;
-  --accent-color: #ff2a5f; /* Hot Pink */
-  
+  --accent-color: #ff2a5f;
   --font-display: 'Anton', sans-serif;
   --font-body: 'Inter', sans-serif;
 }
-
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   background-color: var(--bg-color);
+  background-image: url('assets/fondo.webp');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   color: var(--text-color);
   font-family: var(--font-body);
   overflow-x: hidden;
-  /* Custom Cursor hiding default */
   cursor: none;
   -webkit-font-smoothing: antialiased;
 }
-
 a, button {
-  cursor: none; /* Let custom cursor handle hover states */
+  cursor: none;
   color: inherit;
   text-decoration: none;
 }
-
-/* ==========================================================================
-   Custom Cursor
-   ========================================================================== */
 .cursor-dot,
 .cursor-outline {
   position: fixed;
@@ -46,21 +38,30 @@ a, button {
   z-index: 9999;
   pointer-events: none;
 }
-
 .cursor-dot {
   width: 8px;
   height: 8px;
   background-color: var(--accent-color);
 }
-
 .cursor-outline {
   width: 40px;
   height: 40px;
   border: 2px solid var(--text-color);
-  transition: width 0.2s, height 0.2s, background-color 0.2s;
+  transition: width 0.2s, height 0.2s, background-color 0.2s, border-color 0.2s, box-shadow 0.2s;
 }
-
-/* When hovering over clickable elements */
+.cursor-outline::after {
+  content: "VER";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  color: var(--bg-color);
+  letter-spacing: 1px;
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
 .cursor-hover .cursor-outline {
   width: 60px;
   height: 60px;
@@ -70,34 +71,39 @@ a, button {
 .cursor-hover .cursor-dot {
   background-color: var(--text-color);
 }
-
-/* ==========================================================================
-   Typography & Layout
-   ========================================================================== */
+.cursor-project .cursor-outline {
+  width: 80px;
+  height: 80px;
+  background-color: #ffffff !important;
+  border: 2px solid #ffffff !important;
+  mix-blend-mode: difference;
+  box-shadow: none;
+}
+.cursor-project .cursor-outline::after {
+  color: #000000;
+  opacity: 1;
+}
+.cursor-project .cursor-dot {
+  opacity: 0 !important;
+  transition: opacity 0.2s;
+}
 h1, h2, h3, .display-text {
   font-family: var(--font-display);
   text-transform: uppercase;
   line-height: 0.9;
 }
-
 .huge-text {
   font-size: clamp(4rem, 15vw, 15rem);
   letter-spacing: -0.02em;
   white-space: nowrap;
 }
-
 .section-padding {
   padding: 8rem 2rem;
 }
-
 .container {
   max-width: 1400px;
   margin: 0 auto;
 }
-
-/* ==========================================================================
-   Navbar
-   ========================================================================== */
 nav {
   position: fixed;
   top: 0; left: 0; width: 100%;
@@ -109,20 +115,17 @@ nav {
   mix-blend-mode: difference;
   color: #fff;
 }
-
 .logo {
   font-family: var(--font-display);
   font-size: 2rem;
   letter-spacing: 1px;
 }
-
 .nav-links {
   display: flex;
   gap: 3rem;
   font-weight: 700;
   font-size: 1.1rem;
 }
-
 .nav-links a {
   position: relative;
 }
@@ -137,10 +140,6 @@ nav {
 .nav-links a:hover::after {
   width: 100%;
 }
-
-/* ==========================================================================
-   Hero Section
-   ========================================================================== */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -148,12 +147,11 @@ nav {
   justify-content: center;
   position: relative;
 }
-
 .hero-content {
   padding: 0 2rem;
   z-index: 10;
+  pointer-events: none;
 }
-
 .hero-subtitle {
   font-size: 1.5rem;
   font-weight: 500;
@@ -161,7 +159,6 @@ nav {
   max-width: 500px;
   line-height: 1.4;
 }
-
 .hero-image-wrapper {
   position: absolute;
   right: 10%;
@@ -170,16 +167,21 @@ nav {
   height: 400px;
   overflow: hidden;
   z-index: 5;
-  border-radius: 200px 200px 0 0; /* Arch shape */
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  transform: scale(0.85);
+  transition: border-radius 2s ease-in-out, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
 }
-
+.hero-image-wrapper:hover {
+  border-radius: 20px !important;
+  transition: border-radius 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(1);
+}
 .hero-image-wrapper img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   filter: grayscale(100%) contrast(1.2);
 }
-
 .parallax-hero-img {
   width: 120% !important;
   height: 120% !important;
@@ -189,10 +191,6 @@ nav {
   left: -10%;
   transition: transform 0.1s ease-out;
 }
-
-/* ==========================================================================
-   Infinite Marquee
-   ========================================================================== */
 .marquee-container {
   overflow: hidden;
   background: var(--text-color);
@@ -200,10 +198,9 @@ nav {
   padding: 2rem 0;
   display: flex;
   white-space: nowrap;
-  transform: rotate(-2deg) scale(1.05); /* Skewed edge effect */
+  transform: rotate(-5deg) scale(1.1);
   margin: 4rem 0;
 }
-
 .marquee-content {
   display: flex;
   animation: scroll-left 20s linear infinite;
@@ -211,46 +208,34 @@ nav {
   font-size: 4rem;
   text-transform: uppercase;
 }
-
 .marquee-item {
   padding: 0 2rem;
 }
-
 .marquee-item span {
   color: var(--accent-color);
 }
-
 @keyframes scroll-left {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
-
-/* ==========================================================================
-   Projects (Poster Style)
-   ========================================================================== */
 .projects-grid {
   display: flex;
   flex-direction: column;
   gap: 8rem;
   margin-top: 4rem;
 }
-
 .project-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
   align-items: center;
   gap: 4rem;
 }
-
-/* Alternate image left/right */
 .project-row:nth-child(even) .project-image-col {
-  order: 2;
+  order: -1;
 }
 .project-row:nth-child(even) .project-info-col {
-  order: 1;
   text-align: right;
 }
-
 .project-figure {
   width: 100%;
   height: 70vh;
@@ -258,14 +243,14 @@ nav {
   position: relative;
   margin: 0;
   background-color: transparent;
-  
-  /* CSS Mask configuration */
-  -webkit-mask-size: contain;
-  mask-size: contain;
-  -webkit-mask-repeat: no-repeat;
-  mask-repeat: no-repeat;
-  -webkit-mask-position: center;
-  mask-position: center;
+  border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+  transform: scale(0.85);
+  transition: border-radius 2s ease-in-out, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.project-figure:hover {
+  border-radius: 12px !important;
+  transition: border-radius 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+  transform: scale(1);
 }
 .project-img {
   width: 120%;
@@ -277,18 +262,6 @@ nav {
   left: -10%;
   transition: transform 0.1s ease-out;
 }
-.project-frame {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: contain;
-  pointer-events: none;
-  mix-blend-mode: multiply;
-  z-index: 2;
-}
-
 .project-number {
   font-family: var(--font-display);
   font-size: 6rem;
@@ -298,7 +271,6 @@ nav {
   margin-bottom: -2rem;
   display: block;
 }
-
 .project-title {
   font-size: 5rem;
   margin-bottom: 1rem;
@@ -307,18 +279,15 @@ nav {
 .project-row:hover .project-title {
   color: var(--accent-color);
 }
-
 .project-desc {
   font-size: 1.25rem;
   max-width: 400px;
   line-height: 1.5;
   margin-bottom: 2rem;
 }
-
 .project-row:nth-child(even) .project-desc {
-  margin-left: auto; /* Align right side */
+  margin-left: auto;
 }
-
 .tags {
   display: flex;
   gap: 1rem;
@@ -327,7 +296,6 @@ nav {
 .project-row:nth-child(even) .tags {
   justify-content: flex-end;
 }
-
 .tag {
   border: 1px solid var(--text-color);
   padding: 0.5rem 1rem;
@@ -336,10 +304,6 @@ nav {
   font-weight: 500;
   text-transform: uppercase;
 }
-
-/* ==========================================================================
-   Services
-   ========================================================================== */
 .border-top {
   border-top: 4px solid var(--text-color);
   padding-top: 6rem;
@@ -389,24 +353,18 @@ nav {
   width: 50%;
   line-height: 1.5;
 }
-
-/* ==========================================================================
-   Footer
-   ========================================================================== */
 footer {
   background: var(--text-color);
   color: var(--bg-color);
   padding: 8rem 2rem 4rem;
   text-align: center;
 }
-
 .footer-huge {
   font-size: clamp(3rem, 10vw, 10rem);
   line-height: 1;
   margin-bottom: 4rem;
 }
 .footer-huge span { color: var(--accent-color); }
-
 .contact-link {
   display: inline-block;
   font-size: 2rem;
@@ -418,10 +376,6 @@ footer {
 .contact-link:hover {
   color: var(--accent-color);
 }
-
-/* ==========================================================================
-   Chatbot Widget (Taskii Brutalist)
-   ========================================================================== */
 .chat-toggle {
   position: fixed;
   bottom: 2rem;
@@ -666,10 +620,6 @@ footer {
   0%, 100% { box-shadow: 0 0 0 0 rgba(255,255,255,0.4); }
   50% { box-shadow: 0 0 0 6px rgba(255,255,255,0); }
 }
-
-/* ==========================================================================
-   Animations & Utilities
-   ========================================================================== */
 .fade-in-up {
   opacity: 0;
   transform: translateY(40px);
@@ -678,6 +628,48 @@ footer {
 .fade-in-up.visible {
   opacity: 1;
   transform: translateY(0);
+}
+/* Project Floating Badges */
+.project-image-col {
+  position: relative;
+}
+
+.project-badge {
+  position: absolute;
+  width: 210px;
+  pointer-events: none;
+  z-index: 10;
+  opacity: 0.9;
+}
+
+.project-badge img {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(4px 4px 0px rgba(0, 0, 0, 0.15));
+}
+
+@keyframes float-badge-left {
+  0% { transform: translate(-30px, 30px) rotate(-10deg); }
+  100% { transform: translate(-30px, 15px) rotate(-15deg); }
+}
+
+@keyframes float-badge-right {
+  0% { transform: translate(30px, 30px) rotate(10deg); }
+  100% { transform: translate(30px, 15px) rotate(15deg); }
+}
+
+/* Odd rows (1, 3): image right, badge bottom-left */
+.project-row:nth-child(odd) .project-badge {
+  left: 0;
+  bottom: -40px;
+  animation: float-badge-left 4s ease-in-out infinite alternate;
+}
+
+/* Even rows (2, 4): image left, badge bottom-right */
+.project-row:nth-child(even) .project-badge {
+  right: 0;
+  bottom: -40px;
+  animation: float-badge-right 4.5s ease-in-out infinite alternate;
 }
 
 @media (max-width: 900px) {
@@ -689,15 +681,28 @@ footer {
   .project-row:nth-child(even) .tags { justify-content: flex-start; }
   .project-figure { height: 50vh; }
   nav { flex-direction: column; gap: 1rem; }
-  .cursor-dot, .cursor-outline { display: none; } /* Disable custom cursor on mobile */
+  .cursor-dot, .cursor-outline { display: none; }
   body { cursor: auto; }
   a, button { cursor: pointer; }
   .hero-image-wrapper { position: relative; right: auto; top: auto; margin-top: 2rem; border-radius: 0; width: 100%; height: 300px; }
-  
   .service-item { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2rem 0; }
   .service-item:hover { padding-left: 0; padding-right: 0; color: var(--bg-color); }
   .service-title, .service-desc { width: 100%; }
-  
   .chat-toggle { bottom: 1rem; right: 1rem; }
   .chat-panel { width: calc(100% - 2rem); right: 1rem; bottom: 5rem; }
+  
+  /* Responsive badges */
+  .project-badge {
+    width: 140px;
+  }
+  .project-row:nth-child(odd) .project-badge {
+    left: 10px;
+    bottom: -20px;
+    animation: float-badge-left 4s ease-in-out infinite alternate;
+  }
+  .project-row:nth-child(even) .project-badge {
+    right: 10px;
+    bottom: -20px;
+    animation: float-badge-right 4.5s ease-in-out infinite alternate;
+  }
 }
