@@ -684,23 +684,142 @@ footer {
 }
 
 @media (max-width: 900px) {
-  .huge-text { font-size: 4rem; }
-  .project-row { grid-template-columns: 1fr; gap: 2rem; }
-  .project-row:nth-child(even) .project-image-col { order: 1; }
-  .project-row:nth-child(even) .project-info-col { order: 2; text-align: left; }
-  .project-row:nth-child(even) .project-desc { margin-left: 0; }
-  .project-row:nth-child(even) .tags { justify-content: flex-start; }
-  .project-figure { height: 50vh; }
-  nav { flex-direction: column; gap: 1rem; }
-  .cursor-dot, .cursor-outline { display: none; }
-  body { cursor: auto; }
-  a, button { cursor: pointer; }
-  .hero-image-wrapper { position: relative; right: auto; top: auto; margin-top: 2rem; border-radius: 0; width: 100%; height: 300px; }
-  .service-item { flex-direction: column; align-items: flex-start; gap: 1rem; padding: 2rem 0; }
-  .service-item:hover { padding-left: 0; padding-right: 0; color: var(--bg-color); }
-  .service-title, .service-desc { width: 100%; }
-  .chat-toggle { bottom: 1rem; right: 1rem; }
-  .chat-panel { width: calc(100% - 2rem); right: 1rem; bottom: 5rem; }
+  .section-padding {
+    padding: 5rem 1.5rem;
+  }
+  
+  .huge-text {
+    font-size: clamp(2.5rem, 11vw, 5.5rem);
+    white-space: normal; /* Permite que el texto se ajuste en pantallas muy pequeñas */
+  }
+  
+  .hero {
+    padding-top: 6rem;
+    min-height: auto;
+  }
+  
+  .hero-content {
+    padding: 0;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.15rem;
+    max-width: 100%;
+  }
+
+  .project-row {
+    grid-template-columns: 1fr;
+    gap: 3rem;
+  }
+  .project-row:nth-child(even) .project-image-col {
+    order: 1;
+  }
+  .project-row:nth-child(even) .project-info-col {
+    order: 2;
+    text-align: left;
+  }
+  .project-row:nth-child(even) .project-desc {
+    margin-left: 0;
+  }
+  .project-row:nth-child(even) .tags {
+    justify-content: flex-start;
+  }
+  
+  .project-title {
+    font-size: 2.8rem;
+  }
+  
+  .project-number {
+    font-size: 4rem;
+    margin-bottom: -1rem;
+  }
+  
+  .project-desc {
+    font-size: 1.1rem;
+    max-width: 100%;
+  }
+  
+  .project-figure {
+    height: 40vh;
+  }
+  
+  nav {
+    padding: 1.2rem 1.5rem;
+    flex-direction: row; /* Mantener en fila en lugar de apilar verticalmente */
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .nav-links {
+    gap: 1.5rem;
+    font-size: 0.9rem;
+  }
+  
+  .cursor-dot, .cursor-outline {
+    display: none; /* Desactivar cursor personalizado en móviles */
+  }
+  body {
+    cursor: auto;
+  }
+  a, button {
+    cursor: pointer;
+  }
+  
+  .hero-image-wrapper {
+    position: relative;
+    right: auto;
+    top: auto;
+    margin: 3rem auto 0;
+    width: 250px;
+    height: 300px;
+    /* Eliminamos border-radius: 0 para que conserve el efecto blob animado por JS */
+  }
+  
+  .service-item {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+    padding: 2rem 0;
+  }
+  .service-item:hover {
+    padding-left: 0;
+    padding-right: 0;
+    color: var(--bg-color);
+  }
+  .service-title {
+    font-size: 2rem;
+    width: 100%;
+  }
+  .service-desc {
+    font-size: 1.1rem;
+    width: 100%;
+  }
+  
+  .chat-toggle {
+    bottom: 1rem;
+    right: 1rem;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .chat-panel {
+    width: calc(100% - 2rem);
+    right: 1rem;
+    bottom: 4.8rem;
+    max-height: 60vh; /* Evita que se salga en pantallas de baja altura */
+  }
+
+  .footer-huge {
+    font-size: clamp(2.5rem, 8vw, 5.5rem);
+  }
+  
+  .contact-link {
+    font-size: 1.4rem;
+  }
   
   /* Responsive badges */
   .project-badge {
