@@ -1,365 +1,139 @@
 <!DOCTYPE html>
-<html lang="es" class="scroll-smooth">
+<html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Anton Flores | Centro de Enriquecimiento & Desarrollo</title>
-
-<!-- Meta SEO Principal -->
-<meta name="title" content="Anton Flores | Centro de Enriquecimiento & Desarrollo">
-<meta name="description" content="Sujeto de Prueba DEV.001. Soluciones tecnológicas, desarrollo web y sistemas.">
-<meta name="keywords" content="Anton Flores, Portafolio, Software, Python, JavaScript, SQLEARN, WhatsApp Visualizer, Delphinus, Desarrollador Web">
-<meta name="author" content="Anton Flores">
-<meta name="theme-color" content="#F0F0F0">
-
-<!-- Open Graph -->
-<meta property="og:type" content="website">
-<meta property="og:url" content="https://notayeen.github.io/Servicios/">
-<meta property="og:title" content="Anton Flores | Centro de Enriquecimiento">
-<meta property="og:description" content="Sujeto de Prueba DEV.001. Soluciones tecnológicas, desarrollo web y sistemas.">
-<meta property="og:image" content="https://notayeen.github.io/Servicios/assets/og_banner.jpg">
-<meta property="og:image:secure_url" content="https://notayeen.github.io/Servicios/assets/og_banner.jpg">
-<meta property="og:image:type" content="image/jpeg">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-
-<!-- Favicon -->
-<link rel="icon" type="image/webp" href="assets/yo1.webp">
-
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<script>tailwind.config={theme:{extend:{colors:{white:'rgb(var(--color-white) / <alpha-value>)',accent:'var(--accent-color)',accentSoft:'var(--bg-secondary)',fg:'var(--text-primary)',muted:'var(--text-secondary)'},fontFamily:{mono:['JetBrains Mono','monospace']},fontSize:{xs:['0.75rem','1.125rem'],sm:['0.875rem','1.25rem'],base:['1rem','1.5rem'],lg:['1.125rem','1.75rem'],xl:['1.25rem','1.75rem']}}}}</script>
-<script src="https://cdn.tailwindcss.com"></script>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;700&family=Libre+Barcode+39&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-<link rel="stylesheet" href="styles.css?v=15">
-<script src="script.js?v=12" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Anton Flores | Creative Developer & Art Direction</title>
+  
+  <meta name="title" content="Anton Flores | Creative Developer">
+  <meta name="description" content="Art Direction, 2D Brand Design & Software Engineering.">
+  <meta name="theme-color" content="#f0f0e6">
+  
+  <link rel="icon" type="image/webp" href="assets/yo1.webp">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css?v=30">
+  <script src="script.js?v=30" defer></script>
 </head>
 <body>
 
-<div class="toast-container" id="toastContainer"></div>
-<div class="mobile-overlay" id="mobileOverlay" onclick="closeMobile()"></div>
-<div class="mobile-menu" id="mobileMenu" style="background:var(--bg-primary);border-right:2px solid var(--border-strong);">
-  <div class="flex items-center justify-between mb-6">
-    <span class="font-bold text-lg flex items-center gap-2"><i class="fa-solid fa-circle-notch"></i> ANTON SCIENCE</span>
-    <div class="hamburger active" id="mobileHamburger" onclick="closeMobile()" aria-label="Cerrar menú">
-      <span style="background:var(--text-primary)"></span><span style="background:var(--text-primary)"></span><span style="background:var(--text-primary)"></span>
-    </div>
-  </div>
-  <a href="#inicio" onclick="closeMobile()" class="font-mono text-sm">[01] INICIO</a>
-  <a href="#proyectos" onclick="closeMobile()" class="font-mono text-sm">[02] PROYECTOS</a>
-  <a href="#servicios" onclick="closeMobile()" class="font-mono text-sm">[03] SERVICIOS</a>
-  <div class="mt-6">
-    <button onclick="openChat();closeMobile()" class="w-full px-6 py-3 test-btn">Abrir Interfaz de Chat</button>
-  </div>
-  <div class="mt-auto pt-6 text-muted text-xs font-mono">
-    STATUS: OPERATIONAL
-  </div>
-</div>
+  <!-- Custom Cursor -->
+  <div class="cursor-dot" id="cursorDot"></div>
+  <div class="cursor-outline" id="cursorOutline"></div>
 
-<div class="content-layer">
-<nav id="navbar" class="fixed top-0 left-0 right-0 z-50 test-nav">
-  <div class="max-w-7xl mx-auto px-6 h-16 flex items-center justify-between">
-    <a href="#" class="font-bold text-xl flex items-center gap-2">
-      <i class="fa-solid fa-circle-notch text-2xl"></i>
-      <div>
-        <div style="line-height:1">ANTON</div>
-        <div class="text-[0.6rem] text-muted tracking-widest">SCIENCE</div>
-      </div>
-    </a>
-    <div class="hidden md:flex items-center gap-8">
-      <a href="#inicio" class="nav-link active">[01] INICIO</a>
-      <a href="#proyectos" class="nav-link">[02] PROYECTOS</a>
-      <a href="#servicios" class="nav-link">[03] SERVICIOS</a>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">ANTON FLORES</div>
+    <div class="nav-links">
+      <a href="#work" class="hover-target">WORK</a>
+      <a href="#about" class="hover-target">ABOUT</a>
+      <a href="#contact" class="hover-target">CONTACT</a>
     </div>
-    <div class="flex items-center gap-6">
-      <div class="hidden lg:block text-right">
-        <div class="text-[0.65rem] text-muted">TEST SUBJECT:</div>
-        <div class="font-bold">DEV.001</div>
-      </div>
-      <div class="hidden lg:block barcode text-4xl">DEV001</div>
-      <button onclick="toggleDarkMode()" class="test-btn" style="padding:0.25rem 0.75rem" aria-label="Alternar modo emergencia">
-        <i class="fa-solid fa-triangle-exclamation dark-mode-icon"></i>
-      </button>
-      <div class="md:hidden hamburger" id="navHamburger" onclick="toggleMobile()" aria-label="Abrir menú">
-        <span style="background:var(--text-primary)"></span><span style="background:var(--text-primary)"></span><span style="background:var(--text-primary)"></span>
-      </div>
-    </div>
-  </div>
-</nav>
+  </nav>
 
-<main class="max-w-7xl mx-auto px-6 pt-10 pb-20">
-  
-  <section id="inicio" class="hero-grid mb-12">
-    <!-- Left Panel: Hero -->
-    <div class="test-panel p-8 md:p-12 flex flex-col justify-center min-h-[400px]">
-      <div class="panel-header absolute top-0 left-0 right-0">
-        <i class="fa-solid fa-flask"></i> CENTRO DE ENRIQUECIMIENTO ANTON
-      </div>
-      <div class="mt-8">
-        <h1 class="text-4xl sm:text-5xl md:text-6xl font-800 leading-tight mb-6 glitch-text">
-          INGENIERO DE SOFTWARE &<br>DESARROLLADOR FULL-STACK
-        </h1>
-        <div class="flex flex-wrap gap-4 mb-8 text-sm font-mono font-bold text-muted border-y border-[var(--border-color)] py-3">
-          <span class="flex items-center gap-2"><i class="fa-solid fa-user"></i> CREATIVIDAD</span>
-          <span class="flex items-center gap-2"><i class="fa-solid fa-code"></i> CÓDIGO</span>
-          <span class="flex items-center gap-2"><i class="fa-solid fa-cube"></i> SOLUCIÓN</span>
-        </div>
-        <p class="text-lg md:text-xl text-muted max-w-2xl leading-relaxed mb-8">
-          Transformo problemas complejos en soluciones digitales elegantes, rápidas y escalables. Especializado en arquitectura web, aplicaciones móviles y automatización de procesos.
-        </p>
-        <a href="#proyectos" class="test-btn test-btn-primary">
-          INICIAR SECUENCIA DE PROYECTOS <i class="fa-solid fa-chevron-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Right Panel: About & Skills -->
-    <div class="flex flex-col gap-6">
-      <div class="test-panel p-6">
-        <div class="panel-header absolute top-0 left-0 right-0">
-          [02] SOBRE MÍ <span style="color:var(--accent-color)">●</span>
-        </div>
-        <div class="mt-8">
-          <p class="text-sm text-muted leading-relaxed mb-6">
-            Me apasiona construir software con un rendimiento excepcional y diseño inmersivo. Cuento con amplia experiencia desarrollando sistemas desde cero, gestionando infraestructuras críticas y liderando el diseño técnico de productos que optimizan las operaciones de los negocios.
-          </p>
-          <div class="flex justify-between items-end border-t border-[var(--border-color)] pt-4 mt-4">
-            <img src="assets/yo1.webp" alt="Anton Flores" class="w-16 h-16 object-cover border border-[var(--border-strong)]" style="filter: grayscale(100%);">
-            <div class="barcode text-3xl">ANTON</div>
-          </div>
-        </div>
-      </div>
-
-      <div class="test-panel p-6">
-        <div class="panel-header absolute top-0 left-0 right-0">
-          [03] HABILIDADES <span style="color:var(--accent-color)">●</span>
-        </div>
-        <div class="mt-8">
-          <div class="skill-row">
-            <div class="skill-label"><i class="fa-brands fa-python"></i> PYTHON</div>
-            <div class="skill-bar-container"><div class="skill-bar-fill" style="width: 95%"></div></div>
-            <div class="skill-pct">95%</div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-label"><i class="fa-brands fa-js"></i> JAVASCRIPT</div>
-            <div class="skill-bar-container"><div class="skill-bar-fill" style="width: 90%"></div></div>
-            <div class="skill-pct">90%</div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-label"><i class="fa-brands fa-react"></i> REACT/VITE</div>
-            <div class="skill-bar-container"><div class="skill-bar-fill" style="width: 85%"></div></div>
-            <div class="skill-pct">85%</div>
-          </div>
-          <div class="skill-row">
-            <div class="skill-label"><i class="fa-solid fa-pen-nib"></i> UI/UX DESIGN</div>
-            <div class="skill-bar-container"><div class="skill-bar-fill" style="width: 90%"></div></div>
-            <div class="skill-pct">90%</div>
-          </div>
-          <div class="skill-row mb-0">
-            <div class="skill-label"><i class="fa-solid fa-database"></i> BASES DE DATOS</div>
-            <div class="skill-bar-container"><div class="skill-bar-fill" style="width: 80%"></div></div>
-            <div class="skill-pct">80%</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="proyectos" class="test-panel p-8 mb-12">
-    <div class="panel-header absolute top-0 left-0 right-0">
-      [04] PROYECTOS DESTACADOS <span style="color:var(--accent-color)">●</span>
-    </div>
-    
-    <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+  <!-- Hero Section -->
+  <section class="hero container">
+    <div class="hero-content fade-in-up">
+      <h1 class="huge-text">CREATIVE</h1>
+      <h1 class="huge-text" style="color: var(--accent-color); margin-top: -4rem;">DEVELOPER</h1>
       
-      <!-- Proyecto 1 -->
-      <div class="test-card flex flex-col">
-        <div class="h-40 border-b border-[var(--border-color)] overflow-hidden relative group bg-black">
-          <img src="assets/project-designforge.webp" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="DesignForge">
-          <div class="absolute bottom-2 right-2 bg-black/70 text-white text-[0.6rem] px-1 font-mono">STATUS: ONLINE</div>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <div class="text-xs font-mono text-muted mb-1">[ DESIGN SUITE ]</div>
-          <h3 class="font-bold text-lg mb-2 uppercase">DesignForge</h3>
-          <p class="text-sm text-muted mb-4 flex-1">Plataforma integral de diseño, color y UI/UX. Verificador WCAG 2.1 y simulador de daltonismo.</p>
-          <div class="flex gap-2">
-            <a href="https://notayeen.github.io/designforge/" target="_blank" class="test-btn text-xs py-1.5 px-3 flex-1"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> DEMO</a>
-            <a href="https://github.com/NotAYeen/designforge" target="_blank" class="test-btn text-xs py-1.5 px-3"><i class="fa-brands fa-github"></i></a>
+      <div class="hero-subtitle mt-8">
+        Ingeniero de Software y Director de Arte. Apasionado por diseñar identidades visuales intrépidas, experiencias inmersivas y código escalable.
+      </div>
+    </div>
+    <div class="hero-image-wrapper fade-in-up" style="transition-delay: 0.2s;">
+      <img src="assets/yo1.webp" alt="Anton Flores">
+    </div>
+  </section>
+
+  <!-- Infinite Marquee -->
+  <div class="marquee-container">
+    <div class="marquee-content">
+      <div class="marquee-item">2D BRAND DESIGN <span>•</span> ART DIRECTION <span>•</span> UI/UX <span>•</span> FULL STACK <span>•</span> </div>
+      <div class="marquee-item">2D BRAND DESIGN <span>•</span> ART DIRECTION <span>•</span> UI/UX <span>•</span> FULL STACK <span>•</span> </div>
+      <div class="marquee-item">2D BRAND DESIGN <span>•</span> ART DIRECTION <span>•</span> UI/UX <span>•</span> FULL STACK <span>•</span> </div>
+    </div>
+  </div>
+
+  <!-- Projects Section -->
+  <section id="work" class="section-padding container">
+    <h2 class="display-text fade-in-up" style="font-size: 3rem; margin-bottom: 2rem;">SELECTED WORKS</h2>
+    
+    <div class="projects-grid">
+      
+      <!-- Project 1 -->
+      <div class="project-row fade-in-up">
+        <div class="project-info-col">
+          <span class="project-number">01</span>
+          <h3 class="project-title">DESIGN FORGE</h3>
+          <p class="project-desc">Plataforma integral de diseño, color y UI/UX. Incluye verificador WCAG 2.1 y simulador de daltonismo para accesibilidad estricta bajo un entorno gráfico intrépido.</p>
+          <div class="tags">
+            <span class="tag">REACT</span>
+            <span class="tag">UI / UX</span>
+            <span class="tag">ACCESSIBILITY</span>
           </div>
+        </div>
+        <div class="project-image-col">
+          <a href="#" class="hover-target">
+            <div class="project-image-container">
+              <img src="assets/project-designforge.webp" alt="DesignForge">
+            </div>
+          </a>
         </div>
       </div>
 
-      <!-- Proyecto 2 -->
-      <div class="test-card flex flex-col">
-        <div class="h-40 border-b border-[var(--border-color)] overflow-hidden relative group bg-black">
-          <img src="assets/project-sqlearn.webp" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="SQLEARN">
-          <div class="absolute bottom-2 right-2 bg-black/70 text-white text-[0.6rem] px-1 font-mono">STATUS: ONLINE</div>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <div class="text-xs font-mono text-muted mb-1">[ WEB APP ]</div>
-          <h3 class="font-bold text-lg mb-2 uppercase">SQLEARN</h3>
-          <p class="text-sm text-muted mb-4 flex-1">Simulador interactivo y retro para aprender SQL directamente desde el navegador (WebAssembly).</p>
-          <div class="flex gap-2">
-            <a href="https://notayeen.github.io/SQLEARN/" target="_blank" class="test-btn text-xs py-1.5 px-3 flex-1"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> DEMO</a>
-            <a href="https://github.com/NotAYeen/SQLEARN" target="_blank" class="test-btn text-xs py-1.5 px-3"><i class="fa-brands fa-github"></i></a>
+      <!-- Project 2 -->
+      <div class="project-row fade-in-up">
+        <div class="project-info-col">
+          <span class="project-number">02</span>
+          <h3 class="project-title">SQLEARN</h3>
+          <p class="project-desc">Simulador interactivo retro para aprender SQL directamente desde el navegador usando el motor SQLite en WebAssembly. Gamificación en su máxima expresión.</p>
+          <div class="tags">
+            <span class="tag">SQLITE</span>
+            <span class="tag">WASM</span>
+            <span class="tag">GAMIFICATION</span>
           </div>
+        </div>
+        <div class="project-image-col">
+          <a href="#" class="hover-target">
+            <div class="project-image-container">
+              <img src="assets/project-sqlearn.webp" alt="SQLEARN">
+            </div>
+          </a>
         </div>
       </div>
 
-      <!-- Proyecto 3 -->
-      <div class="test-card flex flex-col">
-        <div class="h-40 border-b border-[var(--border-color)] overflow-hidden relative group bg-black">
-          <img src="assets/project-whatsapp.webp" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="WhatsApp Visualizer">
-          <div class="absolute bottom-2 right-2 bg-black/70 text-white text-[0.6rem] px-1 font-mono">STATUS: LOCAL</div>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <div class="text-xs font-mono text-muted mb-1">[ CLIENT APP ]</div>
-          <h3 class="font-bold text-lg mb-2 uppercase">WA Visualizer</h3>
-          <p class="text-sm text-muted mb-4 flex-1">Aplicación web privada para visualizar y analizar conversaciones exportadas de WhatsApp (.txt).</p>
-          <div class="flex gap-2">
-            <a href="https://notayeen.github.io/whatsapp-chat-visualizer/" target="_blank" class="test-btn text-xs py-1.5 px-3 flex-1"><i class="fa-solid fa-arrow-up-right-from-square mr-1"></i> DEMO</a>
-            <a href="https://github.com/NotAYeen/whatsapp-chat-visualizer" target="_blank" class="test-btn text-xs py-1.5 px-3"><i class="fa-brands fa-github"></i></a>
+      <!-- Project 3 -->
+      <div class="project-row fade-in-up">
+        <div class="project-info-col">
+          <span class="project-number">03</span>
+          <h3 class="project-title">DELPHINUS</h3>
+          <p class="project-desc">Plataforma y aplicación orientada a la gestión eficiente de inventarios y catálogo dinámico móvil/escritorio para App Moda. Brutalismo logístico.</p>
+          <div class="tags">
+            <span class="tag">PYTHON</span>
+            <span class="tag">MOBILE</span>
+            <span class="tag">SYS-ADMIN</span>
           </div>
         </div>
-      </div>
-
-      <!-- Proyecto 4 -->
-      <div class="test-card flex flex-col">
-        <div class="h-40 border-b border-[var(--border-color)] overflow-hidden relative group bg-black">
-          <img src="assets/project-appmoda.webp" class="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition-opacity" alt="Delphinus">
-          <div class="absolute bottom-2 right-2 bg-black/70 text-white text-[0.6rem] px-1 font-mono">STATUS: DEPLOYED</div>
-        </div>
-        <div class="p-4 flex flex-col flex-1">
-          <div class="text-xs font-mono text-muted mb-1">[ MOBILE APP ]</div>
-          <h3 class="font-bold text-lg mb-2 uppercase">Delphinus</h3>
-          <p class="text-sm text-muted mb-4 flex-1">Plataforma y aplicación orientada a la gestión eficiente de inventarios y catálogo dinámico.</p>
-          <div class="flex gap-2">
-            <a href="https://github.com/NotAYeen/delphinus" target="_blank" class="test-btn text-xs py-1.5 px-3 flex-1 test-btn-primary"><i class="fa-solid fa-download mr-1"></i> DESCARGAR</a>
-          </div>
+        <div class="project-image-col">
+          <a href="#" class="hover-target">
+            <div class="project-image-container">
+              <img src="assets/project-appmoda.webp" alt="Delphinus">
+            </div>
+          </a>
         </div>
       </div>
 
     </div>
   </section>
 
-  <section id="servicios" class="mb-12 grid lg:grid-cols-3 gap-6">
-    <div class="test-panel p-6 lg:col-span-3">
-      <div class="panel-header absolute top-0 left-0 right-0">
-        [05] PROTOCOLOS DE SOLUCIÓN <span style="color:var(--accent-color)">●</span>
-      </div>
-      <div class="mt-8 text-center max-w-2xl mx-auto">
-        <h2 class="text-2xl font-800 mb-2">SOLUCIONES 360° PARA TU NEGOCIO</h2>
-        <p class="text-muted text-sm">Garantizamos la operatividad, crecimiento y seguridad de tu empresa mediante tecnología a medida y protocolos estandarizados.</p>
-      </div>
-    </div>
-
-    <!-- Software -->
-    <div class="test-card p-6">
-      <div class="text-3xl mb-4 text-accent"><i class="fa-solid fa-code"></i></div>
-      <h3 class="font-bold text-lg mb-2">DESARROLLO DE SOFTWARE</h3>
-      <p class="text-sm text-muted mb-4">Páginas web, aplicaciones móviles y sistemas inteligentes que digitalizan y automatizan tu negocio.</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="test-tag">WEB</span>
-        <span class="test-tag">MOBILE</span>
-        <span class="test-tag">AUTOMATIZACIÓN</span>
-      </div>
-      <button onclick="openServiceModal('web')" class="test-btn w-full text-xs">MÁS INFORMACIÓN <i class="fa-solid fa-chevron-right ml-2"></i></button>
-    </div>
-
-    <!-- IT -->
-    <div class="test-card p-6">
-      <div class="text-3xl mb-4 text-accent"><i class="fa-solid fa-screwdriver-wrench"></i></div>
-      <h3 class="font-bold text-lg mb-2">INFRAESTRUCTURA IT</h3>
-      <p class="text-sm text-muted mb-4">Mantenimiento, reparación, redes y soporte técnico que mantiene tu operación sin interrupciones.</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="test-tag">HARDWARE</span>
-        <span class="test-tag">REDES</span>
-        <span class="test-tag">ANTIVIRUS</span>
-      </div>
-      <button onclick="openServiceModal('pc')" class="test-btn w-full text-xs">MÁS INFORMACIÓN <i class="fa-solid fa-chevron-right ml-2"></i></button>
-    </div>
-
-    <!-- Security -->
-    <div class="test-card p-6">
-      <div class="text-3xl mb-4 text-accent"><i class="fa-solid fa-shield-halved"></i></div>
-      <h3 class="font-bold text-lg mb-2">SEGURIDAD Y CONTROL</h3>
-      <p class="text-sm text-muted mb-4">Cámaras, control de accesos y bases de datos blindadas que protegen tus activos físicos y digitales.</p>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="test-tag">CCTV</span>
-        <span class="test-tag">BIOMETRÍA</span>
-        <span class="test-tag">SQL</span>
-      </div>
-      <button onclick="openServiceModal('cam')" class="test-btn w-full text-xs">MÁS INFORMACIÓN <i class="fa-solid fa-chevron-right ml-2"></i></button>
-    </div>
-  </section>
-
-  <footer class="test-panel p-6 flex flex-col md:flex-row items-center justify-between gap-4">
-    <div class="flex items-center gap-4">
-      <i class="fa-solid fa-circle-notch text-2xl"></i>
-      <div>
-        <div class="font-bold text-sm">RECUERDA: EN ANTON LABS.</div>
-        <div class="text-xs text-muted">LA ÚNICA FORMA DE FALLAR ES DEJAR DE INTENTARLO.</div>
-      </div>
-    </div>
-    <div class="text-right flex flex-col items-end">
-      <div class="text-xs font-mono text-muted mb-1">© 2026 ANTON FLORES. ALL RIGHTS RESERVED.</div>
-      <div class="barcode text-3xl">DEV001</div>
+  <!-- Footer -->
+  <footer id="contact">
+    <div class="container fade-in-up">
+      <h2 class="display-text footer-huge">LET'S <span>CREATE</span></h2>
+      <a href="mailto:hola@anton.com" class="contact-link hover-target">hola@anton.com</a>
+      <p style="margin-top: 4rem; opacity: 0.5; font-size: 0.9rem;">© 2026 ANTON FLORES. 2D BRAND DESIGN + ART DIRECTION.</p>
     </div>
   </footer>
-
-</main>
-</div>
-
-<!-- Modal -->
-<div class="mobile-overlay" id="serviceModalOverlay" onclick="closeServiceModal()" style="z-index:1001"></div>
-<div class="fixed top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[92%] max-w-2xl z-[1002] p-0 rounded-none opacity-0 pointer-events-none transition-all duration-200 scale-95 flex flex-col max-h-[85vh]" id="serviceModal">
-  <div class="test-panel flex flex-col h-full w-full">
-    <div class="panel-header absolute top-0 left-0 right-0 z-10">
-      MODAL DE INFORMACIÓN
-      <button onclick="closeServiceModal()" class="ml-auto hover:text-accent-color"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-    <div class="p-6 pt-12 overflow-y-auto custom-scrollbar flex-1">
-      <div class="flex items-center gap-4 mb-5 border-b border-[var(--border-color)] pb-4">
-        <div class="text-4xl text-accent"><i class="fa-solid" id="smIcon"></i></div>
-        <div>
-          <h3 class="font-800 text-2xl uppercase" id="smTitle">Título</h3>
-          <div class="text-xs font-mono tracking-wider text-muted mt-1" id="smCat">Categoría</div>
-        </div>
-      </div>
-      <p class="text-sm leading-relaxed mb-6" id="smDesc">Descripción</p>
-      <div class="space-y-4 mb-6" id="smList">
-      </div>
-      <div class="flex flex-wrap gap-2 pt-4 border-t border-[var(--border-color)]" id="smTags"></div>
-    </div>
-  </div>
-</div>
-
-<button class="chat-toggle fixed bottom-6 right-6 w-14 h-14 flex items-center justify-center text-xl z-[1000]" id="chatToggle" onclick="toggleChat()" aria-label="Abrir chatbot Taskii">
-  <i class="fa-solid fa-robot" id="chatToggleIcon"></i>
-</button>
-
-<div class="chat-panel fixed bottom-24 right-6 w-[380px] max-w-[calc(100vw-48px)] h-[540px] flex flex-col z-[1000] opacity-0 pointer-events-none translate-y-5 transition-all duration-200" id="chatPanel" role="dialog" aria-label="Asistente virtual Taskii">
-  <div class="panel-header flex items-center justify-between p-3">
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 flex items-center justify-center bg-white border border-black"><img src="assets/chatbot.png" alt="Taskii" class="w-full h-full object-cover"></div>
-      <div>
-        <div class="font-bold text-xs">ASISTENTE TASKII</div>
-        <div class="text-[0.6rem] text-status-ok font-mono">STATUS: ONLINE</div>
-      </div>
-    </div>
-    <div class="flex items-center gap-4">
-      <button onclick="resetChat()" class="hover:text-accent-color transition-colors text-lg" title="Reiniciar"><i class="fa-solid fa-rotate-right"></i></button>
-      <button onclick="toggleChat()" class="hover:text-accent-color transition-colors text-xl"><i class="fa-solid fa-xmark"></i></button>
-    </div>
-  </div>
-  <div class="chat-messages flex-1 p-4 overflow-y-auto bg-[var(--bg-secondary)] border-b border-[var(--border-color)]" id="chatMessages"></div>
-  <div class="chat-options p-2 bg-[var(--bg-panel)] flex flex-wrap gap-2" id="chatOptions"></div>
-  <div class="chat-input-area p-3 bg-[var(--bg-primary)] flex gap-2">
-    <input type="text" id="chatInput" placeholder="> Ingrese comando..." class="flex-1 bg-[var(--bg-panel)] border border-[var(--border-color)] px-3 py-2 text-sm font-mono focus:outline-none focus:border-[var(--border-strong)]" onkeydown="if(event.key==='Enter')sendInput()">
-    <button onclick="sendInput()" class="test-btn px-4 py-2"><i class="fa-solid fa-paper-plane"></i></button>
-  </div>
-</div>
 
 </body>
 </html>
