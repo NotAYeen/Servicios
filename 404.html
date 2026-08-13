@@ -2,329 +2,68 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>404 - Página No Encontrada | Anton Flores</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 - No Encontrado | Anton Flores</title>
   <meta name="robots" content="noindex, follow">
   <meta name="theme-color" content="#f0f0e6">
   <link rel="icon" type="image/webp" href="assets/yo1.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css?v=30">
   <script src="script.js?v=30" defer></script>
   <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100vh;
-      height: 100dvh;
-      width: 100vw;
-      overflow: hidden !important;
-      background-color: var(--bg-color);
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      position: relative;
-    }
-
-    /* Floating Ambient Radar/Circles */
-    .radar-circle {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      border: 1.5px dashed rgba(17, 17, 17, 0.12);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 1;
-      animation: spinSlow 40s linear infinite;
-    }
-    .radar-circle-1 { width: min(350px, 70vw); height: min(350px, 70vw); }
-    .radar-circle-2 { width: min(580px, 90vw); height: min(580px, 90vw); animation-duration: 60s; animation-direction: reverse; }
-    .radar-circle-3 { width: min(800px, 110vw); height: min(800px, 110vw); animation-duration: 80s; }
-
-    @keyframes spinSlow {
-      from { transform: translate(-50%, -50%) rotate(0deg); }
-      to { transform: translate(-50%, -50%) rotate(360deg); }
-    }
-
-    /* Infinite Marquee Banners */
-    .marquee-container {
-      width: 100%;
-      overflow: hidden;
-      background: var(--text-color);
-      color: var(--bg-color);
-      padding: clamp(0.3rem, 1vh, 0.6rem) 0;
-      white-space: nowrap;
-      font-family: var(--font-display);
-      font-size: clamp(0.85rem, 2vh, 1.1rem);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      z-index: 10;
-      user-select: none;
-      flex-shrink: 0;
-    }
-
-    .marquee-container.bottom-banner {
-      background: var(--accent-color);
-      color: #ffffff;
-    }
-
-    .marquee-content {
-      display: inline-block;
-      animation: marquee 25s linear infinite;
-    }
-
-    .marquee-content-reverse {
-      display: inline-block;
-      animation: marqueeReverse 30s linear infinite;
-    }
-
-    @keyframes marquee {
-      0% { transform: translateX(0); }
-      100% { transform: translateX(-50%); }
-    }
-
-    @keyframes marqueeReverse {
-      0% { transform: translateX(-50%); }
-      100% { transform: translateX(0); }
-    }
-
-    /* Central Content - strictly fitted */
-    .error-hero {
-      position: relative;
-      z-index: 5;
+    .error-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      min-height: 100vh;
       text-align: center;
-      padding: clamp(0.5rem, 2vh, 1.5rem) 1rem;
-      flex-grow: 1;
-      max-height: calc(100vh - 60px);
-      max-height: calc(100dvh - 60px);
+      padding: 2rem;
     }
-
-    /* Floating Status Badge */
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      background: #ffffff;
-      border: 2px solid var(--text-color);
-      padding: clamp(0.2rem, 0.8vh, 0.4rem) clamp(0.7rem, 2vw, 1.2rem);
-      border-radius: 50px;
-      font-weight: 700;
-      font-size: clamp(0.7rem, 1.5vh, 0.85rem);
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      box-shadow: 3px 3px 0px var(--text-color);
-      margin-bottom: clamp(0.5rem, 2vh, 1.2rem);
-      animation: floatSlow 4s ease-in-out infinite alternate;
-    }
-
-    .status-dot {
-      width: 7px;
-      height: 7px;
-      background-color: var(--accent-color);
-      border-radius: 50%;
-      animation: blink 1.2s infinite alternate;
-    }
-
-    @keyframes blink {
-      0% { opacity: 0.3; }
-      100% { opacity: 1; }
-    }
-
-    @keyframes floatSlow {
-      0% { transform: translateY(0px) rotate(0deg); }
-      100% { transform: translateY(-8px) rotate(1deg); }
-    }
-
-    /* Huge 404 Display */
-    .error-title-wrapper {
-      position: relative;
-      display: inline-block;
-      line-height: 0.8;
-    }
-
+    
     .error-title {
-      font-family: var(--font-display);
-      font-size: clamp(5rem, 22vh, 15rem);
-      line-height: 0.8;
+      font-size: clamp(6rem, 15vw, 15rem);
+      line-height: 0.9;
+      margin-bottom: 2rem;
       color: var(--text-color);
-      letter-spacing: -2px;
-      margin: 0;
-      text-shadow: clamp(3px, 1vh, 6px) clamp(3px, 1vh, 6px) 0px rgba(255, 42, 95, 0.25);
-      animation: floatHero 5s ease-in-out infinite alternate;
     }
-
-    @keyframes floatHero {
-      0% { transform: translateY(0); }
-      100% { transform: translateY(-6px); }
-    }
-
-    /* Floating Decor Badges around 404 */
-    .floating-decor {
-      position: absolute;
-      font-family: var(--font-display);
-      background: var(--text-color);
-      color: var(--bg-color);
-      padding: 0.2rem 0.6rem;
-      font-size: clamp(0.7rem, 1.2vh, 0.85rem);
-      border-radius: 4px;
-      pointer-events: none;
-      box-shadow: 2px 2px 0 var(--accent-color);
-    }
-    .decor-1 { top: 5%; left: -8%; transform: rotate(-10deg); animation: floatSlow 3.5s ease-in-out infinite alternate; }
-    .decor-2 { bottom: 10%; right: -6%; transform: rotate(6deg); animation: floatSlow 4.5s ease-in-out infinite alternate 1s; }
-
+    
     .error-subtitle {
-      font-family: var(--font-body);
-      font-size: clamp(0.95rem, 2vh, 1.35rem);
-      font-weight: 500;
-      max-width: 500px;
-      margin: clamp(0.8rem, 2vh, 1.8rem) auto clamp(1.2rem, 3vh, 2.2rem);
-      line-height: 1.4;
-      color: #333333;
+      font-family: 'Inter', sans-serif;
+      font-size: clamp(1.2rem, 3vw, 2rem);
+      margin-bottom: 3rem;
+      max-width: 600px;
     }
-
-    /* Call To Action Buttons */
-    .cta-group {
-      display: flex;
-      gap: clamp(0.5rem, 1.5vw, 1rem);
-      flex-wrap: wrap;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .btn-brutal {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: clamp(0.7rem, 1.5vh, 1rem) clamp(1.5rem, 3vw, 2.2rem);
+    
+    .error-button {
+      display: inline-block;
+      padding: 1rem 3rem;
       background-color: var(--accent-color);
-      color: #ffffff;
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 2vh, 1.25rem);
-      letter-spacing: 1px;
-      text-decoration: none;
-      text-transform: uppercase;
-      border: 2.5px solid var(--text-color);
-      border-radius: 50px;
-      box-shadow: 4px 4px 0px var(--text-color);
-      transition: all 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-
-    .btn-brutal:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px var(--text-color);
-      background-color: var(--text-color);
       color: var(--bg-color);
-    }
-
-    .btn-brutal svg {
-      width: clamp(16px, 2vh, 20px);
-      height: clamp(16px, 2vh, 20px);
-      fill: currentColor;
-      transition: transform 0.3s ease;
-    }
-
-    .btn-brutal:hover svg {
-      transform: translateX(4px);
-    }
-
-    .btn-secondary-brutal {
-      display: inline-flex;
-      align-items: center;
-      padding: clamp(0.7rem, 1.5vh, 1rem) clamp(1.4rem, 2.5vw, 2rem);
-      background-color: #ffffff;
-      color: var(--text-color);
-      font-family: var(--font-display);
-      font-size: clamp(1rem, 2vh, 1.25rem);
-      letter-spacing: 1px;
+      font-family: 'Anton', sans-serif;
+      font-size: 1.5rem;
       text-decoration: none;
       text-transform: uppercase;
-      border: 2.5px solid var(--text-color);
       border-radius: 50px;
-      box-shadow: 4px 4px 0px var(--text-color);
-      transition: all 0.25s ease;
+      transition: transform 0.3s ease, background-color 0.3s ease;
     }
-
-    .btn-secondary-brutal:hover {
-      transform: translate(-2px, -2px);
-      box-shadow: 6px 6px 0px var(--accent-color);
-      border-color: var(--accent-color);
-    }
-
-    @media (max-height: 600px) {
-      .status-badge { margin-bottom: 0.2rem; }
-      .error-subtitle { margin: 0.5rem auto 1rem; }
-      .decor-1, .decor-2 { display: none; }
-    }
-
-    @media (max-width: 500px) {
-      .decor-1, .decor-2 { display: none; }
-      .cta-group { flex-direction: column; gap: 0.6rem; width: 100%; }
-      .btn-brutal, .btn-secondary-brutal { width: 90%; justify-content: center; }
+    
+    .error-button:hover {
+      transform: scale(1.05);
+      background-color: var(--text-color);
     }
   </style>
 </head>
 <body>
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-outline" id="cursorOutline"></div>
-
-  <!-- Top Moving Marquee -->
-  <div class="marquee-container">
-    <div class="marquee-content">
-      ✦ ERROR 404 ✦ PÁGINA NO ENCONTRADA ✦ LOST IN CYBERSPACE ✦ SIGNAL LOST ✦ ANTON FLORES PORTFOLIO ✦ ERROR 404 ✦ PÁGINA NO ENCONTRADA ✦ LOST IN CYBERSPACE ✦ SIGNAL LOST ✦ ANTON FLORES PORTFOLIO ✦
-    </div>
-  </div>
-
-  <!-- Background Radar Rings -->
-  <div class="radar-circle radar-circle-1"></div>
-  <div class="radar-circle radar-circle-2"></div>
-  <div class="radar-circle radar-circle-3"></div>
-
-  <!-- Main Hero -->
-  <main class="error-hero">
-    <div class="status-badge">
-      <span class="status-dot"></span>
-      DIAGNÓSTICO: RUTA INEXISTENTE
-    </div>
-
-    <div class="error-title-wrapper">
-      <span class="floating-decor decor-1">HTTP 404</span>
-      <h1 class="error-title">404</h1>
-      <span class="floating-decor decor-2">OFF-GRID</span>
-    </div>
-
-    <p class="error-subtitle">
-      La coordenada a la que intentas acceder no existe o fue movida a otra dimensión.
-    </p>
-
-    <div class="cta-group">
-      <a href="index.html" class="btn-brutal">
-        VOLVER AL INICIO
-        <svg viewBox="0 0 24 24">
-          <path d="M5 12h14M12 5l7 7-7 7" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-      </a>
-      <a href="index.html#contacto" class="btn-secondary-brutal">
-        REPORTAR PROBLEMA
-      </a>
-    </div>
+  
+  <main class="error-container">
+    <h1 class="error-title font-anton">404</h1>
+    <p class="error-subtitle">Ups... parece que te has perdido en el ciberespacio. La página que buscas no existe.</p>
+    <a href="index.html" class="error-button">VOLVER AL INICIO</a>
   </main>
-
-  <!-- Bottom Moving Marquee -->
-  <div class="marquee-container bottom-banner">
-    <div class="marquee-content-reverse">
-      ✦ CREATIVE DEVELOPER ✦ ART DIRECTION ✦ SOFTWARE ENGINEERING ✦ WEB DESIGN ✦ ANTON FLORES ✦ CREATIVE DEVELOPER ✦ ART DIRECTION ✦ SOFTWARE ENGINEERING ✦ WEB DESIGN ✦ ANTON FLORES ✦
-    </div>
-  </div>
 </body>
 </html>
