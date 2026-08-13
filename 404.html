@@ -13,55 +13,124 @@
   <link rel="stylesheet" href="styles.css?v=30">
   <script src="script.js?v=30" defer></script>
   <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      height: 100vh;
+      height: 100dvh;
+      width: 100vw;
+      overflow: hidden;
+      background-color: var(--bg-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+
     .error-container {
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      min-height: 100vh;
       text-align: center;
       padding: 2rem;
+      position: relative;
+      z-index: 2;
     }
-    
+
+    /* Minimalist Dynamic 404 Title */
     .error-title {
-      font-size: clamp(6rem, 15vw, 15rem);
-      line-height: 0.9;
-      margin-bottom: 2rem;
+      font-family: 'Anton', sans-serif;
+      font-size: clamp(7rem, 20vw, 16rem);
+      line-height: 0.85;
+      margin-bottom: 1.5rem;
       color: var(--text-color);
+      position: relative;
+      display: inline-block;
+      user-select: none;
+      letter-spacing: -2px;
+      /* Dynamic Layered Shadow Animation */
+      animation: floatBreath 4s ease-in-out infinite alternate, shadowPulse 3s ease-in-out infinite alternate;
     }
-    
+
+    /* Subtle Accent Zero */
+    .error-title .zero {
+      color: var(--accent-color);
+      display: inline-block;
+      animation: zeroRotate 8s ease-in-out infinite alternate;
+    }
+
+    /* Floating & Breathing Animation */
+    @keyframes floatBreath {
+      0% {
+        transform: translateY(0px) scale(1);
+      }
+      100% {
+        transform: translateY(-12px) scale(1.02);
+      }
+    }
+
+    /* Dynamic Brutalist Shadow Shift */
+    @keyframes shadowPulse {
+      0% {
+        text-shadow: 4px 4px 0px var(--accent-color);
+      }
+      50% {
+        text-shadow: -4px 4px 0px var(--text-color);
+      }
+      100% {
+        text-shadow: 8px 8px 0px var(--accent-color);
+      }
+    }
+
+    /* Micro Rotation on Zero */
+    @keyframes zeroRotate {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(4deg); }
+    }
+
     .error-subtitle {
       font-family: 'Inter', sans-serif;
-      font-size: clamp(1.2rem, 3vw, 2rem);
-      margin-bottom: 3rem;
-      max-width: 600px;
+      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+      margin-bottom: 2.5rem;
+      max-width: 550px;
+      line-height: 1.5;
+      color: #333333;
     }
-    
+
     .error-button {
       display: inline-block;
       padding: 1rem 3rem;
       background-color: var(--accent-color);
-      color: var(--bg-color);
+      color: #ffffff;
       font-family: 'Anton', sans-serif;
-      font-size: 1.5rem;
+      font-size: 1.35rem;
       text-decoration: none;
       text-transform: uppercase;
       border-radius: 50px;
-      transition: transform 0.3s ease, background-color 0.3s ease;
+      border: 2.5px solid var(--text-color);
+      box-shadow: 4px 4px 0px var(--text-color);
+      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease, background-color 0.25s ease;
     }
-    
+
     .error-button:hover {
-      transform: scale(1.05);
+      transform: translate(-2px, -2px) scale(1.03);
+      box-shadow: 7px 7px 0px var(--text-color);
       background-color: var(--text-color);
+      color: var(--bg-color);
     }
   </style>
 </head>
 <body>
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-outline" id="cursorOutline"></div>
-  
+
   <main class="error-container">
-    <h1 class="error-title font-anton">404</h1>
+    <h1 class="error-title">4<span class="zero">0</span>4</h1>
     <p class="error-subtitle">Ups... parece que te has perdido en el ciberespacio. La página que buscas no existe.</p>
     <a href="index.html" class="error-button">VOLVER AL INICIO</a>
   </main>
