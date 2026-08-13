@@ -29,6 +29,25 @@
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      position: relative;
+    }
+
+    /* Main background texture matching index.html */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+      background-image: url('assets/fondo.webp');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      opacity: 0.3;
+      filter: blur(7px);
+      pointer-events: none;
     }
 
     .error-container {
@@ -39,7 +58,7 @@
       text-align: center;
       padding: 2rem;
       position: relative;
-      z-index: 2;
+      z-index: 5;
     }
 
     /* Minimalist Dynamic 404 Title */
@@ -53,7 +72,7 @@
       display: inline-block;
       user-select: none;
       letter-spacing: -2px;
-      /* Dynamic Layered Shadow Animation */
+      /* Dynamic Layered Shadow & Floating Animation */
       animation: floatBreath 4s ease-in-out infinite alternate, shadowPulse 3s ease-in-out infinite alternate;
     }
 
