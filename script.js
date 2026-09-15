@@ -3,7 +3,39 @@ document.addEventListener('DOMContentLoaded', () => {
   initScrollAnimations();
   initParallax();
   initBlobs();
+  initSmartNav();
 });
+function initSmartNav() {
+  const nav = document.getElementById('mainNav') || document.querySelector('nav');
+  if (!nav) return;
+  let lastScrollY = window.pageYOffset;
+  let ticking = false;
+
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        const currentScrollY = window.pageYOffset;
+        
+        if (currentScrollY <= 25) {
+          nav.classList.remove('nav-hidden');
+          nav.classList.remove('nav-scrolled');
+        } else {
+          nav.classList.add('nav-scrolled');
+          
+          if (currentScrollY > lastScrollY && currentScrollY > 100) {
+            nav.classList.add('nav-hidden');
+          } else if (currentScrollY < lastScrollY) {
+            nav.classList.remove('nav-hidden');
+          }
+        }
+        
+        lastScrollY = Math.max(0, currentScrollY);
+        ticking = false;
+      });
+      ticking = true;
+    }
+  }, { passive: true });
+}
 function initCursor() {
   const dot = document.getElementById('cursorDot');
   const outline = document.getElementById('cursorOutline');
@@ -63,7 +95,7 @@ function initScrollAnimations() {
   elements.forEach(el => observer.observe(el));
 }
 const taskiiBrain = {
-  start: {msg: "¡Hola! Soy Taskii, el asistente virtual de ANTON. ¿En qué área buscas soluciones hoy?", options: [{label: "🖥️ Soporte Técnico", next: "soporte"}, {label: "🌐 Páginas Web o Apps", next: "web"}, {label: "🔒 Seguridad y Control", next: "seguridad"}]},
+  start: {msg: "¡Hola! Soy Taskii, el asistente virtual de Antonio Albarran. ¿En qué área buscas soluciones o información hoy?", options: [{label: "🌐 Desarrollo Web / WASM", next: "web"}, {label: "📱 Apps Móviles & Software", next: "contact_app"}, {label: "⚙️ Automatización con Python", next: "contact_web_sys"}, {label: "🖥️ Infraestructura & Soporte IT", next: "soporte"}, {label: "🔒 Seguridad & Control", next: "seguridad"}]},
   soporte: {msg: "Perfecto, ¿cuál es el origen de la falla?", options: [{label: "Físico (No enciende, ruido, lenta)", next: "soporte_fisico"}, {label: "Programas (Virus, Windows, Office)", next: "soporte_programas"}, {label: "Redes (Wi-Fi, Cableado)", next: "soporte_redes"}]},
   soporte_fisico: {msg: "¿Qué tipo de equipo necesitas reparar?", options: [{label: "PC de Escritorio", next: "contact_hardware_pc"}, {label: "Laptop", next: "contact_hardware_lap"}]},
   soporte_programas: {msg: "¿Qué necesitas relacionado con los programas?", options: [{label: "Instalar Programas / Windows", next: "contact_software_inst"}, {label: "Limpieza y Antivirus", next: "contact_software_clean"}]},
@@ -220,14 +252,14 @@ async function sendInput() {
     });
     typingEl.remove();
     if (response.ok) {
-      addBotMsg('¡Datos transmitidos con éxito! Anton ha recibido tu consulta directamente en su bandeja ("' + subject + '") y se comunicará pronto.');
+      addBotMsg('¡Datos transmitidos con éxito! Antonio ha recibido tu consulta directamente en su bandeja ("' + subject + '") y se comunicará pronto.');
       showToast('Consulta enviada: ' + subject);
     } else {
       throw new Error("Error en Formspree");
     }
   } catch (error) {
     typingEl.remove();
-    addBotMsg('Hubo un error de conexión al enviar tus datos. Por favor, intenta de nuevo más tarde o contacta directamente a Anton.');
+    addBotMsg('Hubo un error de conexión al enviar tus datos. Por favor, intenta de nuevo más tarde o contacta directamente a Antonio.');
     showToast('Error al enviar consulta');
   }
   setTimeout(() => {
@@ -264,6 +296,34 @@ function showToast(msg) {
     setTimeout(() => t.remove(), 400);
   }, 4000);
 }
+function copyEmail(email) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(email).then(() => {
+      showToast('Correo copiado: ' + email);
+    }).catch(() => {
+      fallbackCopy(email);
+    });
+  } else {
+    fallbackCopy(email);
+  }
+}
+function fallbackCopy(text) {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  textArea.style.position = 'fixed';
+  textArea.style.opacity = '0';
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  try {
+    document.execCommand('copy');
+    showToast('Correo copiado: ' + text);
+  } catch (err) {
+    window.location.href = 'mailto:' + text;
+  }
+  document.body.removeChild(textArea);
+}
+window.copyEmail = copyEmail;
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const targetId = this.getAttribute('href');
@@ -271,19 +331,21 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     const targetEl = document.querySelector(targetId);
     if (!targetEl) return;
     e.preventDefault();
-    const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY;
+    const nav = document.getElementById('mainNav');
+    const navOffset = nav ? 40 : 0;
+    const targetPosition = targetEl.getBoundingClientRect().top + window.scrollY - navOffset;
     const startPosition = window.scrollY;
     const distance = targetPosition - startPosition;
-    const duration = 1200; 
+    const duration = Math.min(Math.max(Math.abs(distance) * 0.4, 550), 900);
     let startTime = null;
-    function easeInOutQuart(x) {
-      return x < 0.5 ? 8 * x * x * x * x : 1 - Math.pow(-2 * x + 2, 4) / 2;
+    function easeInOutCubic(x) {
+      return x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2;
     }
     function animation(currentTime) {
       if (startTime === null) startTime = currentTime;
       const timeElapsed = currentTime - startTime;
       const progress = Math.min(timeElapsed / duration, 1);
-      const ease = easeInOutQuart(progress);
+      const ease = easeInOutCubic(progress);
       window.scrollTo(0, startPosition + distance * ease);
       if (timeElapsed < duration) {
         requestAnimationFrame(animation);

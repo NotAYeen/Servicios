@@ -3,17 +3,17 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Anton Flores | Creative Developer & Art Direction</title>
-  <meta name="title" content="Anton Flores | Creative Developer">
-  <meta name="description" content="Ingeniero en Sistemas y Diseño Web. Apasionado por crear identidades visuales, experiencias inmersivas y automatizaciones.">
+  <title>Antonio Albarran | Software Engineer & Creative Technologist</title>
+  <meta name="title" content="Antonio Albarran | Software Engineer & Creative Technologist">
+  <meta name="description" content="Ingeniero en Sistemas Computacionales. Especializado en desarrollo web de alto rendimiento, ejecución client-side con WebAssembly, arquitecturas interactivas y automatización.">
   <meta name="theme-color" content="#f0f0e6">
 
   <!-- Open Graph / Facebook / WhatsApp -->
   <meta property="og:type" content="website">
-  <meta property="og:site_name" content="Anton Flores">
+  <meta property="og:site_name" content="Antonio Albarran">
   <meta property="og:url" content="https://notayeen.github.io/Servicios/">
-  <meta property="og:title" content="Anton Flores | Creative Developer">
-  <meta property="og:description" content="Ingeniero en Sistemas y Diseño Web. Apasionado por crear identidades visuales, experiencias inmersivas y automatizaciones.">
+  <meta property="og:title" content="Antonio Albarran | Software Engineer & Creative Technologist">
+  <meta property="og:description" content="Ingeniero en Sistemas Computacionales. Aplicaciones web de alto rendimiento, ejecución client-side con WebAssembly, arquitecturas interactivas y automatización.">
   <meta property="og:image" content="https://notayeen.github.io/Servicios/assets/og_banner.jpg">
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
@@ -22,190 +22,343 @@
   <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://notayeen.github.io/Servicios/">
-  <meta name="twitter:title" content="Anton Flores | Creative Developer">
-  <meta name="twitter:description" content="Ingeniero en Sistemas y Diseño Web. Apasionado por crear identidades visuales, experiencias inmersivas y automatizaciones.">
+  <meta name="twitter:title" content="Antonio Albarran | Software Engineer & Creative Technologist">
+  <meta name="twitter:description" content="Ingeniero en Sistemas Computacionales. Aplicaciones web de alto rendimiento, ejecución client-side con WebAssembly, arquitecturas interactivas y automatización.">
   <meta name="twitter:image" content="https://notayeen.github.io/Servicios/assets/og_banner.jpg">
 
   <link rel="icon" type="image/webp" href="assets/yo1.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="canonical" href="https://notayeen.github.io/Servicios/">
+  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "Person",
-    "name": "Anton Flores",
-    "jobTitle": "Creative Developer & Art Director",
+    "name": "Antonio Albarran",
+    "jobTitle": "Software Engineer & Creative Technologist",
     "url": "https://notayeen.github.io/Servicios/",
     "sameAs": [
       "https://github.com/NotAYeen"
     ],
-    "description": "Ingeniero en Sistemas Computacionales y Diseño Web. Apasionado por diseñar identidades visuales, experiencias inmersivas, automatizaciones y mas."
+    "description": "Ingeniero en Sistemas Computacionales especializado en arquitecturas web interactivas, ejecución client-side mediante WebAssembly, diseño de sistemas y automatización."
   }
   </script>
-  <link rel="stylesheet" href="styles.css?v=30">
-  <script src="script.js?v=30" defer></script>
+  
+  <link rel="stylesheet" href="styles.css?v=35">
+  <script src="script.js?v=35" defer></script>
 </head>
 <body>
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-outline" id="cursorOutline"></div>
-  <nav>
-    <div class="logo">ANTON FLORES</div>
+  <nav id="mainNav">
+    <div class="logo">ANTONIO ALBARRAN</div>
     <div class="nav-links">
       <a href="#work" class="hover-target">PROYECTOS</a>
-      <a href="#services" class="hover-target">SERVICIOS</a>
+      <a href="#about" class="hover-target">TRAYECTORIA</a>
+      <a href="#services" class="hover-target">ESPECIALIDADES</a>
       <a href="#contact" class="hover-target">CONTACTO</a>
+      <a href="assets/CV_Jorge_Antonio_Albarran.pdf" target="_blank" class="nav-cv-btn hover-target" title="Descargar Curriculum Vitae en PDF">
+        <i class="fa-solid fa-file-pdf"></i> DESCARGAR CV
+      </a>
     </div>
   </nav>
   <section class="hero container">
     <div class="hero-content fade-in-up">
-      <h1 class="huge-text" style="display: flex; flex-direction: column;">
-        <span>CREATIVE</span>
-        <span style="color: var(--accent-color); margin-top: -4rem;">DEVELOPER</span>
+      <h1 class="huge-text">
+        <span class="hero-title-line">SOFTWARE</span>
+        <span class="hero-title-line accent-text">ENGINEER</span>
       </h1>
       <div class="hero-subtitle mt-8">
-        Ingeniero en Sistemas Computacionales y Diseño Web. Apasionado por diseñar identidades visuales, experiencias inmersivas, automatizaciones y mas.
+        Ingeniero en Sistemas Computacionales & Creative Technologist. Especializado en aplicaciones web de alto rendimiento, ejecución client-side con WebAssembly, arquitecturas interactivas y automatización de procesos.
+      </div>
+      <div class="hero-actions">
+        <a href="#work" class="hero-btn primary hover-target">
+          <i class="fa-solid fa-code"></i> Explorar Proyectos
+        </a>
+        <a href="#about" class="hero-btn outline hover-target">
+          <i class="fa-solid fa-user-gear"></i> Perfil & Arsenal Técnico
+        </a>
       </div>
     </div>
     <div class="hero-image-wrapper fade-in-up hover-target" style="transition-delay: 0.2s;">
-      <img src="assets/yo1.webp" alt="Anton Flores" class="parallax-hero-img" data-speed="-0.05" fetchpriority="high" decoding="async">
+      <img src="assets/yo1.webp" alt="Antonio Albarran" class="parallax-hero-img" data-speed="-0.05" fetchpriority="high" decoding="async">
     </div>
   </section>
   <div class="marquee-container">
     <div class="marquee-content">
-      <div class="marquee-item">DISEÑO WEB <span>•</span> ARTE GRÁFICO <span>•</span> UI/UX <span>•</span> DESARROLLO DE SOFTWARE <span>•</span> </div>
-      <div class="marquee-item">DISEÑO WEB <span>•</span> ARTE GRÁFICO <span>•</span> UI/UX <span>•</span> DESARROLLO DE SOFTWARE <span>•</span> </div>
-      <div class="marquee-item">DISEÑO WEB <span>•</span> ARTE GRÁFICO <span>•</span> UI/UX <span>•</span> DESARROLLO DE SOFTWARE <span>•</span> </div>
+      <div class="marquee-item">INGENIERÍA DE SOFTWARE <span>•</span> WEBASSEMBLY (WASM) <span>•</span> REACT & JAVASCRIPT <span>•</span> AUTOMATIZACIÓN & PYTHON <span>•</span> SISTEMAS DE CONTROL & IOT <span>•</span> UI/UX DE PRECISIÓN <span>•</span> </div>
+      <div class="marquee-item">INGENIERÍA DE SOFTWARE <span>•</span> WEBASSEMBLY (WASM) <span>•</span> REACT & JAVASCRIPT <span>•</span> AUTOMATIZACIÓN & PYTHON <span>•</span> SISTEMAS DE CONTROL & IOT <span>•</span> UI/UX DE PRECISIÓN <span>•</span> </div>
+      <div class="marquee-item">INGENIERÍA DE SOFTWARE <span>•</span> WEBASSEMBLY (WASM) <span>•</span> REACT & JAVASCRIPT <span>•</span> AUTOMATIZACIÓN & PYTHON <span>•</span> SISTEMAS DE CONTROL & IOT <span>•</span> UI/UX DE PRECISIÓN <span>•</span> </div>
     </div>
   </div>
   <section id="work" class="section-padding container">
-    <h2 class="display-text fade-in-up" style="font-size: 3rem; margin-bottom: 2rem;">PROYECTOS</h2>
+    <div class="section-header-wrap fade-in-up">
+      <span class="section-subtitle">INGENIERÍA APLICADA & DESARROLLO</span>
+      <h2 class="display-text" style="font-size: 3.5rem; margin-bottom: 2rem;">PROYECTOS DESTACADOS</h2>
+    </div>
+
     <div class="projects-grid">
+      <!-- Proyecto 01: DesignForge -->
       <div class="project-row fade-in-up">
         <div class="project-info-col">
           <span class="project-number">01</span>
           <h3 class="project-title">DESIGN FORGE</h3>
-          <p class="project-desc">Plataforma de diseño UI/UX enfocada en color y accesibilidad estricta (WCAG 2.1 y simulación de daltonismo).</p>
+          <p class="project-desc">
+            Suite profesional de teoría del color y sistemas de diseño UI/UX (14 módulos). Integra algoritmos de contraste estricto bajo el estándar internacional <strong>WCAG 2.1</strong>, simulación en tiempo real de daltonismo (deuteranopia, protanopia, tritanopia) y exportación de Design Tokens.
+          </p>
           <div class="tags">
-            <span class="tag">REACT</span>
-            <span class="tag">UI / UX</span>
-            <span class="tag">ACCESSIBILITY</span>
+            <span class="tag">REACT 19</span>
+            <span class="tag">DESIGN SYSTEMS</span>
+            <span class="tag">WCAG 2.1 A11Y</span>
+            <span class="tag">COLOR SCIENCE</span>
           </div>
         </div>
         <div class="project-image-col">
-          <a href="https://notayeen.github.io/designforge/" target="_blank" class="hover-target">
+          <a href="https://notayeen.github.io/designforge/" target="_blank" class="hover-target" rel="noopener noreferrer">
             <figure class="project-figure">
-              <img src="assets/project-designforge.webp" alt="DesignForge" class="project-img" data-speed="-0.08" loading="lazy" decoding="async">
+              <img src="assets/project-designforge.webp" alt="DesignForge - Suite de Diseño y Accesibilidad" class="project-img" data-speed="-0.08" loading="lazy" decoding="async">
             </figure>
           </a>
           <div class="project-badge">
-            <img src="assets/click-para-ver.svg" alt="Click para ver" loading="lazy" decoding="async">
+            <img src="assets/click-para-ver.svg" alt="Click para ver demo en vivo" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
+
+      <!-- Proyecto 02: SQLEARN -->
       <div class="project-row fade-in-up">
         <div class="project-info-col">
           <span class="project-number">02</span>
           <h3 class="project-title">SQLEARN</h3>
-          <p class="project-desc">Simulador interactivo retro para aprender SQL directamente desde el navegador usando el motor SQLite en WebAssembly. Gamificación en su máxima expresión.</p>
+          <p class="project-desc">
+            Simulador interactivo retro para dominar SQL ejecutando un motor <strong>SQLite real directamente en el navegador mediante WebAssembly (sql.js)</strong>. Incluye 25 misiones técnicas, persistencia virtual en memoria, validación sintáctica en tiempo real y arquitectura 100% serverless sin latencia.
+          </p>
           <div class="tags">
-            <span class="tag">SQLITE</span>
-            <span class="tag">WASM</span>
+            <span class="tag">SQLITE WASM</span>
+            <span class="tag">WEBASSEMBLY</span>
+            <span class="tag">CLIENT-SIDE EXECUTION</span>
             <span class="tag">GAMIFICATION</span>
           </div>
         </div>
         <div class="project-image-col">
-          <a href="https://notayeen.github.io/SQLEARN/" target="_blank" class="hover-target">
+          <a href="https://notayeen.github.io/SQLEARN/" target="_blank" class="hover-target" rel="noopener noreferrer">
             <figure class="project-figure">
-              <img src="assets/project-sqlearn.webp" alt="SQLEARN" class="project-img" data-speed="-0.06" loading="lazy" decoding="async">
+              <img src="assets/project-sqlearn.webp" alt="SQLEARN - Simulador SQLite WebAssembly" class="project-img" data-speed="-0.06" loading="lazy" decoding="async">
             </figure>
           </a>
           <div class="project-badge">
-            <img src="assets/click-click-click.svg" alt="Click click click" loading="lazy" decoding="async">
+            <img src="assets/click-click-click.svg" alt="Click para probar la plataforma" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
+
+      <!-- Proyecto 03: WA Visualizer -->
       <div class="project-row fade-in-up">
         <div class="project-info-col">
           <span class="project-number">03</span>
-          <h3 class="project-title">DELPHINUS</h3>
-<p class="project-desc">Aplicacion para dispositivos android para la gestión eficiente de inventarios y catálogo dinámico para App Moda.</p>
+          <h3 class="project-title">WA VISUALIZER</h3>
+          <p class="project-desc">
+            Aplicación analítica de alta privacidad (<strong>Zero-Telemetry</strong>) para inspeccionar y correlacionar estadísticamente conversaciones exportadas de WhatsApp (.txt). Procesamiento 100% local con motor de expresiones regulares, nubes interactivas de términos y renderizado optimizado de miles de mensajes.
+          </p>
           <div class="tags">
-            <span class="tag">APK</span>
-            <span class="tag">MOBILE</span>
-            <span class="tag">ANDROID</span>
+            <span class="tag">DATA PRIVACY</span>
+            <span class="tag">REGEX ENGINE</span>
+            <span class="tag">DATA VISUALIZATION</span>
+            <span class="tag">CLIENT-SIDE</span>
           </div>
         </div>
         <div class="project-image-col">
-          <a href="https://github.com/NotAYeen/delphinus" target="_blank" class="hover-target">
+          <a href="https://notayeen.github.io/whatsapp-chat-visualizer/" target="_blank" class="hover-target" rel="noopener noreferrer">
             <figure class="project-figure">
-              <img src="assets/project-appmoda.webp" alt="Delphinus" class="project-img" data-speed="-0.1" loading="lazy" decoding="async">
+              <img src="assets/project-whatsapp.webp" alt="WhatsApp Visualizer - Analítica y Privacidad" class="project-img" data-speed="-0.08" loading="lazy" decoding="async">
             </figure>
           </a>
           <div class="project-badge">
-            <img src="assets/click-para-descargar.svg" alt="Click para descargar" loading="lazy" decoding="async">
+            <img src="assets/click-para-ver.svg" alt="Click para probar visualizador" loading="lazy" decoding="async">
           </div>
         </div>
       </div>
+
+      <!-- Proyecto 04: Delphinus -->
       <div class="project-row fade-in-up">
         <div class="project-info-col">
           <span class="project-number">04</span>
-          <h3 class="project-title">WA VISUALIZER</h3>
-          <p class="project-desc">Aplicación web privada para visualizar, buscar y analizar estadísticamente conversaciones exportadas de WhatsApp directamente en el navegador.</p>
+          <h3 class="project-title">DELPHINUS</h3>
+          <p class="project-desc">
+            Plataforma móvil y de gestión para la administración de inventarios, generación dinámica de catálogos y automatización operativa comercial. Diseñada con arquitectura modular, sincronización eficiente de datos y controles ergonómicos adaptados al ritmo del negocio.
+          </p>
           <div class="tags">
-            <span class="tag">WEB APP</span>
-            <span class="tag">DATA VISUALIZATION</span>
-            <span class="tag">PRIVACY</span>
+            <span class="tag">FLUTTER</span>
+            <span class="tag">ANDROID</span>
+            <span class="tag">PYTHON</span>
+            <span class="tag">SOFTWARE ARCHITECTURE</span>
           </div>
         </div>
         <div class="project-image-col">
-          <a href="https://notayeen.github.io/whatsapp-chat-visualizer/" target="_blank" class="hover-target">
+          <a href="https://github.com/NotAYeen/delphinus" target="_blank" class="hover-target" rel="noopener noreferrer">
             <figure class="project-figure">
-              <img src="assets/project-whatsapp.webp" alt="WhatsApp Visualizer" class="project-img" data-speed="-0.08" loading="lazy" decoding="async">
+              <img src="assets/project-appmoda.webp" alt="Delphinus - App Móvil y Gestión de Inventarios" class="project-img" data-speed="-0.1" loading="lazy" decoding="async">
             </figure>
           </a>
           <div class="project-badge">
-            <img src="assets/click-para-ver.svg" alt="Click para ver" loading="lazy" decoding="async">
+            <img src="assets/click-para-descargar.svg" alt="Click para explorar repositorio" loading="lazy" decoding="async">
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sección de Perfil & Trayectoria Profesional -->
+  <section id="about" class="section-padding container border-top">
+    <div class="section-header-wrap fade-in-up">
+      <span class="section-subtitle">TRAYECTORIA & COMPETENCIAS CLAVE</span>
+      <h2 class="display-text" style="font-size: 3.5rem; margin-bottom: 2.5rem;">PERFIL PROFESIONAL</h2>
+    </div>
+
+    <div class="about-grid">
+      <!-- Columna 1: Bio & Formación -->
+      <div class="about-card bio-card fade-in-up">
+        <h3 class="about-card-title">INGENIERÍA CON VISIÓN PRODUCTIVA</h3>
+        <p class="about-text">
+          Ingeniero en Sistemas Computacionales enfocado en diseñar software que equilibra <strong>rigor arquitectónico</strong> con <strong>experiencias de usuario de vanguardia</strong>. Especialista en ejecución client-side con <strong>WebAssembly</strong>, interfaces reactivas modernas y automatización de procesos mediante Python que eliminan tareas repetitivas.
+        </p>
+        <p class="about-text mt-4">
+          Cuento con experiencia integral en el ciclo de vida de TI: desde la concepción de la lógica de software hasta la resiliencia de la <strong>infraestructura física, redes IP y control de accesos biométricos</strong>.
+        </p>
+        <div class="about-badges mt-6">
+          <span class="about-badge"><i class="fa-solid fa-graduation-cap"></i> Instituto Tecnológico de Iztapalapa</span>
+          <span class="about-badge"><i class="fa-solid fa-location-dot"></i> Ciudad de México</span>
+          <span class="about-badge highlight"><i class="fa-solid fa-bolt"></i> Disponibilidad Inmediata</span>
+        </div>
+      </div>
+
+      <!-- Columna 2: Stack Técnico Estructurado -->
+      <div class="about-card stack-card fade-in-up" style="transition-delay: 0.15s;">
+        <h3 class="about-card-title">ARSENAL TECNOLÓGICO</h3>
+        
+        <div class="stack-group">
+          <div class="stack-category">Frontend & Client-Side Core</div>
+          <div class="stack-tags">
+            <span class="tag-pill">React 19</span>
+            <span class="tag-pill">WebAssembly (WASM)</span>
+            <span class="tag-pill">JavaScript (ES6+)</span>
+            <span class="tag-pill">TypeScript</span>
+            <span class="tag-pill">HTML5 / CSS3 Semántico</span>
+            <span class="tag-pill">Vite</span>
+          </div>
+        </div>
+
+        <div class="stack-group mt-4">
+          <div class="stack-category">Backend, Datos & Scripting</div>
+          <div class="stack-tags">
+            <span class="tag-pill">Python</span>
+            <span class="tag-pill">SQLite / sql.js</span>
+            <span class="tag-pill">SQL Relacional</span>
+            <span class="tag-pill">Node.js</span>
+            <span class="tag-pill">Automatización CLI</span>
+            <span class="tag-pill">APIs REST</span>
+          </div>
+        </div>
+
+        <div class="stack-group mt-4">
+          <div class="stack-category">Móvil, UI/UX & Estándares</div>
+          <div class="stack-tags">
+            <span class="tag-pill">Flutter</span>
+            <span class="tag-pill">Android</span>
+            <span class="tag-pill">WCAG 2.1 (Accesibilidad A11y)</span>
+            <span class="tag-pill">Design Systems</span>
+            <span class="tag-pill">Figma</span>
+          </div>
+        </div>
+
+        <div class="stack-group mt-4">
+          <div class="stack-category">Sistemas, Redes & Control</div>
+          <div class="stack-tags">
+            <span class="tag-pill">Linux & Windows</span>
+            <span class="tag-pill">Control de Acceso Biométrico</span>
+            <span class="tag-pill">Recuperación Forense de Datos</span>
+            <span class="tag-pill">Redes IP & Cableado</span>
+            <span class="tag-pill">Git / GitHub</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Banner de Acción para CV -->
+    <div class="cv-banner fade-in-up mt-8">
+      <div class="cv-banner-content">
+        <div class="cv-banner-text">
+          <h4>¿Deseas examinar mi Curriculum Vitae oficial?</h4>
+          <p>Consulta mi trayectoria técnica, competencias de ingeniería de software, formación institucional y experiencia laboral completa en formato PDF.</p>
+        </div>
+        <div class="cv-banner-buttons">
+          <a href="assets/CV_Jorge_Antonio_Albarran.pdf" target="_blank" class="banner-btn primary hover-target">
+            <i class="fa-solid fa-file-arrow-down"></i> Descargar CV Oficial (PDF)
+          </a>
         </div>
       </div>
     </div>
   </section>
   <section id="services" class="section-padding container border-top">
-    <h2 class="display-text fade-in-up" style="font-size: 3rem; margin-bottom: 4rem;">SERVICIOS</h2>
+    <div class="section-header-wrap fade-in-up">
+      <span class="section-subtitle">SERVICIOS & SOLUCIONES TECNOLÓGICAS</span>
+      <h2 class="display-text" style="font-size: 3.5rem; margin-bottom: 3.5rem;">ESPECIALIDADES</h2>
+    </div>
+
     <div class="services-list">
       <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">DISEÑO WEB</h3>
-        <p class="service-desc">Diseño e implementación de páginas corporativas, landing pages y e-commerce de ultra velocidad y adaptables a móviles.</p>
+        <h3 class="service-title">DESARROLLO WEB & WASM</h3>
+        <p class="service-desc">Diseño e implementación de plataformas web modernas, herramientas interactivas de ultra velocidad y aplicaciones client-side accesibles (WCAG 2.1) con SEO técnico impecable.</p>
       </div>
       <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">APPS MÓVILES</h3>
-        <p class="service-desc">Desarrollo de aplicaciones móviles a medida para control de agendado, ventas y digitalización total del modelo de negocio.</p>
+        <h3 class="service-title">APLICACIONES MÓVILES</h3>
+        <p class="service-desc">Desarrollo multiplataforma en Flutter y entornos Android a medida, integrando control de catálogos dinámicos, persistencia local y sincronización eficiente de datos comerciales.</p>
       </div>
       <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">SISTEMAS & BOTS</h3>
-        <p class="service-desc">Automatización de procesos repetitivos, extracción de datos y scripts de Python para rendimiento extremo (24/7).</p>
+        <h3 class="service-title">AUTOMATIZACIÓN & BOTS</h3>
+        <p class="service-desc">Automatización de flujos repetitivos, extracción y procesamiento estructurado de información y scripts de alto rendimiento en Python para optimización operativa 24/7.</p>
       </div>
       <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">SOPORTE PC</h3>
-        <p class="service-desc">Diagnóstico técnico, limpieza física profunda, actualización de SSD/RAM e instalaciones limpias de OS.</p>
+        <h3 class="service-title">CONTROL BIOMÉTRICO</h3>
+        <p class="service-desc">Integración de lectores de acceso por rostro y huella digital, gestión de torniquetes electrónicos y administración de bases de datos seguras para control de asistencia.</p>
       </div>
       <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">FORENSE IT</h3>
-        <p class="service-desc">Desinfección severa de malware, escudo preventivo y recuperación forense de datos en discos dañados.</p>
+        <h3 class="service-title">RECUPERACIÓN & FORENSE</h3>
+        <p class="service-desc">Diagnóstico y saneamiento de malware en estaciones críticas, optimización profunda de sistemas operativos y recuperación forense de datos en unidades de almacenamiento dañadas.</p>
       </div>
       <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">BIOMETRÍA</h3>
-        <p class="service-desc">Control de accesos con lectores de rostro/huella, registro de asistencia y restricción electrónica de áreas.</p>
+        <h3 class="service-title">INFRAESTRUCTURA & REDES</h3>
+        <p class="service-desc">Ensamble y dimensionamiento de estaciones de alto desempeño, configuración de topologías de red IP seguras y mantenimiento preventivo para continuidad de negocio.</p>
       </div>
     </div>
   </section>
+
+  <!-- Footer & Contacto -->
   <footer id="contact" class="border-top">
     <div class="container fade-in-up">
-      <h2 class="display-text footer-huge">VAMOS A <span>CREAR</span></h2>
-      <a href="https://mail.google.com/mail/?view=cm&fs=1&to=1999antonflores@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-link hover-target">1999antonflores@gmail.com</a>
-      <p style="margin-top: 4rem; opacity: 0.5; font-size: 0.9rem; font-weight: bold;">© 2026 ANTON FLORES. DISEÑO Y DESARROLLO WEB.</p>
+      <h2 class="display-text footer-huge">VAMOS A <span>CONSTRUIR</span></h2>
+      <p class="footer-subtitle">Disponible para roles de ingeniería de software, proyectos web de alto impacto y consultoría en sistemas.</p>
+      
+      <div class="contact-methods mt-6">
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=1999antonflores@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-link hover-target">1999antonflores@gmail.com</a>
+        <button class="copy-email-btn hover-target" onclick="copyEmail('1999antonflores@gmail.com')" title="Copiar correo al portapapeles">
+          <i class="fa-regular fa-copy"></i> Copiar Correo
+        </button>
+      </div>
+
+      <div class="footer-socials mt-6">
+        <a href="https://github.com/NotAYeen" target="_blank" rel="noopener noreferrer" class="social-badge hover-target">
+          <i class="fa-brands fa-github"></i> GitHub @NotAYeen
+        </a>
+        <a href="assets/CV_Jorge_Antonio_Albarran.pdf" target="_blank" class="social-badge hover-target">
+          <i class="fa-solid fa-file-pdf"></i> Curriculum Vitae (PDF)
+        </a>
+      </div>
+
+      <p class="footer-copy">© 2026 ANTONIO ALBARRAN. INGENIERÍA EN SISTEMAS COMPUTACIONALES & DESARROLLO DE SOFTWARE.</p>
     </div>
   </footer>
   <div class="toast-container" id="toastContainer"></div>
