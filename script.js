@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initParallax();
   initBlobs();
   initSmartNav();
+  initMobileMenu();
 });
 function initSmartNav() {
   const nav = document.getElementById('mainNav') || document.querySelector('nav');
@@ -35,6 +36,51 @@ function initSmartNav() {
       ticking = true;
     }
   }, { passive: true });
+}
+function initMobileMenu() {
+  const toggle = document.getElementById('navToggle');
+  const navLinks = document.getElementById('navLinks');
+  const overlay = document.getElementById('navOverlay');
+  const nav = document.getElementById('mainNav') || document.querySelector('nav');
+  if (!toggle || !navLinks) return;
+
+  const closeMenu = () => {
+    toggle.classList.remove('active');
+    navLinks.classList.remove('open');
+    if (overlay) overlay.classList.remove('open');
+    toggle.setAttribute('aria-expanded', 'false');
+    toggle.setAttribute('aria-label', 'Abrir menú');
+    document.body.classList.remove('nav-open');
+  };
+  const openMenu = () => {
+    if (nav && nav.classList.contains('nav-hidden')) {
+      nav.classList.remove('nav-hidden');
+    }
+    toggle.classList.add('active');
+    navLinks.classList.add('open');
+    if (overlay) overlay.classList.add('open');
+    toggle.setAttribute('aria-expanded', 'true');
+    toggle.setAttribute('aria-label', 'Cerrar menú');
+    document.body.classList.add('nav-open');
+  };
+
+  toggle.addEventListener('click', () => {
+    if (navLinks.classList.contains('open')) {
+      closeMenu();
+    } else {
+      openMenu();
+    }
+  });
+  if (overlay) overlay.addEventListener('click', closeMenu);
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', closeMenu);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
+  });
+  window.addEventListener('resize', () => {
+    if (window.innerWidth > 768 && navLinks.classList.contains('open')) closeMenu();
+  });
 }
 function initCursor() {
   const dot = document.getElementById('cursorDot');
