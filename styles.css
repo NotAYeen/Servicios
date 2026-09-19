@@ -343,7 +343,7 @@ nav.nav-hidden {
 }
 .marquee-content {
   display: flex;
-  animation: scroll-left 20s linear infinite;
+  animation: scroll-left 24.2s linear infinite;
   font-family: var(--font-display);
   font-size: 4rem;
   text-transform: uppercase;
