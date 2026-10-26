@@ -1,35 +1,39 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initScrollAnimations();
   initParallax();
   initBlobs();
   initSmartNav();
   initMobileMenu();
+  initAsciiWaveBackground();
+  initGlitchEaters();
+  initTypographicVortex();
+  initCommandPalette();
 });
+
+// ================================================================
+// SMART NAV
+// ================================================================
 function initSmartNav() {
   const nav = document.getElementById('mainNav') || document.querySelector('nav');
   if (!nav) return;
   let lastScrollY = window.pageYOffset;
   let ticking = false;
-
   window.addEventListener('scroll', () => {
     if (!ticking) {
       window.requestAnimationFrame(() => {
         const currentScrollY = window.pageYOffset;
-        
         if (currentScrollY <= 25) {
           nav.classList.remove('nav-hidden');
           nav.classList.remove('nav-scrolled');
         } else {
           nav.classList.add('nav-scrolled');
-          
           if (currentScrollY > lastScrollY && currentScrollY > 100) {
             nav.classList.add('nav-hidden');
           } else if (currentScrollY < lastScrollY) {
             nav.classList.remove('nav-hidden');
           }
         }
-        
         lastScrollY = Math.max(0, currentScrollY);
         ticking = false;
       });
@@ -37,13 +41,16 @@ function initSmartNav() {
     }
   }, { passive: true });
 }
+
+// ================================================================
+// MOBILE MENU
+// ================================================================
 function initMobileMenu() {
   const toggle = document.getElementById('navToggle');
   const navLinks = document.getElementById('navLinks');
   const overlay = document.getElementById('navOverlay');
   const nav = document.getElementById('mainNav') || document.querySelector('nav');
   if (!toggle || !navLinks) return;
-
   const closeMenu = () => {
     toggle.classList.remove('active');
     navLinks.classList.remove('open');
@@ -53,9 +60,7 @@ function initMobileMenu() {
     document.body.classList.remove('nav-open');
   };
   const openMenu = () => {
-    if (nav && nav.classList.contains('nav-hidden')) {
-      nav.classList.remove('nav-hidden');
-    }
+    if (nav && nav.classList.contains('nav-hidden')) nav.classList.remove('nav-hidden');
     toggle.classList.add('active');
     navLinks.classList.add('open');
     if (overlay) overlay.classList.add('open');
@@ -63,18 +68,11 @@ function initMobileMenu() {
     toggle.setAttribute('aria-label', 'Cerrar menú');
     document.body.classList.add('nav-open');
   };
-
   toggle.addEventListener('click', () => {
-    if (navLinks.classList.contains('open')) {
-      closeMenu();
-    } else {
-      openMenu();
-    }
+    if (navLinks.classList.contains('open')) closeMenu(); else openMenu();
   });
   if (overlay) overlay.addEventListener('click', closeMenu);
-  navLinks.querySelectorAll('a').forEach(link => {
-    link.addEventListener('click', closeMenu);
-  });
+  navLinks.querySelectorAll('a').forEach(link => link.addEventListener('click', closeMenu));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && navLinks.classList.contains('open')) closeMenu();
   });
@@ -82,6 +80,10 @@ function initMobileMenu() {
     if (window.innerWidth > 768 && navLinks.classList.contains('open')) closeMenu();
   });
 }
+
+// ================================================================
+// CURSOR PERSONALIZADO
+// ================================================================
 function initCursor() {
   const dot = document.getElementById('cursorDot');
   const outline = document.getElementById('cursorOutline');
@@ -93,283 +95,513 @@ function initCursor() {
   window.addEventListener('mousemove', (e) => {
     mouseX = e.clientX;
     mouseY = e.clientY;
-    dot.style.left = `${mouseX}px`;
-    dot.style.top = `${mouseY}px`;
+    dot.style.left = mouseX + 'px';
+    dot.style.top = mouseY + 'px';
   });
   const animateOutline = () => {
     let distX = mouseX - outlineX;
     let distY = mouseY - outlineY;
     outlineX += distX * 0.15;
     outlineY += distY * 0.15;
-    outline.style.left = `${outlineX}px`;
-    outline.style.top = `${outlineY}px`;
+    outline.style.left = outlineX + 'px';
+    outline.style.top = outlineY + 'px';
     requestAnimationFrame(animateOutline);
   };
   animateOutline();
-  const hoverTargets = document.querySelectorAll('a, button, .hover-target');
-  hoverTargets.forEach(target => {
-    target.addEventListener('mouseenter', () => {
-      document.body.classList.add('cursor-hover');
+
+  document.querySelectorAll('a, button, .hover-target').forEach(el => {
+    el.addEventListener('mouseenter', () => outline.classList.add('cursor-hover'));
+    el.addEventListener('mouseleave', () => outline.classList.remove('cursor-hover'));
+    el.addEventListener('mousedown', () => {
+      outline.style.transform = 'translate(-50%, -50%) scale(0.7)';
+      outline.style.backgroundColor = 'var(--surface-dark-alt)';
     });
-    target.addEventListener('mouseleave', () => {
-      document.body.classList.remove('cursor-hover');
+    el.addEventListener('mouseup', () => {
+      outline.style.transform = 'translate(-50%, -50%) scale(1)';
+      outline.style.backgroundColor = 'transparent';
     });
   });
-  const projectFigures = document.querySelectorAll('.project-figure');
-  projectFigures.forEach(fig => {
-    fig.addEventListener('mouseenter', () => {
-      document.body.classList.add('cursor-project');
+
+  document.querySelectorAll('.project-card, .bento-card-media, .hero-image-wrapper').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+      outline.classList.add('cursor-project');
+      dot.classList.add('cursor-project');
     });
-    fig.addEventListener('mouseleave', () => {
-      document.body.classList.remove('cursor-project');
+    el.addEventListener('mouseleave', () => {
+      outline.classList.remove('cursor-project');
+      dot.classList.remove('cursor-project');
     });
   });
 }
+
+// ================================================================
+// SCROLL ANIMATIONS
+// ================================================================
 function initScrollAnimations() {
-  const elements = document.querySelectorAll('.fade-in-up');
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target);
       }
     });
-  }, { 
-    threshold: 0.1,
-    rootMargin: "0px 0px -50px 0px"
-  });
-  elements.forEach(el => observer.observe(el));
+  }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+  document.querySelectorAll('.fade-in-up').forEach(el => observer.observe(el));
 }
-const taskiiBrain = {
-  start: {msg: "¡Hola! Soy Taskii, el asistente virtual de Antonio Albarran. ¿En qué área buscas soluciones o información hoy?", options: [{label: "🌐 Desarrollo Web / WASM", next: "web"}, {label: "📱 Apps Móviles & Software", next: "contact_app"}, {label: "⚙️ Automatización con Python", next: "contact_web_sys"}, {label: "🖥️ Infraestructura & Soporte IT", next: "soporte"}, {label: "🔒 Seguridad & Control", next: "seguridad"}]},
-  soporte: {msg: "Perfecto, ¿cuál es el origen de la falla?", options: [{label: "Físico (No enciende, ruido, lenta)", next: "soporte_fisico"}, {label: "Programas (Virus, Windows, Office)", next: "soporte_programas"}, {label: "Redes (Wi-Fi, Cableado)", next: "soporte_redes"}]},
-  soporte_fisico: {msg: "¿Qué tipo de equipo necesitas reparar?", options: [{label: "PC de Escritorio", next: "contact_hardware_pc"}, {label: "Laptop", next: "contact_hardware_lap"}]},
-  soporte_programas: {msg: "¿Qué necesitas relacionado con los programas?", options: [{label: "Instalar Programas / Windows", next: "contact_software_inst"}, {label: "Limpieza y Antivirus", next: "contact_software_clean"}]},
-  soporte_redes: {msg: "¿Dónde necesitas mejorar la conexión?", options: [{label: "Casa (Falla de señal en hogar)", next: "contact_red_casa"}, {label: "Oficina/Negocio (Múltiples equipos)", next: "contact_red_oficina"}]},
-  web: {msg: "¡Genial! ¿Qué tipo de proyecto de software necesitas?", options: [{label: "Proyecto Nuevo (Desde cero)", next: "web_nuevo"}, {label: "Renovar / Arreglar uno existente", next: "contact_web_fix"}, {label: "App Móvil (Android/iOS)", next: "contact_app"}]},
-  web_nuevo: {msg: "¿Qué tipo de proyecto nuevo tienes en mente?", options: [{label: "Página Informativa (Portafolio, Servicios)", next: "contact_web_info"}, {label: "Tienda Online (E-commerce)", next: "contact_web_store"}, {label: "Sistema a Medida (Administración/Inventario)", next: "contact_web_sys"}]},
-  seguridad: {msg: "¿Qué tipo de solución de seguridad necesitas?", options: [{label: "Cámaras de Vigilancia", next: "seg_cam"}, {label: "Control de Accesos (Huella/Torniquetes)", next: "contact_acc"}, {label: "Bases de Datos Seguras", next: "contact_db"}]},
-  seg_cam: {msg: "¿Cuántas cámaras necesitas?", options: [{label: "De 1 a 4 cámaras (Kit Básico)", next: "contact_cam_small"}, {label: "5 o más cámaras (Proyecto Avanzado)", next: "contact_cam_large"}]},
-  contact_hardware_pc: {msg: "Por favor, describe brevemente qué le sucede a la PC de escritorio...", input: true, subject: "Soporte PC Escritorio"},
-  contact_hardware_lap: {msg: "¿Me podrías detallar la falla de tu Laptop y si sabes el modelo?", input: true, subject: "Soporte Laptop"},
-  contact_software_inst: {msg: "¿Qué programas específicos o versión de Windows necesitas que instalemos?", input: true, subject: "Instalacion Software"},
-  contact_software_clean: {msg: "¿Notas que se abren ventanas solas o solo va muy lenta?", input: true, subject: "Limpieza Virus"},
-  contact_red_casa: {msg: "¿En qué áreas de tu casa no llega bien la señal?", input: true, subject: "Red Casa"},
-  contact_red_oficina: {msg: "¿Cuántos equipos aproximados se conectan en tu oficina?", input: true, subject: "Red Oficina"},
-  contact_web_info: {msg: "¿De qué trata tu negocio o emprendimiento?", input: true, subject: "Web Informativa"},
-  contact_web_store: {msg: "¿Qué tipo de productos vendes?", input: true, subject: "Tienda Online"},
-  contact_web_sys: {msg: "¿Qué proceso manual quieres reemplazar?", input: true, subject: "Sistema A Medida"},
-  contact_web_fix: {msg: "¿Qué es lo que más te gustaría cambiar o mejorar de tu proyecto actual?", input: true, subject: "Renovacion Web"},
-  contact_app: {msg: "¿Para qué servirá principalmente la app?", input: true, subject: "App Movil"},
-  contact_cam_small: {msg: "¿Es para interior o exterior?", input: true, subject: "Camaras Basico"},
-  contact_cam_large: {msg: "¿Dónde se ubican las instalaciones?", input: true, subject: "Camaras Avanzado"},
-  contact_acc: {msg: "¿Quieres abrir con huella, tarjeta o clave?", input: true, subject: "Control Accesos"},
-  contact_db: {msg: "¿Qué tipo de información necesitas almacenar?", input: true, subject: "Bases de Datos"}
-};
-let chatState = 'start', chatPath = [], chatOpen = false, chatInited = false;
-let chatMessages, chatOptions, chatInputArea, chatInput, chatPanel, chatToggle, chatToggleIcon;
-document.addEventListener('DOMContentLoaded', () => {
-  chatMessages = document.getElementById('chatMessages');
-  chatOptions = document.getElementById('chatOptions');
-  chatInputArea = document.getElementById('chatInputArea');
-  chatInput = document.getElementById('chatInput');
-  chatPanel = document.getElementById('chatPanel');
-  chatToggle = document.getElementById('chatToggle');
-  chatToggleIcon = document.getElementById('chatToggleIcon');
-});
-function toggleChat() {
-  chatOpen = !chatOpen;
-  chatPanel.classList.toggle('open', chatOpen);
-  if (chatToggleIcon) {
-    chatToggleIcon.innerHTML = chatOpen 
-      ? '<i class="fa-solid fa-xmark"></i>'
-      : '<svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-chatbot"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" /><path d="M9.5 9h.01" /><path d="M14.5 9h.01" /><path d="M9.5 13a3.5 3.5 0 0 0 5 0" /></svg>';
-  }
-  if (chatOpen && !chatInited) {
-    chatInited = true;
-    setTimeout(() => navigateChat('start'), 250);
-  }
-}
-function resetChat() {
-  chatState = 'start';
-  chatPath = [];
-  chatMessages.innerHTML = '';
-  chatOptions.innerHTML = '';
-  chatInputArea.classList.remove('show');
-  chatInput.value = '';
-  navigateChat('start');
-}
-function navigateChat(nodeId) {
-  chatState = nodeId;
-  const node = taskiiBrain[nodeId];
-  if (!node) return;
-  chatPath.push(nodeId);
-  chatOptions.innerHTML = '';
-  chatInputArea.classList.remove('show');
-  const typingEl = document.createElement('div');
-  typingEl.className = 'typing';
-  typingEl.innerHTML = '<span></span><span></span><span></span>';
-  chatMessages.appendChild(typingEl);
-  scrollChat();
-  setTimeout(() => {
-    typingEl.remove();
-    addBotMsg(node.msg);
-    if (node.input) {
-      setTimeout(() => {
-        addBotMsg("⚠️ IMPORTANTE: Recuerda dejar tu correo o número de WhatsApp en tu mensaje para poder comunicarme de vuelta contigo.");
-        setTimeout(() => {
-          chatInputArea.classList.add('show');
-          chatInput.focus();
-          scrollChat();
-        }, 250);
-      }, 500);
-    } else if (node.options) {
-      setTimeout(() => {
-        const wrap = document.createElement('div');
-        node.options.forEach((opt, i) => {
-          const btn = document.createElement('button');
-          btn.className = 'opt-btn hover-target';
-          btn.textContent = opt.label;
-          btn.style.opacity = '0';
-          btn.style.transform = 'translateY(5px)';
-          btn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-          btn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-          btn.onclick = () => {
-            addUserMsg(opt.label);
-            wrap.remove();
-            setTimeout(() => navigateChat(opt.next), 300);
-          };
-          wrap.appendChild(btn);
-          setTimeout(() => {
-            btn.style.transition = 'all .25s ease';
-            btn.style.opacity = '1';
-            btn.style.transform = 'translateY(0)';
-          }, 120 + i * 55);
-        });
-        chatOptions.appendChild(wrap);
-        scrollChat();
-      }, 250);
-    }
-  }, 650 + Math.min(node.msg.length * 10, 450));
-}
-function addBotMsg(t) {
-  const e = document.createElement('div');
-  e.className = 'msg-bot';
-  e.textContent = t;
-  chatMessages.appendChild(e);
-  scrollChat();
-}
-function addUserMsg(t) {
-  const e = document.createElement('div');
-  e.className = 'msg-user';
-  e.textContent = t;
-  chatMessages.appendChild(e);
-  scrollChat();
-}
-function scrollChat() {
-  setTimeout(() => { chatMessages.scrollTop = chatMessages.scrollHeight; }, 30);
-}
-async function sendInput() {
-  const text = chatInput.value.trim();
-  if (!text) return;
-  addUserMsg(text);
-  chatInput.value = '';
-  chatInputArea.classList.remove('show');
-  const node = taskiiBrain[chatState];
-  const subject = node ? node.subject : 'Consulta General';
-  const typingEl = document.createElement('div');
-  typingEl.className = 'typing';
-  typingEl.innerHTML = '<span></span><span></span><span></span>';
-  chatMessages.appendChild(typingEl);
-  scrollChat();
-  try {
-    const response = await fetch("https://formspree.io/f/mojoagyg", {
-      method: "POST",
-      headers: {
-        "Accept": "application/json",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        _subject: subject,
-        Ruta_de_Dialogo: chatPath.join(" -> "),
-        Mensaje: text,
-        Origen: "Asistente Virtual Taskii (Portafolio Brutalista)"
-      })
+
+// ================================================================
+// PARALLAX
+// ================================================================
+function initParallax() {
+  const parallaxElems = document.querySelectorAll('[data-speed]');
+  function updateParallax() {
+    const scrollTop = window.pageYOffset;
+    parallaxElems.forEach(el => {
+      const speed = parseFloat(el.getAttribute('data-speed')) || 0.1;
+      const parent = el.parentElement;
+      const parentRect = parent.getBoundingClientRect();
+      const elementTop = parentRect.top + scrollTop;
+      const windowHeight = window.innerHeight;
+      if (parentRect.top < windowHeight && parentRect.bottom > 0) {
+        const relativeScroll = scrollTop - elementTop + (windowHeight / 2);
+        const yPos = relativeScroll * speed;
+        el.style.transform = 'translate3d(0, ' + yPos + 'px, 0)';
+      }
     });
-    typingEl.remove();
-    if (response.ok) {
-      addBotMsg('¡Datos transmitidos con éxito! Antonio ha recibido tu consulta directamente en su bandeja ("' + subject + '") y se comunicará pronto.');
-      showToast('Consulta enviada: ' + subject);
-    } else {
-      throw new Error("Error en Formspree");
-    }
-  } catch (error) {
-    typingEl.remove();
-    addBotMsg('Hubo un error de conexión al enviar tus datos. Por favor, intenta de nuevo más tarde o contacta directamente a Antonio.');
-    showToast('Error al enviar consulta');
   }
-  setTimeout(() => {
-    const btn = document.createElement('button');
-    btn.className = 'opt-btn hover-target';
-    btn.textContent = 'Iniciar nueva consulta';
-    btn.style.opacity = '0';
-    btn.addEventListener('mouseenter', () => document.body.classList.add('cursor-hover'));
-    btn.addEventListener('mouseleave', () => document.body.classList.remove('cursor-hover'));
-    btn.onclick = () => {
-      btn.remove();
-      chatState = 'start';
-      chatPath = [];
-      navigateChat('start');
+  window.addEventListener('scroll', updateParallax, { passive: true });
+  updateParallax();
+}
+
+// ================================================================
+// BLOBS
+// ================================================================
+function initBlobs() {
+  const figures = document.querySelectorAll('.project-figure, .hero-image-wrapper');
+  const blobShapes = [
+    "60% 40% 30% 70% / 60% 30% 70% 40%",
+    "30% 60% 70% 40% / 50% 60% 30% 60%",
+    "70% 30% 50% 50% / 30% 30% 70% 70%",
+    "40% 60% 70% 30% / 40% 50% 60% 50%",
+    "50% 50% 40% 60% / 70% 40% 60% 30%"
+  ];
+  figures.forEach(fig => {
+    const duration = 2500 + Math.random() * 1500;
+    let currentIndex = Math.floor(Math.random() * blobShapes.length);
+    let isHovered = false;
+    fig.style.transition = 'border-radius ' + duration + 'ms linear, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+    fig.addEventListener('mouseenter', () => {
+      isHovered = true;
+      fig.style.transition = 'border-radius 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+    });
+    fig.addEventListener('mouseleave', () => {
+      isHovered = false;
+      fig.style.transition = 'border-radius 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+      updateBlob();
+      setTimeout(() => {
+        if (!isHovered && !fig.matches(':hover')) {
+          fig.style.transition = 'border-radius ' + duration + 'ms linear, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
+        }
+      }, 600);
+    });
+    const updateBlob = () => {
+      if (!isHovered && !fig.matches(':hover')) {
+        currentIndex = (currentIndex + 1) % blobShapes.length;
+        fig.style.borderRadius = blobShapes[currentIndex];
+      }
     };
-    chatOptions.appendChild(btn);
-    setTimeout(() => {
-      btn.style.transition = 'all .25s ease';
-      btn.style.opacity = '1';
-    }, 30);
-    scrollChat();
-  }, 1000);
+    setInterval(updateBlob, duration);
+    setTimeout(updateBlob, Math.random() * 500);
+  });
 }
-function showToast(msg) {
-  const c = document.getElementById('toastContainer');
-  if (!c) return;
-  const t = document.createElement('div');
-  t.className = 'toast';
-  t.innerHTML = '<i class="fa-solid fa-circle-check"></i><span>' + msg + '</span>';
-  c.appendChild(t);
-  requestAnimationFrame(() => t.classList.add('show'));
-  setTimeout(() => {
-    t.classList.remove('show');
-    setTimeout(() => t.remove(), 400);
-  }, 4000);
+
+// ================================================================
+// FONDO ASCII — MAR DE ONDAS REACIONANDO AL MOUSE
+// ================================================================
+function initAsciiWaveBackground() {
+  const canvas = document.getElementById('asciiBg');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  const chars = ['/', ':', '[', ']', '0', '1', 'W', 'A', 'S', 'M', 'S', 'Y', 'S', '-', '_', '.'];
+  const cols = 140;
+  const rows = 80;
+  const charSize = 16;
+  let width, height;
+  let columns = [];
+  let mouse = { x: -1000, y: -1000 };
+  let time = 0;
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+    columns = [];
+    for (let i = 0; i < cols; i++) {
+      for (let j = 0; j < rows; j++) {
+        columns.push({
+          x: i * charSize,
+          y: j * charSize,
+          baseY: j * charSize,
+          char: chars[Math.floor(Math.random() * chars.length)],
+          speed: 0.5 + Math.random() * 1.5,
+          offset: Math.random() * Math.PI * 2
+        });
+      }
+    }
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => { mouse.x = e.clientX; mouse.y = e.clientY; });
+  resize();
+
+  function draw() {
+    time += 0.02;
+    const bg = document.querySelector('.section-dark, .section-light') ? getComputedStyle(document.body).backgroundColor : '#0A0B0E';
+    ctx.fillStyle = bg;
+    ctx.fillRect(0, 0, width, height);
+
+    ctx.font = charSize + 'px JetBrains Mono, monospace';
+    ctx.textBaseline = 'middle';
+    ctx.textAlign = 'center';
+
+    for (let i = 0; i < columns.length; i++) {
+      const c = columns[i];
+      const dx = mouse.x - c.x;
+      const dy = mouse.y - c.y;
+      const dist = Math.sqrt(dx * dx + dy * dy);
+
+      // Onda desde el mouse: senóide que se propaga
+      const wave = Math.sin(dist * 0.015 - time * 2 + c.offset) * 20;
+      const proximity = Math.max(0, 1 - dist / 300);
+      const waveAmp = wave * (0.3 + proximity * 0.7);
+
+      // Brillo según proximidad al mouse
+      const alpha = 0.15 + proximity * 0.45;
+      const y = c.baseY + waveAmp;
+
+      if (y >= 0 && y <= height) {
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = '#A1A1AA';
+        ctx.fillText(c.char, c.x, y);
+      }
+    }
+    requestAnimationFrame(draw);
+  }
+  draw();
 }
-function copyEmail(email) {
-  if (navigator.clipboard && window.isSecureContext) {
-    navigator.clipboard.writeText(email).then(() => {
-      showToast('Correo copiado: ' + email);
-    }).catch(() => {
-      fallbackCopy(email);
+
+// ================================================================
+// SEPARADORES GLITCH ASCII EATER
+// Píxeles ASCII que se "comen" la sección anterior al hacer scroll
+// ================================================================
+function initGlitchEaters() {
+  const separators = document.querySelectorAll('.glitch-separator');
+  if (!separators.length) return;
+
+  const glitchChars = ['[E]', '[F]', '[I]', '[T]', 'C:6NTTTS:', '71XNGXN', '6A·T·S7N', '//', '::', '[]', '01'];
+
+  separators.forEach(sep => {
+    const ctx = sep.getContext('2d');
+    let width, height;
+    let particles = [];
+    let mouse = { x: -1000, y: -1000 };
+    let scrollProgress = 0;
+
+    function resize() {
+      const rect = sep.getBoundingClientRect();
+      width = canvasWidth = rect.width;
+      height = canvasHeight = rect.height;
+      sep.width = width;
+      sep.height = height;
+      initParticles();
+    }
+
+    let canvasWidth, canvasHeight;
+
+    function initParticles() {
+      particles = [];
+      const count = Math.floor((width * height) / 6000);
+      for (let i = 0; i < count; i++) {
+        particles.push({
+          x: Math.random() * width,
+          y: Math.random() * height,
+          vx: (Math.random() - 0.5) * 0.4,
+          vy: (Math.random() - 0.5) * 0.4,
+          char: glitchChars[Math.floor(Math.random() * glitchChars.length)],
+          size: 9 + Math.random() * 10,
+          opacity: 0.3 + Math.random() * 0.4,
+          targetX: Math.random() * width,
+          targetY: Math.random() * height
+        });
+      }
+    }
+
+    window.addEventListener('resize', resize);
+    sep.addEventListener('mousemove', (e) => {
+      const rect = sep.getBoundingClientRect();
+      mouse.x = e.clientX - rect.left;
+      mouse.y = e.clientY - rect.top;
     });
-  } else {
-    fallbackCopy(email);
+    sep.addEventListener('mouseleave', () => { mouse.x = -1000; mouse.y = -1000; });
+
+    window.addEventListener('scroll', () => {
+      const rect = sep.getBoundingClientRect();
+      const pageTop = window.pageYOffset;
+      const sepTop = rect.top + pageTop;
+      const sepBottom = sepTop + rect.height;
+      const viewBottom = pageTop + window.innerHeight;
+      const viewTop = pageTop;
+
+      // Progreso de scroll a través del separador (0 a 1)
+      if (viewBottom > sepTop && viewTop < sepBottom) {
+        scrollProgress = Math.min(Math.max((viewBottom - sepTop) / (rect.height + window.innerHeight), 0), 1);
+      } else if (viewTop >= sepBottom) {
+        scrollProgress = 1;
+      } else if (viewBottom <= sepTop) {
+        scrollProgress = 0;
+      }
+    }, { passive: true });
+
+    resize();
+
+    function draw() {
+      ctx.clearRect(0, 0, width, height);
+      ctx.font = 'bold 11px JetBrains Mono, monospace';
+      ctx.textBaseline = 'middle';
+      ctx.textAlign = 'center';
+
+      // Los partículas se mueven hacia la derecha (comiendo la sección anterior)
+      const scrollSpeed = 0.5 + scrollProgress * 1.5;
+
+      particles.forEach(p => {
+        // Movimiento hacia la derecha con el scroll
+        p.x += p.vx + scrollSpeed;
+
+        // Ruido sintético local al pasar el mouse
+        const dx = mouse.x - p.x;
+        const dy = mouse.y - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        if (dist < 90) {
+          const force = (1 - dist / 90) * 3;
+          p.x += (Math.random() - 0.5) * force;
+          p.y += (Math.random() - 0.5) * force;
+        }
+
+        // Rebote en bordes
+        if (p.x > width) p.x = -50;
+        if (p.y < 0) p.y = height;
+        if (p.y > height) p.y = 0;
+
+        // Mayor densidad y corrupción según progreso de scroll
+        const corruption = scrollProgress * 0.8;
+        const alpha = p.opacity * (0.4 + corruption * 0.6);
+        ctx.globalAlpha = alpha;
+        ctx.fillStyle = '#71717A';
+        ctx.fillText(p.char, p.x, p.y);
+
+        // Corrupción aleatoria de caracteres
+        if (Math.random() > 0.985 - corruption * 0.1) {
+          p.char = glitchChars[Math.floor(Math.random() * glitchChars.length)];
+        }
+      });
+
+      requestAnimationFrame(draw);
+    }
+    draw();
+  });
+}
+
+// ================================================================
+// VÓRTICE TIPÉRICO ROTACIONAL
+// ================================================================
+function initTypographicVortex() {
+  const vortex = document.querySelector('.typographic-vortex');
+  if (!vortex) return;
+  const svg = vortex.querySelector('.vortex-svg');
+  let rotation = 0;
+  function animate() {
+    rotation += 0.25;
+    svg.style.transform = 'rotate(' + rotation + 'deg)';
+    requestAnimationFrame(animate);
+  }
+  animate();
+}
+
+// ================================================================
+// COMMAND PALETTE (⌘K)
+// ================================================================
+function initCommandPalette() {
+  const palette = document.getElementById('commandPalette');
+  const input = document.getElementById('commandInput');
+  const list = document.getElementById('commandList');
+  const items = list.querySelectorAll('.command-item');
+  let isOpen = false;
+
+  function openPalette() {
+    palette.hidden = false;
+    input.focus();
+    isOpen = true;
+    document.body.style.overflow = 'hidden';
+    const focusables = palette.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
+    if (focusables.length) focusables[0].focus();
+  }
+
+  function closePalette() {
+    palette.hidden = true;
+    input.value = '';
+    filterCommands('');
+    isOpen = false;
+    document.body.style.overflow = '';
+  }
+
+  function filterCommands(query) {
+    const q = query.toLowerCase();
+    items.forEach(item => {
+      const text = item.querySelector('.command-text').textContent.toLowerCase();
+      item.style.display = text.includes(q) ? 'flex' : 'none';
+    });
+  }
+
+  function executeCommand(item) {
+    const action = item.dataset.action;
+    if (action === 'scroll') {
+      const target = document.querySelector(item.dataset.target);
+      if (target) {
+        const nav = document.getElementById('mainNav');
+        const offset = nav ? 40 : 0;
+        const pos = target.getBoundingClientRect().top + window.scrollY - offset;
+        window.scrollTo({ top: pos, behavior: 'smooth' });
+      }
+    } else if (action === 'copy') {
+      navigator.clipboard.writeText(item.dataset.value).then(() => {
+        showToast('Correo copiado al portapapeles');
+      });
+    } else if (action === 'external') {
+      window.open(item.dataset.url, '_blank');
+    }
+    closePalette();
+  }
+
+  document.addEventListener('keydown', (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
+      e.preventDefault();
+      if (isOpen) closePalette(); else openPalette();
+    }
+    if (e.key === 'Escape' && isOpen) closePalette();
+  });
+
+  input.addEventListener('input', (e) => filterCommands(e.target.value));
+
+  items.forEach(item => {
+    item.addEventListener('click', () => executeCommand(item));
+    item.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') executeCommand(item);
+    });
+  });
+
+  palette.querySelector('.command-palette-backdrop').addEventListener('click', closePalette);
+}
+
+// ================================================================
+// TOAST NOTIFICATIONS
+// ================================================================
+function showToast(message) {
+  const container = document.getElementById('toastContainer');
+  if (!container) return;
+  const toast = document.createElement('div');
+  toast.className = 'toast';
+  toast.textContent = message;
+  container.appendChild(toast);
+  setTimeout(() => {
+    toast.style.opacity = '0';
+    setTimeout(() => toast.remove(), 300);
+  }, 3000);
+}
+
+// ================================================================
+// CHAT TASKII
+// ================================================================
+function toggleChat() {
+  const panel = document.getElementById('chatPanel');
+  const toggle = document.getElementById('chatToggle');
+  if (!panel) return;
+  const hidden = panel.hidden;
+  panel.hidden = !hidden;
+  toggle.setAttribute('aria-expanded', String(!hidden));
+  if (!hidden) {
+    initChatBot();
   }
 }
-function fallbackCopy(text) {
-  const textArea = document.createElement('textarea');
-  textArea.value = text;
-  textArea.style.position = 'fixed';
-  textArea.style.opacity = '0';
-  document.body.appendChild(textArea);
-  textArea.focus();
-  textArea.select();
-  try {
-    document.execCommand('copy');
-    showToast('Correo copiado: ' + text);
-  } catch (err) {
-    window.location.href = 'mailto:' + text;
-  }
-  document.body.removeChild(textArea);
+
+function initChatBot() {
+  const messages = document.getElementById('chatMessages');
+  const options = document.getElementById('chatOptions');
+  if (!messages || messages.children.length > 0) return;
+
+  const welcome = document.createElement('div');
+  welcome.className = 'chat-message bot';
+  welcome.textContent = 'Hola, soy Taskii. ¿En qué puedo ayudarte hoy?';
+  messages.appendChild(welcome);
+
+  const optProjects = document.createElement('button');
+  optProjects.className = 'chat-option';
+  optProjects.textContent = 'Ver proyectos';
+  optProjects.onclick = () => { sendOption('Ver proyectos'); };
+
+  const optContact = document.createElement('button');
+  optContact.className = 'chat-option';
+  optContact.textContent = 'Contacto';
+  optContact.onclick = () => { sendOption('Contacto'); };
+
+  const optCV = document.createElement('button');
+  optCV.className = 'chat-option';
+  optCV.textContent = 'Descargar CV';
+  optCV.onclick = () => { sendOption('Descargar CV'); };
+
+  options.appendChild(optProjects);
+  options.appendChild(optContact);
+  options.appendChild(optCV);
 }
-window.copyEmail = copyEmail;
+
+function sendInput() {
+  const input = document.getElementById('chatInput');
+  const messages = document.getElementById('chatMessages');
+  const text = input.value.trim();
+  if (!text) return;
+
+  const userMsg = document.createElement('div');
+  userMsg.className = 'chat-message user';
+  userMsg.textContent = text;
+  messages.appendChild(userMsg);
+  input.value = '';
+
+  setTimeout(() => {
+    const botMsg = document.createElement('div');
+    botMsg.className = 'chat-message bot';
+    botMsg.textContent = 'He recibido tu mensaje: "' + text + '". ¿Hay algo más en lo que pueda asistirte?';
+    messages.appendChild(botMsg);
+    messages.scrollTop = messages.scrollHeight;
+  }, 600);
+
+  messages.scrollTop = messages.scrollHeight;
+}
+
+function sendOption(option) {
+  const input = document.getElementById('chatInput');
+  input.value = option;
+  sendInput();
+}
+
+function resetChat() {
+  const messages = document.getElementById('chatMessages');
+  const options = document.getElementById('chatOptions');
+  if (messages) messages.innerHTML = '';
+  if (options) options.innerHTML = '';
+  initChatBot();
+}
+
+// ================================================================
+// SMOOTH SCROLL FOR ANCHOR LINKS
+// ================================================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   anchor.addEventListener('click', function (e) {
     const targetId = this.getAttribute('href');
@@ -393,68 +625,8 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
       const progress = Math.min(timeElapsed / duration, 1);
       const ease = easeInOutCubic(progress);
       window.scrollTo(0, startPosition + distance * ease);
-      if (timeElapsed < duration) {
-        requestAnimationFrame(animation);
-      }
+      if (timeElapsed < duration) requestAnimationFrame(animation);
     }
     requestAnimationFrame(animation);
   });
 });
-function initParallax() {
-  const parallaxElems = document.querySelectorAll('[data-speed]');
-  function updateParallax() {
-    const scrollTop = window.pageYOffset;
-    parallaxElems.forEach(el => {
-      const speed = parseFloat(el.getAttribute('data-speed')) || 0.1;
-      const parent = el.parentElement;
-      const parentRect = parent.getBoundingClientRect();
-      const elementTop = parentRect.top + scrollTop;
-      const windowHeight = window.innerHeight;
-      if (parentRect.top < windowHeight && parentRect.bottom > 0) {
-        const relativeScroll = scrollTop - elementTop + (windowHeight / 2);
-        const yPos = relativeScroll * speed;
-        el.style.transform = `translate3d(0, ${yPos}px, 0)`;
-      }
-    });
-  }
-  window.addEventListener('scroll', updateParallax);
-  updateParallax();
-}
-function initBlobs() {
-  const figures = document.querySelectorAll('.project-figure, .hero-image-wrapper');
-  const blobShapes = [
-    "60% 40% 30% 70% / 60% 30% 70% 40%",
-    "30% 60% 70% 40% / 50% 60% 30% 60%",
-    "70% 30% 50% 50% / 30% 30% 70% 70%",
-    "40% 60% 70% 30% / 40% 50% 60% 50%",
-    "50% 50% 40% 60% / 70% 40% 60% 30%"
-  ];
-  figures.forEach(fig => {
-    const duration = 2500 + Math.random() * 1500;
-    let currentIndex = Math.floor(Math.random() * blobShapes.length);
-    let isHovered = false;
-    fig.style.transition = `border-radius ${duration}ms linear, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)`;
-    fig.addEventListener('mouseenter', () => { 
-      isHovered = true; 
-      fig.style.transition = 'border-radius 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-    });
-    fig.addEventListener('mouseleave', () => { 
-      isHovered = false; 
-      fig.style.transition = 'border-radius 0.6s cubic-bezier(0.25, 1, 0.5, 1), transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)';
-      updateBlob();
-      setTimeout(() => {
-        if (!isHovered && !fig.matches(':hover')) {
-          fig.style.transition = `border-radius ${duration}ms linear, transform 0.6s cubic-bezier(0.25, 1, 0.5, 1)`;
-        }
-      }, 600);
-    });
-    const updateBlob = () => {
-      if (!isHovered && !fig.matches(':hover')) {
-        currentIndex = (currentIndex + 1) % blobShapes.length;
-        fig.style.borderRadius = blobShapes[currentIndex];
-      }
-    };
-    setInterval(updateBlob, duration);
-    setTimeout(updateBlob, Math.random() * 500);
-  });
-}

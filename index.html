@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
@@ -6,9 +6,7 @@
   <title>Antonio Albarran | Software Engineer & Creative Technologist</title>
   <meta name="title" content="Antonio Albarran | Software Engineer & Creative Technologist">
   <meta name="description" content="Ingeniero en Sistemas Computacionales. Especializado en desarrollo web de alto rendimiento, ejecución client-side con WebAssembly, arquitecturas interactivas y automatización.">
-  <meta name="theme-color" content="#f0f0e6">
-
-  <!-- Open Graph / Facebook / WhatsApp -->
+  <meta name="theme-color" content="#0A0B0E">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Antonio Albarran">
   <meta property="og:url" content="https://notayeen.github.io/Servicios/">
@@ -18,21 +16,17 @@
   <meta property="og:image:type" content="image/jpeg">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
-
-  <!-- Twitter / X -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:url" content="https://notayeen.github.io/Servicios/">
   <meta name="twitter:title" content="Antonio Albarran | Software Engineer & Creative Technologist">
   <meta name="twitter:description" content="Ingeniero en Sistemas Computacionales. Aplicaciones web de alto rendimiento, ejecución client-side con WebAssembly, arquitecturas interactivas y automatización.">
   <meta name="twitter:image" content="https://notayeen.github.io/Servicios/assets/og_banner.jpg">
-
   <link rel="icon" type="image/webp" href="assets/yo1.webp">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
   <link rel="canonical" href="https://notayeen.github.io/Servicios/">
-  
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -40,194 +34,144 @@
     "name": "Antonio Albarran",
     "jobTitle": "Software Engineer & Creative Technologist",
     "url": "https://notayeen.github.io/Servicios/",
-    "sameAs": [
-      "https://github.com/NotAYeen"
-    ],
+    "sameAs": ["https://github.com/NotAYeen"],
     "description": "Ingeniero en Sistemas Computacionales especializado en arquitecturas web interactivas, ejecución client-side mediante WebAssembly, diseño de sistemas y automatización."
   }
   </script>
-  
-  <link rel="stylesheet" href="styles.css?v=38">
-  <script src="script.js?v=38" defer></script>
+  <link rel="stylesheet" href="styles.css?v=40">
+  <script src="script.js?v=40" defer></script>
 </head>
 <body>
+  <a href="#main-content" class="skip-link">Saltar al contenido principal</a>
+  <canvas id="asciiBg" class="ascii-bg" aria-hidden="true"></canvas>
   <div class="cursor-dot" id="cursorDot"></div>
   <div class="cursor-outline" id="cursorOutline"></div>
   <div class="nav-overlay" id="navOverlay"></div>
-  <nav id="mainNav">
-    <div class="logo">ANTONIO ALBARRAN</div>
+  <nav id="mainNav" aria-label="Navegación principal">
+    <div class="logo" aria-label="Antonio Albarran - Inicio">ANTONIO ALBARRAN</div>
     <button class="nav-toggle hover-target" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
-      <span class="nav-toggle-bar"></span>
+      <span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span><span class="nav-toggle-bar"></span>
     </button>
     <div class="nav-links" id="navLinks">
       <a href="#work" class="hover-target">PROYECTOS</a>
       <a href="#about" class="hover-target">TRAYECTORIA</a>
       <a href="#services" class="hover-target">ESPECIALIDADES</a>
       <a href="#contact" class="hover-target">CONTACTO</a>
-      <a href="assets/CV_Jorge_Antonio_Albarran.pdf" target="_blank" rel="noopener noreferrer" type="application/pdf" class="nav-cv-btn hover-target" title="Abrir Curriculum Vitae oficial en PDF">
-        <i class="fa-solid fa-file-pdf"></i> VER CV (PDF)
-      </a>
+      <a href="assets/CV_Jorge_Antonio_Albarran.pdf" target="_blank" rel="noopener noreferrer" type="application/pdf" class="nav-cv-btn hover-target" title="Abrir Curriculum Vitae oficial en PDF"><i class="fa-solid fa-file-pdf"></i> VER CV (PDF)</a>
     </div>
   </nav>
-  <section class="hero container">
+  <!-- HERO (sección 1 - oscuro) -->
+  <section id="main-content" class="hero container section-dark" aria-label="Hero">
     <div class="hero-content fade-in-up">
+      <span class="hero-kicker">SOFTWARE ENGINEER &amp; CREATIVE TECHNOLOGIST</span>
       <h1 class="huge-text">
-        <span class="hero-title-line">SOFTWARE</span>
-        <span class="hero-title-line accent-text">ENGINEER</span>
+        <span class="hero-title-line">Sistemas robustos,</span>
+        <span class="hero-title-line accent-text">interfaces fluidas.</span>
       </h1>
       <div class="hero-subtitle mt-8">
-        Ingeniero en Sistemas Computacionales & Creative Technologist. Especializado en aplicaciones web de alto rendimiento, ejecución client-side con WebAssembly, arquitecturas interactivas y automatización de procesos.
+        Ingeniero en Sistemas Computacionales &amp; Creative Technologist. Especializado en aplicaciones web de alto rendimiento, ejecución client-side con WebAssembly, arquitecturas interactivas y automatización de procesos.
       </div>
       <div class="hero-actions">
-        <a href="#work" class="hero-btn primary hover-target">
-          <i class="fa-solid fa-code"></i> Explorar Proyectos
-        </a>
-        <a href="#about" class="hero-btn outline hover-target">
-          <i class="fa-solid fa-user-gear"></i> Perfil & Arsenal Técnico
-        </a>
+        <a href="#work" class="hero-btn primary hover-target"><i class="fa-solid fa-code"></i> Explorar Proyectos</a>
+        <a href="#about" class="hero-btn outline hover-target"><i class="fa-solid fa-user-gear"></i> Perfil &amp; Arsenal Técnico</a>
       </div>
     </div>
     <div class="hero-image-wrapper fade-in-up hover-target" style="transition-delay: 0.2s;">
       <img src="assets/yo1.webp" alt="Antonio Albarran" class="parallax-hero-img" data-speed="-0.05" fetchpriority="high" decoding="async">
     </div>
   </section>
-  <div class="marquee-container">
-    <div class="marquee-content">
-      <div class="marquee-item">INGENIERÍA DE SOFTWARE <span>•</span> WEBASSEMBLY (WASM) <span>•</span> REACT & JAVASCRIPT <span>•</span> AUTOMATIZACIÓN & PYTHON <span>•</span> SISTEMAS DE CONTROL & IOT <span>•</span> UI/UX DE PRECISIÓN <span>•</span> </div>
-      <div class="marquee-item">INGENIERÍA DE SOFTWARE <span>•</span> WEBASSEMBLY (WASM) <span>•</span> REACT & JAVASCRIPT <span>•</span> AUTOMATIZACIÓN & PYTHON <span>•</span> SISTEMAS DE CONTROL & IOT <span>•</span> UI/UX DE PRECISIÓN <span>•</span> </div>
-      <div class="marquee-item">INGENIERÍA DE SOFTWARE <span>•</span> WEBASSEMBLY (WASM) <span>•</span> REACT & JAVASCRIPT <span>•</span> AUTOMATIZACIÓN & PYTHON <span>•</span> SISTEMAS DE CONTROL & IOT <span>•</span> UI/UX DE PRECISIÓN <span>•</span> </div>
-    </div>
-  </div>
-  <section id="work" class="section-padding container">
-    <div class="section-header-wrap fade-in-up">
-      <span class="section-subtitle">INGENIERÍA APLICADA & DESARROLLO</span>
-      <h2 class="display-text" style="font-size: 3.5rem; margin-bottom: 2rem;">PROYECTOS DESTACADOS</h2>
-    </div>
 
-    <div class="projects-grid">
+  <!-- SEPARADOR GLITCH ASCII EATER (oscuro → claro) -->
+  <canvas class="glitch-separator" id="glitchWork" aria-hidden="true"></canvas>
+
+  <!-- WORK / PROYECTOS (sección 2 - claro) -->
+  <section id="work" class="section-padding container bento-section section-light" aria-label="Proyectos Destacados">
+    <div class="section-header-wrap fade-in-up">
+      <span class="section-subtitle">Ingeniería Aplicada & Desarrollo</span>
+      <h2 class="display-text">Proyectos Destacados</h2>
+    </div>
+    <div class="bento-grid" id="bentoGrid">
       <!-- Proyecto 01: DesignForge -->
-      <div class="project-row fade-in-up">
-        <div class="project-info-col">
-          <span class="project-number">01</span>
-          <h3 class="project-title">DESIGN FORGE</h3>
-          <p class="project-desc">
-            Suite profesional de teoría del color y sistemas de diseño UI/UX (14 módulos). Integra algoritmos de contraste estricto bajo el estándar internacional <strong>WCAG 2.1</strong>, simulación en tiempo real de daltonismo (deuteranopia, protanopia, tritanopia) y exportación de Design Tokens.
-          </p>
-          <div class="tags">
-            <span class="tag">REACT 19</span>
-            <span class="tag">DESIGN SYSTEMS</span>
-            <span class="tag">WCAG 2.1 A11Y</span>
-            <span class="tag">COLOR SCIENCE</span>
-          </div>
-        </div>
-        <div class="project-image-col">
-          <a href="https://notayeen.github.io/designforge/" target="_blank" class="hover-target" rel="noopener noreferrer">
-            <figure class="project-figure">
-              <img src="assets/project-designforge.webp" alt="DesignForge - Suite de Diseño y Accesibilidad" class="project-img" data-speed="-0.08" loading="lazy" decoding="async">
-            </figure>
+      <article class="bento-card bento-card-horizontal reverse fade-in-up project-card hover-target" data-project="designforge">
+        <div class="bento-media">
+          <a href="https://notayeen.github.io/designforge/" target="_blank" rel="noopener noreferrer" class="bento-link-overlay" aria-label="Ver demo de Design Forge">
+            <figure class="bento-figure"><img src="assets/project-designforge.webp" alt="DesignForge - Suite de Diseño y Accesibilidad" class="bento-img" data-speed="-0.08" loading="lazy" decoding="async"></figure>
+            <div class="bento-media-overlay">
+              <h3 class="bento-title">Design Forge</h3>
+              <p class="bento-desc">Suite de teoría del color y sistemas de diseño UI/UX con contraste WCAG 2.1 y simulación de daltonismo.</p>
+            </div>
           </a>
-          <div class="project-badge">
-            <img src="assets/click-para-ver.svg" alt="Click para ver demo en vivo" loading="lazy" decoding="async">
-          </div>
         </div>
-      </div>
+        <div class="bento-info">
+          <span class="bento-number">01</span>
+          <div class="bento-tags"><span class="bento-tag">React 19</span><span class="bento-tag">Design Systems</span><span class="bento-tag">WCAG 2.1 A11y</span><span class="bento-tag">Color Science</span></div>
+          <a href="https://notayeen.github.io/designforge/" target="_blank" rel="noopener noreferrer" class="bento-cta hover-target">Ver proyecto <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
 
       <!-- Proyecto 02: SQLEARN -->
-      <div class="project-row fade-in-up">
-        <div class="project-info-col">
-          <span class="project-number">02</span>
-          <h3 class="project-title">SQLEARN</h3>
-          <p class="project-desc">
-            Simulador interactivo retro para dominar SQL ejecutando un motor <strong>SQLite real directamente en el navegador mediante WebAssembly (sql.js)</strong>. Incluye 25 misiones técnicas, persistencia virtual en memoria, validación sintáctica en tiempo real y arquitectura 100% serverless sin latencia.
-          </p>
-          <div class="tags">
-            <span class="tag">SQLITE WASM</span>
-            <span class="tag">WEBASSEMBLY</span>
-            <span class="tag">CLIENT-SIDE EXECUTION</span>
-            <span class="tag">GAMIFICATION</span>
-          </div>
-        </div>
-        <div class="project-image-col">
-          <a href="https://notayeen.github.io/SQLEARN/" target="_blank" class="hover-target" rel="noopener noreferrer">
-            <figure class="project-figure">
-              <img src="assets/project-sqlearn.webp" alt="SQLEARN - Simulador SQLite WebAssembly" class="project-img" data-speed="-0.06" loading="lazy" decoding="async">
-            </figure>
+      <article class="bento-card bento-card-horizontal fade-in-up project-card hover-target" data-project="sqlearn" style="transition-delay: 0.1s;">
+        <div class="bento-media">
+          <a href="https://notayeen.github.io/SQLEARN/" target="_blank" rel="noopener noreferrer" class="bento-link-overlay" aria-label="Probar SQLEARN">
+            <figure class="bento-figure"><img src="assets/project-sqlearn.webp" alt="SQLEARN - Simulador SQLite WebAssembly" class="bento-img" data-speed="-0.06" loading="lazy" decoding="async"></figure>
+            <div class="bento-media-overlay">
+              <h3 class="bento-title">SQLEARN</h3>
+              <p class="bento-desc">Simulador retro de SQL con motor SQLite real en el navegador mediante WebAssembly.</p>
+            </div>
           </a>
-          <div class="project-badge">
-            <img src="assets/click-click-click.svg" alt="Click para probar la plataforma" loading="lazy" decoding="async">
-          </div>
         </div>
-      </div>
+        <div class="bento-info">
+          <span class="bento-number">02</span>
+          <div class="bento-tags"><span class="bento-tag">SQLite WASM</span><span class="bento-tag">WebAssembly</span><span class="bento-tag">Client-side</span><span class="bento-tag">Gamification</span></div>
+          <a href="https://notayeen.github.io/SQLEARN/" target="_blank" rel="noopener noreferrer" class="bento-cta hover-target">Ver proyecto <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
 
       <!-- Proyecto 03: WA Visualizer -->
-      <div class="project-row fade-in-up">
-        <div class="project-info-col">
-          <span class="project-number">03</span>
-          <h3 class="project-title">WA VISUALIZER</h3>
-          <p class="project-desc">
-            Aplicación analítica de alta privacidad (<strong>Zero-Telemetry</strong>) para inspeccionar y correlacionar estadísticamente conversaciones exportadas de WhatsApp (.txt). Procesamiento 100% local con motor de expresiones regulares, nubes interactivas de términos y renderizado optimizado de miles de mensajes.
-          </p>
-          <div class="tags">
-            <span class="tag">DATA PRIVACY</span>
-            <span class="tag">REGEX ENGINE</span>
-            <span class="tag">DATA VISUALIZATION</span>
-            <span class="tag">CLIENT-SIDE</span>
-          </div>
-        </div>
-        <div class="project-image-col">
-          <a href="https://notayeen.github.io/whatsapp-chat-visualizer/" target="_blank" class="hover-target" rel="noopener noreferrer">
-            <figure class="project-figure">
-              <img src="assets/project-whatsapp.webp" alt="WhatsApp Visualizer - Analítica y Privacidad" class="project-img" data-speed="-0.08" loading="lazy" decoding="async">
-            </figure>
+      <article class="bento-card bento-card-horizontal reverse fade-in-up project-card hover-target" data-project="wavisualizer" style="transition-delay: 0.2s;">
+        <div class="bento-media">
+          <a href="https://notayeen.github.io/whatsapp-chat-visualizer/" target="_blank" rel="noopener noreferrer" class="bento-link-overlay" aria-label="Ver WA Visualizer">
+            <figure class="bento-figure"><img src="assets/project-whatsapp.webp" alt="WhatsApp Visualizer - Analítica y Privacidad" class="bento-img" data-speed="-0.08" loading="lazy" decoding="async"></figure>
+            <div class="bento-media-overlay">
+              <h3 class="bento-title">WA Visualizer</h3>
+              <p class="bento-desc">Analítica de conversaciones de WhatsApp con motor de expresiones regulares, 100% local.</p>
+            </div>
           </a>
-          <div class="project-badge">
-            <img src="assets/click-para-ver.svg" alt="Click para probar visualizador" loading="lazy" decoding="async">
-          </div>
         </div>
-      </div>
+        <div class="bento-info">
+          <span class="bento-number">03</span>
+          <div class="bento-tags"><span class="bento-tag">Data Privacy</span><span class="bento-tag">Regex Engine</span><span class="bento-tag">Data Visualization</span><span class="bento-tag">Client-side</span></div>
+          <a href="https://notayeen.github.io/whatsapp-chat-visualizer/" target="_blank" rel="noopener noreferrer" class="bento-cta hover-target">Ver proyecto <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
 
       <!-- Proyecto 04: Delphinus -->
-      <div class="project-row fade-in-up">
-        <div class="project-info-col">
-          <span class="project-number">04</span>
-          <h3 class="project-title">DELPHINUS</h3>
-          <p class="project-desc">
-            Plataforma móvil y de gestión para la administración de inventarios, generación dinámica de catálogos y automatización operativa comercial. Diseñada con arquitectura modular, sincronización eficiente de datos y controles ergonómicos adaptados al ritmo del negocio.
-          </p>
-          <div class="tags">
-            <span class="tag">FLUTTER</span>
-            <span class="tag">ANDROID</span>
-            <span class="tag">PYTHON</span>
-            <span class="tag">SOFTWARE ARCHITECTURE</span>
-          </div>
-        </div>
-        <div class="project-image-col">
-          <a href="https://github.com/NotAYeen/delphinus" target="_blank" class="hover-target" rel="noopener noreferrer">
-            <figure class="project-figure">
-              <img src="assets/project-appmoda.webp" alt="Delphinus - App Móvil y Gestión de Inventarios" class="project-img" data-speed="-0.1" loading="lazy" decoding="async">
-            </figure>
+      <article class="bento-card bento-card-horizontal fade-in-up project-card hover-target" data-project="delphinus" style="transition-delay: 0.3s;">
+        <div class="bento-media">
+          <a href="https://github.com/NotAYeen/delphinus" target="_blank" rel="noopener noreferrer" class="bento-link-overlay" aria-label="Explorar repositorio de Delphinus">
+            <figure class="bento-figure"><img src="assets/project-appmoda.webp" alt="Delphinus - App Móvil y Gestión de Inventarios" class="bento-img" data-speed="-0.1" loading="lazy" decoding="async"></figure>
+            <div class="bento-media-overlay">
+              <h3 class="bento-title">Delphinus</h3>
+              <p class="bento-desc">Plataforma móvil de administración de inventarios y automatización operativa comercial.</p>
+            </div>
           </a>
-          <div class="project-badge">
-            <img src="assets/click-para-descargar.svg" alt="Click para explorar repositorio" loading="lazy" decoding="async">
-          </div>
         </div>
-      </div>
+        <div class="bento-info">
+          <span class="bento-number">04</span>
+          <div class="bento-tags"><span class="bento-tag">Flutter</span><span class="bento-tag">Android</span><span class="bento-tag">Python</span><span class="bento-tag">Software Architecture</span></div>
+          <a href="https://github.com/NotAYeen/delphinus" target="_blank" rel="noopener noreferrer" class="bento-cta hover-target">Ver proyecto <i class="fa-solid fa-arrow-right"></i></a>
+        </div>
+      </article>
     </div>
   </section>
 
-  <!-- Sección de Perfil & Trayectoria Profesional -->
-  <section id="about" class="section-padding container border-top">
-    <div class="section-header-wrap fade-in-up">
-      <span class="section-subtitle">TRAYECTORIA & COMPETENCIAS CLAVE</span>
-      <h2 class="display-text" style="font-size: 3.5rem; margin-bottom: 2.5rem;">PERFIL PROFESIONAL</h2>
-    </div>
-
+  <!-- SEPARADOR GLITCH ASCII EATER (claro → oscuro) -->
+  <canvas class="glitch-separator" id="glitchAbout" aria-hidden="true"></canvas>
+  <!-- ABOUT / TRAYECTORIA (sección 3 - oscuro) -->
+  <section id="about" class="section-padding container about-section split-section section-dark" aria-label="Trayectoria y Competencias">
     <div class="about-grid">
-      <!-- Columna 1: Bio & Formación -->
       <div class="about-card bio-card fade-in-up">
-        <h3 class="about-card-title">INGENIERÍA CON VISIÓN PRODUCTIVA</h3>
+        <h3 class="about-card-title">Ingeniería con Visión Productiva</h3>
         <p class="about-text">
           Ingeniero en Sistemas Computacionales enfocado en diseñar software que equilibra <strong>rigor arquitectónico</strong> con <strong>experiencias de usuario de vanguardia</strong>. Especialista en ejecución client-side con <strong>WebAssembly</strong>, interfaces reactivas modernas y automatización de procesos mediante Python que eliminan tareas repetitivas.
         </p>
@@ -240,146 +184,126 @@
           <span class="about-badge highlight"><i class="fa-solid fa-bolt"></i> Disponibilidad Inmediata</span>
         </div>
       </div>
-
-      <!-- Columna 2: Stack Técnico Estructurado -->
-      <div class="about-card stack-card fade-in-up" style="transition-delay: 0.15s;">
-        <h3 class="about-card-title">ARSENAL TECNOLÓGICO</h3>
-        
+      <div class="about-card stack-card fade-in-up" style="transition-delay: 0.15s; position: relative;">
+        <div class="typographic-vortex" aria-label="Competencias nucleares">
+          <svg class="vortex-svg" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+              <filter id="vortexGlow" x="-50%" y="-50%" width="200%" height="200%">
+                <feGaussianBlur stdDeviation="4" result="blur"/><feComposite in="SourceGraphic" in2="blur" operator="over"/>
+              </filter>
+            </defs>
+            <text class="vortex-text vortex-spin-slow" x="150" y="150" text-anchor="middle" dominant-baseline="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="10" fill="#A1A1AA" letter-spacing="2">REACT 19 · WEBASSEMBLY · JAVASCRIPT · TYPESCRIPT · PYTHON · FLUTTER · WCAG 2.1 · SQLITE · AWS · NODE.JS · CSS3 · HTML5 · GIT</text>
+            <text class="vortex-text vortex-spin-reverse" x="150" y="150" text-anchor="middle" dominant-baseline="middle" font-family="'JetBrains Mono', monospace" font-weight="700" font-size="10" fill="#71717A" letter-spacing="2">DESIGN SYSTEMS · AUTOMATIZACIÓN · IOT · CONTROL BIOMÉTRICO · FORENSE · REDS IP · LINUX · UI/UX · FIGMA · APIS REST</text>
+            <circle cx="150" cy="150" r="130" fill="none" stroke="rgba(161, 161, 170, 0.12)" stroke-width="1"/>
+            <circle cx="150" cy="150" r="100" fill="none" stroke="rgba(161, 161, 170, 0.08)" stroke-width="1"/>
+            <circle cx="150" cy="150" r="70" fill="none" stroke="rgba(161, 161, 170, 0.08)" stroke-width="1"/>
+          </svg>
+          <div class="vortex-label">Competencias Nucleares</div>
+        </div>
+        <h3 class="about-card-title mt-6">Arsenal Tecnológico</h3>
         <div class="stack-group">
           <div class="stack-category">Frontend & Client-Side Core</div>
-          <div class="stack-tags">
-            <span class="tag-pill">React 19</span>
-            <span class="tag-pill">WebAssembly (WASM)</span>
-            <span class="tag-pill">JavaScript (ES6+)</span>
-            <span class="tag-pill">TypeScript</span>
-            <span class="tag-pill">HTML5 / CSS3 Semántico</span>
-            <span class="tag-pill">Vite</span>
-          </div>
+          <div class="stack-tags"><span class="tag-pill">React 19</span><span class="tag-pill">WebAssembly (WASM)</span><span class="tag-pill">JavaScript (ES6+)</span><span class="tag-pill">TypeScript</span><span class="tag-pill">HTML5 / CSS3 Semántico</span><span class="tag-pill">Vite</span></div>
         </div>
-
         <div class="stack-group mt-4">
           <div class="stack-category">Backend, Datos & Cloud</div>
-          <div class="stack-tags">
-            <span class="tag-pill">Ruby</span>
-            <span class="tag-pill">Ruby On Rails (API)</span>
-            <span class="tag-pill">PostgreSQL</span>
-            <span class="tag-pill">Python</span>
-            <span class="tag-pill">AWS</span>
-            <span class="tag-pill">SQLite / sql.js</span>
-            <span class="tag-pill">Node.js</span>
-            <span class="tag-pill">APIs REST</span>
-          </div>
+          <div class="stack-tags"><span class="tag-pill">Ruby</span><span class="tag-pill">Ruby On Rails (API)</span><span class="tag-pill">PostgreSQL</span><span class="tag-pill">Python</span><span class="tag-pill">AWS</span><span class="tag-pill">SQLite / sql.js</span><span class="tag-pill">Node.js</span><span class="tag-pill">APIs REST</span></div>
         </div>
-
         <div class="stack-group mt-4">
           <div class="stack-category">Móvil, UI/UX & Estándares</div>
-          <div class="stack-tags">
-            <span class="tag-pill">Flutter</span>
-            <span class="tag-pill">Android</span>
-            <span class="tag-pill">WCAG 2.1 (Accesibilidad A11y)</span>
-            <span class="tag-pill">Design Systems</span>
-            <span class="tag-pill">Figma</span>
-          </div>
+          <div class="stack-tags"><span class="tag-pill">Flutter</span><span class="tag-pill">Android</span><span class="tag-pill">WCAG 2.1 (Accesibilidad A11y)</span><span class="tag-pill">Design Systems</span><span class="tag-pill">Figma</span></div>
         </div>
-
         <div class="stack-group mt-4">
           <div class="stack-category">Sistemas, Redes & Control</div>
-          <div class="stack-tags">
-            <span class="tag-pill">Linux & Windows</span>
-            <span class="tag-pill">Control de Acceso Biométrico</span>
-            <span class="tag-pill">Recuperación Forense de Datos</span>
-            <span class="tag-pill">Redes IP & Cableado</span>
-            <span class="tag-pill">Git / GitHub</span>
-          </div>
+          <div class="stack-tags"><span class="tag-pill">Linux & Windows</span><span class="tag-pill">Control de Acceso Biométrico</span><span class="tag-pill">Recuperación Forense de Datos</span><span class="tag-pill">Redes IP & Cableado</span><span class="tag-pill">Git / GitHub</span></div>
         </div>
       </div>
     </div>
   </section>
-  <section id="services" class="section-padding container border-top">
-    <div class="section-header-wrap fade-in-up">
-      <span class="section-subtitle">SERVICIOS & SOLUCIONES TECNOLÓGICAS</span>
-      <h2 class="display-text" style="font-size: 3.5rem; margin-bottom: 3.5rem;">ESPECIALIDADES</h2>
-    </div>
 
+  <!-- SEPARADOR GLITCH ASCII EATER (oscuro → claro) -->
+  <canvas class="glitch-separator" id="glitchServices" aria-hidden="true"></canvas>
+
+  <!-- SERVICES (sección 4 - claro) -->
+  <section id="services" class="section-padding container services-section section-light" aria-label="Especialidades y Servicios">
+    <div class="section-header-wrap fade-in-up">
+      <span class="section-subtitle">Servicios & Soluciones Tecnológicas</span>
+      <h2 class="display-text">Especialidades</h2>
+    </div>
     <div class="services-list">
-      <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">DESARROLLO WEB & WASM</h3>
-        <p class="service-desc">Diseño e implementación de plataformas web modernas, herramientas interactivas de ultra velocidad y aplicaciones client-side accesibles (WCAG 2.1) con SEO técnico impecable.</p>
-      </div>
-      <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">APLICACIONES MÓVILES</h3>
-        <p class="service-desc">Desarrollo multiplataforma en Flutter y entornos Android a medida, integrando control de catálogos dinámicos, persistencia local y sincronización eficiente de datos comerciales.</p>
-      </div>
-      <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">AUTOMATIZACIÓN & BOTS</h3>
-        <p class="service-desc">Automatización de flujos repetitivos, extracción y procesamiento estructurado de información y scripts de alto rendimiento en Python para optimización operativa 24/7.</p>
-      </div>
-      <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">CONTROL BIOMÉTRICO</h3>
-        <p class="service-desc">Integración de lectores de acceso por rostro y huella digital, gestión de torniquetes electrónicos y administración de bases de datos seguras para control de asistencia.</p>
-      </div>
-      <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">RECUPERACIÓN & FORENSE</h3>
-        <p class="service-desc">Diagnóstico y saneamiento de malware en estaciones críticas, optimización profunda de sistemas operativos y recuperación forense de datos en unidades de almacenamiento dañadas.</p>
-      </div>
-      <div class="service-item fade-in-up hover-target">
-        <h3 class="service-title">INFRAESTRUCTURA & REDES</h3>
-        <p class="service-desc">Ensamble y dimensionamiento de estaciones de alto desempeño, configuración de topologías de red IP seguras y mantenimiento preventivo para continuidad de negocio.</p>
-      </div>
+      <div class="service-item fade-in-up hover-target"><h3 class="service-title">Desarrollo Web & WASM</h3><p class="service-desc">Diseño e implementación de plataformas web modernas, herramientas interactivas de ultra velocidad y aplicaciones client-side accesibles (WCAG 2.1) con SEO técnico impecable.</p></div>
+      <div class="service-item fade-in-up hover-target" style="transition-delay: 0.1s;"><h3 class="service-title">Aplicaciones Móviles</h3><p class="service-desc">Desarrollo multiplataforma en Flutter y entornos Android a medida, integrando control de catálogos dinámicos, persistencia local y sincronización eficiente de datos comerciales.</p></div>
+      <div class="service-item fade-in-up hover-target" style="transition-delay: 0.2s;"><h3 class="service-title">Automatización & Bots</h3><p class="service-desc">Automatización de flujos repetitivos, extracción y procesamiento estructurado de información y scripts de alto rendimiento en Python para optimización operativa 24/7.</p></div>
+      <div class="service-item fade-in-up hover-target" style="transition-delay: 0.3s;"><h3 class="service-title">Control Biométrico</h3><p class="service-desc">Integración de lectores de acceso por rostro y huella digital, gestión de torniquetes electrónicos y administración de bases de datos seguras para control de asistencia.</p></div>
+      <div class="service-item fade-in-up hover-target" style="transition-delay: 0.4s;"><h3 class="service-title">Recuperación & Forense</h3><p class="service-desc">Diagnóstico y saneamiento de malware en estaciones críticas, optimización profunda de sistemas operativos y recuperación forense de datos en unidades de almacenamiento dañadas.</p></div>
     </div>
   </section>
 
-  <!-- Footer & Contacto -->
-  <footer id="contact" class="border-top">
-    <div class="container fade-in-up">
-      <h2 class="display-text footer-huge">VAMOS A <span>CONSTRUIR</span></h2>
-      <p class="footer-subtitle">Disponible para roles de ingeniería de software, proyectos web de alto impacto y consultoría en sistemas.</p>
-      
-      <div class="contact-methods mt-6">
-        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=1999antonflores@gmail.com" target="_blank" rel="noopener noreferrer" class="contact-link hover-target">1999antonflores@gmail.com</a>
-        <button class="copy-email-btn hover-target" onclick="copyEmail('1999antonflores@gmail.com')" title="Copiar correo al portapapeles">
-          <i class="fa-regular fa-copy"></i> Copiar Correo
-        </button>
-      </div>
+  <!-- SEPARADOR GLITCH ASCII EATER (claro → oscuro) -->
+  <canvas class="glitch-separator" id="glitchFooter" aria-hidden="true"></canvas>
 
-      <div class="footer-socials mt-6">
-        <a href="https://github.com/NotAYeen" target="_blank" rel="noopener noreferrer" class="social-badge hover-target">
-          <i class="fa-brands fa-github"></i> GitHub @NotAYeen
-        </a>
-        <a href="assets/CV_Jorge_Antonio_Albarran.pdf" target="_blank" rel="noopener noreferrer" type="application/pdf" class="social-badge hover-target">
-          <i class="fa-solid fa-file-pdf"></i> Curriculum Vitae (PDF)
-        </a>
+  <!-- FOOTER / CONTACTO (sección 5 - oscuro) -->
+  <footer id="contact" class="section-padding container footer-section section-dark" aria-label="Contacto y Pie de Página">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">ANTONIO ALBARRAN</div>
+        <p class="footer-desc">Ingeniería en Sistemas Computacionales & Desarrollo de Software.<br><strong>Sistemas robustos, interfaces fluidas.</strong></p>
+        <div class="footer-socials">
+          <a href="https://github.com/NotAYeen" target="_blank" rel="noopener noreferrer" class="social-badge hover-target" aria-label="GitHub"><i class="fa-brands fa-github"></i></a>
+          <a href="https://linkedin.com/in/antonioalbarran" target="_blank" rel="noopener noreferrer" class="social-badge hover-target" aria-label="LinkedIn"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="mailto:contacto@antonioalbarran.dev" class="social-badge hover-target" aria-label="Correo electrónico"><i class="fa-solid fa-envelope"></i></a>
+        </div>
       </div>
-
-      <p class="footer-copy">© 2026 ANTONIO ALBARRAN. INGENIERÍA EN SISTEMAS COMPUTACIONALES & DESARROLLO DE SOFTWARE.</p>
+      <div class="footer-contact">
+        <h3 class="footer-title">Contacto</h3>
+        <a href="mailto:contacto@antonioalbarran.dev" class="contact-link hover-target"><i class="fa-solid fa-envelope"></i> contacto@antonioalbarran.dev</a>
+        <a href="assets/CV_Jorge_Antonio_Albarran.pdf" target="_blank" rel="noopener noreferrer" type="application/pdf" class="contact-link hover-target" title="Descargar CV"><i class="fa-solid fa-file-pdf"></i> Curriculum Vitae (PDF)</a>
+      </div>
+      <div class="footer-copy-wrap">
+        <p class="footer-copy">© 2026 ANTONIO ALBARRAN. INGENIERÍA EN SISTEMAS COMPUTACIONALES & DESARROLLO DE SOFTWARE.</p>
+      </div>
     </div>
   </footer>
-  <div class="toast-container" id="toastContainer"></div>
-  <button class="chat-toggle hover-target" id="chatToggle" onclick="toggleChat()" aria-label="Abrir chatbot Taskii">
-    <div id="chatToggleIcon" style="display: flex; align-items: center; justify-content: center;">
-      <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-chatbot"><path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12" /><path d="M9.5 9h.01" /><path d="M14.5 9h.01" /><path d="M9.5 13a3.5 3.5 0 0 0 5 0" /></svg>
+
+  <div class="toast-container" id="toastContainer" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Command Palette (⌘K) -->
+  <div class="command-palette" id="commandPalette" role="dialog" aria-modal="true" aria-label="Paleta de comandos" hidden>
+    <div class="command-palette-backdrop"></div>
+    <div class="command-palette-panel">
+      <div class="command-header"><span class="command-kbd">⌘K</span><span class="command-title">Comandos Rápidos</span></div>
+      <input type="text" id="commandInput" class="command-input" placeholder="Buscar proyectos, contacto o copiar correo..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+      <div class="command-list" id="commandList">
+        <div class="command-item hover-target" data-action="scroll" data-target="#work"><span class="command-icon"><i class="fa-solid fa-code"></i></span><span class="command-text">Proyectos Destacados</span><span class="command-shortcut">↓ Work</span></div>
+        <div class="command-item hover-target" data-action="scroll" data-target="#about"><span class="command-icon"><i class="fa-solid fa-user-gear"></i></span><span class="command-text">Trayectoria & Arsenal Técnico</span><span class="command-shortcut">↓ About</span></div>
+        <div class="command-item hover-target" data-action="scroll" data-target="#services"><span class="command-icon"><i class="fa-solid fa-briefcase"></i></span><span class="command-text">Especialidades y Servicios</span><span class="command-shortcut">↓ Services</span></div>
+        <div class="command-item hover-target" data-action="scroll" data-target="#contact"><span class="command-icon"><i class="fa-solid fa-envelope"></i></span><span class="command-text">Contacto</span><span class="command-shortcut">↓ Contact</span></div>
+        <div class="command-item hover-target" data-action="copy" data-value="contacto@antonioalbarran.dev"><span class="command-icon"><i class="fa-solid fa-copy"></i></span><span class="command-text">Copiar correo al portapapeles</span><span class="command-shortcut">contacto@antonioalbarran.dev</span></div>
+        <div class="command-item hover-target" data-action="external" data-url="assets/CV_Jorge_Antonio_Albarran.pdf"><span class="command-icon"><i class="fa-solid fa-file-pdf"></i></span><span class="command-text">Descargar Curriculum Vitae (PDF)</span><span class="command-shortcut">CV</span></div>
+      </div>
+      <div class="command-hint">Presiona <kbd>Esc</kbd> para cerrar</div>
     </div>
+  </div>
+
+  <!-- Chat flotante Taskii -->
+  <button class="chat-toggle hover-target" id="chatToggle" onclick="toggleChat()" aria-label="Abrir chatbot Taskii" aria-expanded="false" aria-controls="chatPanel">
+    <div id="chatToggleIcon" style="display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="icon icon-tabler icons-tabler-outline icon-tabler-message-chatbot"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12"/><path d="M9.5 9h.01"/><path d="M14.5 9h.01"/><path d="M9.5 13a3.5 3.5 0 0 0 5 0"/></svg></div>
   </button>
-  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Asistente virtual Taskii">
+  <div class="chat-panel" id="chatPanel" role="dialog" aria-label="Asistente virtual Taskii" hidden>
     <div class="chat-header hover-target" onclick="toggleChat()">
       <div style="display: flex; align-items: center; gap: 12px;">
-        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fff; border: 2px solid var(--text-color);"><img src="assets/chatbot.png" alt="Taskii" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async"></div>
-        <div>
-          <div style="font-weight: 700; font-size: 14px; font-family: var(--font-body); line-height: 1.2;">TASKII</div>
-          <div style="font-size: 12px; color: var(--accent-color); display: flex; align-items: center; gap: 6px;"><span class="status-dot"></span>En línea</div>
-        </div>
+        <div style="width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; overflow: hidden; background: #fff; border: 2px solid var(--text-main);"><img src="assets/chatbot.png" alt="Taskii" style="width: 100%; height: 100%; object-fit: cover;" loading="lazy" decoding="async"></div>
+        <div><div style="font-weight: 700; font-size: 14px; font-family: var(--font-body); line-height: 1.2;">TASKII</div><div style="font-size: 12px; color: var(--accent); display: flex; align-items: center; gap: 6px;"><span class="status-dot" id="chatStatusDot"></span>En línea</div></div>
       </div>
       <div style="display: flex; align-items: center; gap: 16px;">
-        <button onclick="resetChat(); event.stopPropagation();" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: inherit; display: flex; align-items: center;" title="Reiniciar" aria-label="Reiniciar"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover-target"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4" /><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4" /></svg></button>
-        <button onclick="toggleChat(); event.stopPropagation();" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: inherit; display: flex; align-items: center;" aria-label="Cerrar chat"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover-target"><path d="M18 6l-12 12" /><path d="M6 6l12 12" /></svg></button>
+        <button onclick="resetChat(); event.stopPropagation();" style="background: none; border: none; font-size: 1.2rem; cursor: pointer; color: inherit; display: flex; align-items: center;" title="Reiniciar" aria-label="Reiniciar"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover-target"><path d="M20 11a8.1 8.1 0 0 0 -15.5 -2m-.5 -4v4h4"/><path d="M4 13a8.1 8.1 0 0 0 15.5 2m.5 4v-4h-4"/></svg></button>
+        <button onclick="toggleChat(); event.stopPropagation();" style="background: none; border: none; font-size: 1.5rem; cursor: pointer; color: inherit; display: flex; align-items: center;" aria-label="Cerrar chat"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="hover-target"><path d="M18 6l-12 12"/><path d="M6 6l12 12"/></svg></button>
       </div>
     </div>
     <div class="chat-messages" id="chatMessages"></div>
     <div class="chat-options" id="chatOptions"></div>
-    <div class="chat-input-area" id="chatInputArea">
-      <input type="text" id="chatInput" placeholder="Escribe tu mensaje..." aria-label="Mensaje" onkeydown="if(event.key==='Enter')sendInput()">
-      <button class="hover-target" onclick="sendInput()" aria-label="Enviar" style="display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 19.4l14.8 -7.4l-14.8 -7.4l0 5.6l9.3 1.8l-9.3 1.8z" /></svg></button>
-    </div>
+    <div class="chat-input-area" id="chatInputArea"><input type="text" id="chatInput" placeholder="Escribe tu mensaje..." aria-label="Mensaje" onkeydown="if(event.key==='Enter')sendInput()"><button class="hover-target" onclick="sendInput()" aria-label="Enviar" style="display: flex; align-items: center; justify-content: center;"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.6 19.4l14.8 -7.4l-14.8 -7.4l0 5.6l9.3 1.8l-9.3 1.8z"/></svg></button></div>
   </div>
 </body>
 </html>
+
