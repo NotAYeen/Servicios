@@ -1,13 +1,17 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+﻿const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+document.addEventListener('DOMContentLoaded', () => {
   initCursor();
   initScrollAnimations();
   initParallax();
   initBlobs();
   initSmartNav();
   initMobileMenu();
-  initAsciiWaveBackground();
-  initGlitchEaters();
-  initTypographicVortex();
+  if (!prefersReducedMotion.matches) {
+    initAsciiWaveBackground();
+    initGlitchEaters();
+    initTypographicVortex();
+  }
   initCommandPalette();
 });
 
@@ -58,6 +62,7 @@ function initMobileMenu() {
     toggle.setAttribute('aria-expanded', 'false');
     toggle.setAttribute('aria-label', 'Abrir menú');
     document.body.classList.remove('nav-open');
+    toggle.focus();
   };
   const openMenu = () => {
     if (nav && nav.classList.contains('nav-hidden')) nav.classList.remove('nav-hidden');
@@ -67,6 +72,8 @@ function initMobileMenu() {
     toggle.setAttribute('aria-expanded', 'true');
     toggle.setAttribute('aria-label', 'Cerrar menú');
     document.body.classList.add('nav-open');
+    const firstLink = navLinks.querySelector('a');
+    if (firstLink) firstLink.focus();
   };
   toggle.addEventListener('click', () => {
     if (navLinks.classList.contains('open')) closeMenu(); else openMenu();
@@ -435,14 +442,35 @@ function initCommandPalette() {
   const list = document.getElementById('commandList');
   const items = list.querySelectorAll('.command-item');
   let isOpen = false;
+  let lastFocusedElement = null;
+
+  function trapFocus(e) {
+    if (e.key !== "Tab") return;
+    const focusables = palette.querySelectorAll("button, [href], input, [tabindex]:not([tabindex=\"-1\"])");
+    const first = focusables[0];
+    const last = focusables[focusables.length - 1];
+    if (e.shiftKey) {
+      if (document.activeElement === first) {
+        e.preventDefault();
+        last.focus();
+      }
+    } else {
+      if (document.activeElement === last) {
+        e.preventDefault();
+        first.focus();
+      }
+    }
+  }
 
   function openPalette() {
+    lastFocusedElement = document.activeElement;
     palette.hidden = false;
     input.focus();
     isOpen = true;
     document.body.style.overflow = 'hidden';
     const focusables = palette.querySelectorAll('button, [href], input, [tabindex]:not([tabindex="-1"])');
     if (focusables.length) focusables[0].focus();
+    palette.addEventListener("keydown", trapFocus);
   }
 
   function closePalette() {
@@ -451,6 +479,9 @@ function initCommandPalette() {
     filterCommands('');
     isOpen = false;
     document.body.style.overflow = '';
+    palette.removeEventListener("keydown", trapFocus);
+    if (lastFocusedElement) lastFocusedElement.focus();
+    lastFocusedElement = null;
   }
 
   function filterCommands(query) {
@@ -529,6 +560,10 @@ function toggleChat() {
   toggle.setAttribute('aria-expanded', String(!hidden));
   if (!hidden) {
     initChatBot();
+    const firstFocusable = panel.querySelector("button, input, [tabindex]:not([tabindex=\"-1\"])");
+    if (firstFocusable) firstFocusable.focus();
+  } else {
+    toggle.focus();
   }
 }
 
@@ -600,6 +635,8 @@ function resetChat() {
 }
 
 // ================================================================
+
+
 // SMOOTH SCROLL FOR ANCHOR LINKS
 // ================================================================
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -630,3 +667,6 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     requestAnimationFrame(animation);
   });
 });
+
+
+
