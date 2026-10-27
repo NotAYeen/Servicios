@@ -264,7 +264,7 @@
                 <!-- Right Hero Image: assets/yo1.webp (Antonio Albarran Portrait) -->
                 <div class="w-full sm:w-[320px] md:w-[360px] lg:w-[400px] shrink-0 relative group reveal-on-scroll">
                     <div class="relative border-2 border-zinc/40 bg-glitch overflow-hidden brutalist-border p-2">
-                        <div class="relative aspect-[4/5] overflow-hidden bg-carbon ascii-image-wrapper">
+                        <div class="relative aspect-[4/5] overflow-hidden bg-carbon ascii-image-wrapper" data-ascii-key="yo1.webp">
                             <img src="assets/yo1.webp" alt="Antonio Albarran - Software Engineer" class="ascii-target-img w-full h-full object-cover object-top grayscale group-hover:grayscale-0 transition-all duration-700 transform group-hover:scale-105" fetchpriority="high" decoding="async">
                             <canvas class="ascii-image-canvas absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-700 ease-out z-10"></canvas>
                             <div class="absolute inset-0 bg-carbon/25 group-hover:bg-transparent transition-colors z-20 pointer-events-none"></div>
@@ -534,7 +534,7 @@
                             </div>
 
                             <!-- Preview Image Container with ASCII Filter -->
-                            <div class="w-full aspect-[16/10] overflow-hidden relative bg-glitch border-b-2 border-zinc/20 ascii-image-wrapper">
+                            <div class="w-full aspect-[16/10] overflow-hidden relative bg-glitch border-b-2 border-zinc/20 ascii-image-wrapper" data-ascii-key="project-designforge.webp">
                                 <img src="assets/project-designforge.webp" alt="DesignForge: Suite de Diseño y Accesibilidad" class="ascii-target-img w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" loading="lazy" decoding="async" />
                                 <canvas class="ascii-image-canvas absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-700 ease-out z-10"></canvas>
                                 <div class="absolute inset-0 bg-carbon/25 group-hover:bg-transparent transition-colors duration-300 z-20 pointer-events-none"></div>
@@ -577,7 +577,7 @@
                             </div>
 
                             <!-- Preview Image Container with ASCII Filter -->
-                            <div class="w-full aspect-[16/10] overflow-hidden relative bg-glitch border-b-2 border-zinc/20 ascii-image-wrapper">
+                            <div class="w-full aspect-[16/10] overflow-hidden relative bg-glitch border-b-2 border-zinc/20 ascii-image-wrapper" data-ascii-key="project-sqlearn.webp">
                                 <img src="assets/project-sqlearn.webp" alt="SQLEARN: Simulador SQLite WebAssembly" class="ascii-target-img w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" loading="lazy" decoding="async" />
                                 <canvas class="ascii-image-canvas absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-700 ease-out z-10"></canvas>
                                 <div class="absolute inset-0 bg-carbon/25 group-hover:bg-transparent transition-colors duration-300 z-20 pointer-events-none"></div>
@@ -620,7 +620,7 @@
                             </div>
 
                             <!-- Preview Image Container with ASCII Filter -->
-                            <div class="w-full aspect-[16/10] overflow-hidden relative bg-glitch border-b-2 border-zinc/20 ascii-image-wrapper">
+                            <div class="w-full aspect-[16/10] overflow-hidden relative bg-glitch border-b-2 border-zinc/20 ascii-image-wrapper" data-ascii-key="project-whatsapp.webp">
                                 <img src="assets/project-whatsapp.webp" alt="WhatsApp Visualizer: Analítica y Privacidad" class="ascii-target-img w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" loading="lazy" decoding="async" />
                                 <canvas class="ascii-image-canvas absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-700 ease-out z-10"></canvas>
                                 <div class="absolute inset-0 bg-carbon/25 group-hover:bg-transparent transition-colors duration-300 z-20 pointer-events-none"></div>
@@ -663,7 +663,7 @@
                             </div>
 
                             <!-- Preview Image Container with ASCII Filter -->
-                            <div class="w-full aspect-[16/10] overflow-hidden relative bg-glitch border-b-2 border-zinc/20 ascii-image-wrapper">
+                            <div class="w-full aspect-[16/10] overflow-hidden relative bg-glitch border-b-2 border-zinc/20 ascii-image-wrapper" data-ascii-key="project-appmoda.webp">
                                 <img src="assets/project-appmoda.webp" alt="Delphinus: App Móvil y Gestión de Inventarios" class="ascii-target-img w-full h-full object-cover grayscale opacity-80 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700" loading="lazy" decoding="async" />
                                 <canvas class="ascii-image-canvas absolute inset-0 w-full h-full pointer-events-none transition-opacity duration-700 ease-out z-10"></canvas>
                                 <div class="absolute inset-0 bg-carbon/25 group-hover:bg-transparent transition-colors duration-300 z-20 pointer-events-none"></div>
@@ -1606,8 +1606,16 @@
 
 
         // ---------------------------------------------------------
-        // 9. ASCII IMAGE FILTER WITH SMOOTH HOVER REVEAL
+        // 9. ASCII IMAGE FILTER (PER-IMAGE UNIQUE HIGH-RES ASCII)
         // ---------------------------------------------------------
+        const IMAGE_ASCII_DATA = {
+            "yo1.webp": ["                                                                                    ", "                                      #.                                            ", "                                                                                    ", "                                           .---:                                    ", "                                          --::..:                                   ", "                                          ---::::.                                  ", "                                         =--:::-:-:...             ...              ", "                                         ==: .----+*++=:....    ..=-=+              ", "                                       .:+*- .=+===+++*#*+==:..-==:--.              ", "                                      .=++==. =+=-=:-+++=++++==-:=+*=               ", "                                     :=+*++=: .=::::-+*+=-=+*+::+**-.            -= ", "                             -+    .-++#+-+=:::.. -==-====-=+++-*##.             :- ", "                             :- .:.-+***=--:-=-::==---:--=+-=+++++:                 ", "                               .:-=+***+==:.-=--==-=+===--==-=+++=                  ", "                              .-=+++++**=---=-----========-=--+*=-                  ", "                             .-=*===+++++*+==--=====-:::-=-=-:=*+:                  ", "                            :-=+=--=+*+=**=--::----:.:=+=++=-=++=-:                 ", "         .#.             =*+====-:-**+====-:..:::.::-=:-:=#+--=#=--                 ", "          .              +%*+===--+**++=:-:-===++**+++++: +==-:+=--                 ", "                       .+**+*+=--****#=-=+-**-=**#*+--=+*--=++===-                  ", "                      -##**++++++**+++=.+*-*#++******+*+++=**+**+=                  ", "                      -*--=+++++++=--=-==#+-#*=**+*#%%%#*+*##****=                  ", "                      :++==*++==+=::-=:=+=*-=*+=**+*#####*####+*#+                  ", "                      :---=++***+=-..=--*:=+-=*+=*+=***#######+=*+.                 ", "                     =-:--=+++***+-:..-.-=-=*=+*++*++=*#**###**+=*#.                ", "                     --:-=********+=-....=+==*+++++*+-:+******:.:-=:                ", "                     ===*****###***#+-:..-=+=-===++++-:.=*+**+.    :.               ", "                    .***+********#**++-: .:-=--=====+-:-::-==:.                     ", "                  .-+++++*+=++=-=**+++=-: .:----====+-:=++--:....                   ", "                  -+=++++=-==++=====+=+=-::. :::-==++=-+**=...                      ", "                 :=+===+=-==--=+**++==+*--:--::::-=+++=+*+=                         ", "                 +++=-----=+*****++***+++-:.--:---++++***#*                         ", "               .-+==-=-.:-:::=+*###******=-=::-=-=++++**##* ==                      ", "               :+==-:--.:::--:::-=**#***#*== .:--+++====*#+ ::                      ", "              -==--:-:-.:=:.-===----=+*****- .:-=++********+   *-                   ", "              =+==:.==-:.:==:::-==++===+++*=:::=+*++=++*#####+ :.                   ", "             -====--::=-:..=*+-:--==+++++***+--+=+****+==*##-.                      ", "            .=+==-:==::-:::.:-==-=++***#*#*#*+-:-==++**#*=+#.                       ", "            .=---==-:--::--:. .::--===++*****#-:+****+++**=*.                       ", "            .=--:.-=-:-::::::::::--==+++*******+--==+****#++.       .#              ", "           :==---:..-=-::::::::::::-==++*******#+++***+++***.                       ", "           -=----:::..:::-:::::::::---=++********+==++##*=+#.                       ", "           --:::::--::...-----::..::---===+*******+=*+=+##=*:                       ", "          -==--:::---::::..-==--::.:---=+==+*******+==**+#**.                       ", "          =-:....:::---::.  :-----:..:::-==+********++=*****-                       ", "          ----..::--::. .:--: .:---:::.::--+****+**+-++=**++*= :.                   ", "         .::-+===-:...:-==--:.  .::---::::::====-=**==*+=**++-:%*::::::::.          ", ":.      :+-:::.  .:-===--::::::::. .:---::::::----+++=+*-=*==+*+*****#%##*=:.       ", ":-:     .-.    .:--::-:::::----:::. ...---:::::--:-=++=+=-*---=++=--:-=+*+*#*       ", ":--.        .:-----::::----==---::..::. .:--::.::::+*++=+=*. :-=+++-.  .=*=+*-.     ", "----        .::---::::---==-----::::::-..: :::::..:-++==+*=    .::-++:. .:*-+*-----:", "::::.          :-:-::---==------:::::--:::.-.   ..::-+===*-::-+==:.::     ----.----:", "::::.           ::---------:--=-:-:::-::-: .         :-==*++++=++=**++=+: .::--:....", ".:.:.            ------------=-:--:---::-:..         -*****=:--=***++*##+=====--+=:.", ".....            .=---------:.:-----=::-:...         .###**+.   .=**=-. .:::.:=-:---", ".....             .===---:---::---===:::...           =%####*-.   .-==. -+.  .::-:::", ".....              .=---:::--=----===:.:...            ######+=:             =      "],
+            "project-designforge.webp": ["========+===---=============+++=============++++++++++++++++++++++++++++++++++++++++", "+++++++++++=-....::-=====++==+=============+++++++++++++++++++++++++++++++++++++++++", "======-======-:::::::-=====+===================+++++++++++++++++++++++++++++++++++++", "=--..:..:::...   ... ....  :===+++++++=============+++++++++++++++++++++++++++++++++", "==--:... ........::.. .-==---+++++++++++++++++========+++++++++++++++++++++++++==+++", "::..:::.:....::--::....:::---::--=----=++++++++++++++===+==++++++++++++++=-::::-=+++", ":::..:--:::.:::::::....................:::::::---::-======+=---::.:::---:...:-=+++++", "...::::::.........   .                          ......::.:--------..    . .  ....:=+", "::::::.            ...........................            .. ...:-:..:..::.....   .=", "...  .  ...::::::::........................::.::::::::.....        ....:::..::..::.:", "  ....:::::........  ..::::........:::::::.:...........::::::::....     . ....::::::", ":::::::....::::::......:.....................::::::::::.......:::::::::..      ....:", "-::.. ....::::::..                                  ....::::::.....:::::::::...     ", ":....::::::...           ........  .. ..                  ...::::::::...:::::::::.  ", ".......::..................        .. ...........................::----:::::::::::::", ".  .. .::............::  ..                  .....:.....::::::......::---:::.:::::--", "......:::::..    .  .. ......  ...:.        .    ...:::::::::::::::.:..:::::...::::-", ".::::::...:.            .  ..   .:::: .  . .. .. ........:..::::::::::::::::::::::::", ".::::::::::      ..   ......... ..:.......  .::....::....:::::::::::::::::::::....::", "  .............................  .. .... .........:::-:::::::::::::::::::::::::.....", "..::.  ..........................................:::::::::::::::::--:-::::::::::::::", ":---:                 ...:...........::::::.::::::::::::::...:...::::::.......::::::", ":--::....... .:.  ..  ..:.... ... ..  .:::..  ......................................", ":---:..:.... .::..:.  .:::.:. ::. .:  .:::... ..      :.  ...... ..:..:..   .:.:::  ", "----:..:.......................::..:...::::.. .:. .. .:....::::. .:--:-:::. .-----: ", "---::.:::.............:......::::::::...........::.........:::::..::---:::...:-----.", "---::..::            ..................:::..........:......:---::.::-::-::...:-----:", ":-:::.:::            .....           ......          ....:.::-:::.::----::...:------"],
+            "project-sqlearn.webp": ["                                          :#*++-=**-=+**. +*+*#+:#- :*+-----:.....  ", "                                          .:::.-*+.=**#- =*++##-++ .++.             ", "     ...                                      .** -***- =*=+***++:-*=.              ", "..  :*##++-    .                             :*+.=#**=-**+*****+=++-.....           ", "#: .-+***#=   -*#==.  .....::::::....       :*+-+#**++******#*+=-:........... ..... ", "+. *@*====-  .=**+*: :+#**++****++=-::..  .=*++***++**+*****+-.       ..............", "-: -*+++++=. :=++++:.=+####*%%@@%#**++-::.-=--=--==++++++=:.              .... .....", "+-  -=+++*+: .+****: -+*##*=*##%#=+#%#--+*=..-:..:::::.                       ..::..", ".   :====+=. .=++**: :+###+.=###+.=*##:-*%#-=##+-*+---:...                    .::-:.", "   .+#####*: .+****- .=+**+ -***+ =###::*##--*#=-*#+*%#*#*=+==-:::..........  .:--:.", "  .+*++++*#. +#***%+ :+###* .+##* :+*#-:*##--*#=-*#++#**#**#####**+++==--:::...:---.", "  :=-:::.-+ :+-:-.+- +===+* ===+* -**#=.+##-:*#+-+#++*****+*####*#*##****++==-----:.", "  :=-:::.-+::+---.=-.+::.:=.=..:=.+-:+-===+--=+=-=+==*++**+********######***++===-:.", "  :=-:::.-+.:+-:-.+-.+-::-=.=:::=.=::=-=--=-=-==========++=++++++++********+++===-:.", "  :=-:::.-+ :+::-.+-.+-::-=.=.::=.=::=-=--=-=-=============+++=====++++++++======-:.", "  :=-::::-*.:+-:-.=-.+-:::=.=::.=.=::=-=--=-=--============+++=====+++++++=======-:.", "  :=-::::-+.:+-:-.+-.+-::-=.=.:.=.=-:=-==-=-=--===-=========++=====+++++++=======-:.", ". :=-:::.-+.:+:::.=:.+:::-=.+::.-.=::-:=-:-:=---===+===+=+=+++++++++*+*+*++++=====-.", ".  :--:::--..======::+--++=.+=+++:==++=-=+*+-=**==##**#**#**##*****************++=-:", "    -+++**+..=+####=.++###*:=+###-=+##*=+##*-+##+=##**#**#**###*#*#*###*****++===-:.", "    -+*****:.=+####=:++###*:++#**-=+#*+==*#+=+#*+=*#**#**##*#****+++++===---::::... ", "    :+*****:.=+*###=.==###*:+=#*#-=+##*==##*-=#*==**=++====-----:::::::::::......   ", "    :+****=.:=+*###=:+=###*:==###-:=*++.-==-.:::.................::::::::::--::.    ", "    :+****+.:=+****=.:=***+..--::. :.                ...::::::::::::...::::--:.     ", "    :=++++=. .-=:::.  ::..                     ......:::::--:........ ....::::.     ", ".   .--::..    .                         ........:-----:::=-........   ...::::.     ", "..                      .....::..        :::: ::::----===--:........   .......      ", "                .. ........ .:..: ..     :.:....:.-====-::..........                "],
+            "project-whatsapp.webp": ["           .......      ...............                                             ", "                                                                                    ", "                                       :----::..                                    ", "                                     :=-:::----=====---::..                         ", "                                   .==:...........:::-----====----:::..             ", "::...        .....      ........ .-=-.::...:.........:.........::----====---:::..   ", "===+++===---:::................:-=-:::::...........    ........      .....:::-------", "=========++++++===--::...    .-=-. .::-:..::...... :=-:...             .....    . ..", "::::-:.:===+++++++++++++==-::=-:..::...... .......-**:......              ..:::...  ", ":----::-++++++++++++++++*+===-:::::::::......  ...-:   ...                 .......  ", "-----:-=++++++++++++++++===-:::.............:::... ....                            :", "-------=++++++++++++**+==::=:..:.....  .  .:-:::::.                              :==", "-------======++++++++==-: ..::........   .:::.   .                .:....       :==-:", "---:::-----====++*+====----::.......                                  ....   :===:  ", "-----=====+=====+++**=---====-----::::...       :--::.                     :===-:   ", "::::::.:::::::::::---======---========-==::-::. .:::-----::.. ...        .-==-------", "    .:..:::--:--:-::------=========--========--::.:.. ....:------::.   .-==-:-------", "-::.   ...:::-::-::-----:-::::::--======----========-::    ..:::::.  .-==-:......:::", "=====-::....:::--:--:--:--:--:::::::::========-----=====-::..       -===:...........", "---=======--:::::::::-::-::--:-::-:::.....::--======-----====--::.:=+=-.............", "----=======+++==--::...:::-::::::::.:..:....... ..:--------=++++====-............:::", "----==========++++++==-::-==-:::::.:....  ......:-::-===**+++===--:....:::::::::::::", "----==============+++++++=--:..:=+=--:-===++++++++===--::...:..:----====-----------:", "-----================+++++***++++**+++====--::::::.::::---============----------::::", ":--=============++++======-----::::::::::-----================------------------::::", "...::----------::::::::::::::---==================---=-===-----------------:::::::::", ":::::........:::::----============================----------------------::::::::::::", "::::::::::--------------------========-======------------------------:::::::::::::.."],
+            "project-appmoda.webp": ["%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%######################", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%##################", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%############", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#**++==+#%%%%%%%%%%%%%#########", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#=+*+=-:.-#%#%%%%%%%%%%%%#######", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*+++-:::+###%%%%%%%%%%%%%######", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%**+-:+%%%%%%%%%%%%%%%%%%%####", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*++=--:..=+***###%%%%%%%%%%%%%###", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#*****++=-:-====+++***%%%%%%%%%####", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%####%%%%%#**++=-:-=--=#%%%%%%%######", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%####**#####**+=-:::.::*%#%%%%########", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%*++###***++==---::=%%%%###########", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%#%%#*+++*++*****++====+*#%%%%#######", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%####**+*++***+++**###*++==------==***######*", "%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%####**+==++++++=++++*###+============--===+***=.", "############%%%%%%%%%%%%%%#%%#**#####***=-=++++++++++=====================+++===-:  ", "####################%####*+##+=:-++++======++++++=========---:::::::----==++=====-. ", "############################*=+*+*=-:.:-=======================----::::::----======-", "####**#******######%#%%#%###+***+=-:-::::----=====================--------:-------==", "**+=--==+*********%%%%%%####**+==-:-+=--::-=---========+=============--------:::----", "----=++-----=+++**#%%%###%#*++=-:::==--=-:-*==-======+++++++++========-------:----::", "====-::--.  .++++++#%%#####*++=-:-==---==+***+++++++++++++++++++======-------:::::-:", "-:...=+=:.   =+++++*%%##****++=-=###**###%#####***************+++++===-----:::::::::", "##= .-.      -+=====#%%###***+=--#%%%##############**************+++==---::::::.....", "--:.   ..    :======*%%####**++=-*%%%%#####%#%##########********++=---:::...........", "   . :::.    :=--===+%%####**++=:=%%%%%####%%#########****++++==--::::..............", "==+- =++:    .----=-+%%%%###*+=-::+%%%%##**##########***+++===--::::................", "++*= -*=  =   ------+%##*+++*+--:..:=+*####*#########***+++==---:::................."],
+        };
+
         class ASCIIImageFilter {
             constructor() {
                 this.wrappers = document.querySelectorAll('.ascii-image-wrapper');
@@ -1627,6 +1635,8 @@
                     } else {
                         img.addEventListener('load', render);
                     }
+                    // Immediate render so the specific image ASCII art is active with zero delay
+                    render();
                 });
 
                 let resizeTimer;
@@ -1636,11 +1646,11 @@
                         this.wrappers.forEach(wrapper => {
                             const img = wrapper.querySelector('img.ascii-target-img') || wrapper.querySelector('img');
                             const canvas = wrapper.querySelector('canvas.ascii-image-canvas');
-                            if (img && canvas && img.complete) {
+                            if (img && canvas) {
                                 this.renderImageToASCII(img, canvas, wrapper);
                             }
                         });
-                    }, 250);
+                    }, 200);
                 });
             }
 
@@ -1655,71 +1665,94 @@
                 const ctx = canvas.getContext('2d');
                 if (!ctx) return;
 
+                const key = wrapper.getAttribute('data-ascii-key') || (img.getAttribute('src') || '').split('/').pop().split('?')[0];
+
                 const fontSize = Math.max(7, Math.floor(8 * dpr));
                 const fontWidth = fontSize * 0.58;
                 const fontHeight = fontSize;
                 const cols = Math.floor(canvas.width / fontWidth);
                 const rows = Math.floor(canvas.height / fontHeight);
 
-                const offCanvas = document.createElement('canvas');
-                offCanvas.width = cols;
-                offCanvas.height = rows;
-                const offCtx = offCanvas.getContext('2d');
-                if (!offCtx) return;
+                let liveSampled = false;
+                if (img.complete && img.naturalWidth > 0) {
+                    try {
+                        const offCanvas = document.createElement('canvas');
+                        offCanvas.width = cols;
+                        offCanvas.height = rows;
+                        const offCtx = offCanvas.getContext('2d');
+                        if (offCtx) {
+                            offCtx.drawImage(img, 0, 0, cols, rows);
+                            const imgData = offCtx.getImageData(0, 0, cols, rows);
+                            const data = imgData.data;
 
-                try {
-                    offCtx.drawImage(img, 0, 0, cols, rows);
-                    const imgData = offCtx.getImageData(0, 0, cols, rows);
-                    const data = imgData.data;
+                            ctx.fillStyle = '#0A0B0E';
+                            ctx.fillRect(0, 0, canvas.width, canvas.height);
+                            ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
+                            ctx.textBaseline = 'top';
 
-                    ctx.fillStyle = '#0A0B0E';
-                    ctx.fillRect(0, 0, canvas.width, canvas.height);
+                            for (let r = 0; r < rows; r++) {
+                                for (let c = 0; c < cols; c++) {
+                                    const idx = (r * cols + c) * 4;
+                                    const red = data[idx];
+                                    const green = data[idx + 1];
+                                    const blue = data[idx + 2];
+                                    const alpha = data[idx + 3] / 255;
 
-                    ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
-                    ctx.textBaseline = 'top';
+                                    if (alpha < 0.1) continue;
 
-                    for (let r = 0; r < rows; r++) {
-                        for (let c = 0; c < cols; c++) {
-                            const idx = (r * cols + c) * 4;
-                            const red = data[idx];
-                            const green = data[idx + 1];
-                            const blue = data[idx + 2];
-                            const alpha = data[idx + 3] / 255;
+                                    const lum = 0.299 * red + 0.587 * green + 0.114 * blue;
+                                    const normLum = lum / 255;
+                                    const charIdx = Math.floor(normLum * (this.ramp.length - 1));
+                                    const char = this.ramp[charIdx];
 
-                            if (alpha < 0.1) continue;
-
-                            const lum = 0.299 * red + 0.587 * green + 0.114 * blue;
-                            const normLum = lum / 255;
-                            const charIdx = Math.floor(normLum * (this.ramp.length - 1));
-                            const char = this.ramp[charIdx];
-
-                            if (char && char !== ' ') {
-                                const x = c * fontWidth;
-                                const y = r * fontHeight;
-                                const charAlpha = Math.min(1, Math.max(0.2, normLum * 1.15));
-                                ctx.fillStyle = `rgba(232, 230, 223, ${charAlpha})`;
-                                ctx.fillText(char, x, y);
+                                    if (char && char !== ' ') {
+                                        const x = c * fontWidth;
+                                        const y = r * fontHeight;
+                                        const charAlpha = Math.min(1, Math.max(0.2, normLum * 1.15));
+                                        ctx.fillStyle = `rgba(232, 230, 223, ${charAlpha})`;
+                                        ctx.fillText(char, x, y);
+                                    }
+                                }
                             }
+                            liveSampled = true;
                         }
+                    } catch (corsErr) {
+                        // Tainted canvas in file:// protocol -> fall through to exact per-image ASCII data
+                        liveSampled = false;
                     }
-                } catch (err) {
-                    this.renderProceduralFallback(ctx, canvas.width, canvas.height, fontSize, fontWidth, fontHeight, cols, rows);
+                }
+
+                // If live sampling was blocked by file:// CORS, render the exact authentic ASCII art of this specific image
+                if (!liveSampled) {
+                    this.renderFromAsciiData(ctx, key, canvas.width, canvas.height);
                 }
             }
 
-            renderProceduralFallback(ctx, width, height, fontSize, fontWidth, fontHeight, cols, rows) {
+            renderFromAsciiData(ctx, key, width, height) {
+                const lines = IMAGE_ASCII_DATA[key] || IMAGE_ASCII_DATA['yo1.webp'];
+                if (!lines || lines.length === 0) return;
+
                 ctx.fillStyle = '#0A0B0E';
                 ctx.fillRect(0, 0, width, height);
+
+                const rows = lines.length;
+                const cols = lines[0].length;
+                const fontWidth = width / cols;
+                const fontHeight = height / rows;
+                const fontSize = Math.max(6, Math.floor(fontHeight * 1.08));
+
                 ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
                 ctx.textBaseline = 'top';
+
                 for (let r = 0; r < rows; r++) {
+                    const line = lines[r];
                     for (let c = 0; c < cols; c++) {
-                        const noise = Math.sin(c * 0.18) * Math.cos(r * 0.18);
-                        const norm = (noise + 1) * 0.5;
-                        const charIdx = Math.floor(norm * (this.ramp.length - 1));
-                        const char = this.ramp[charIdx];
+                        const char = line[c];
                         if (char && char !== ' ') {
-                            ctx.fillStyle = `rgba(232, 230, 223, ${norm * 0.75})`;
+                            const rampIndex = this.ramp.indexOf(char);
+                            const normLum = rampIndex >= 0 ? rampIndex / (this.ramp.length - 1) : 0.5;
+                            const charAlpha = Math.min(1, Math.max(0.2, normLum * 1.15));
+                            ctx.fillStyle = `rgba(232, 230, 223, ${charAlpha})`;
                             ctx.fillText(char, c * fontWidth, r * fontHeight);
                         }
                     }
