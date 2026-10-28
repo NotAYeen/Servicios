@@ -717,8 +717,8 @@
             </div>
         </section>
 
-        <footer id="contact" class="w-full bg-bone border-t-2 border-carbon pt-32 pb-12 px-6 md:px-12 lg:px-24 flex flex-col font-mono text-carbon relative overflow-hidden scramble-container theme-light">
-            <canvas class="absolute inset-0 w-full h-full pointer-events-none z-0 scramble-canvas opacity-40" aria-hidden="true"></canvas>
+        <footer id="contact" class="w-full bg-bone border-t-2 border-carbon pt-32 pb-12 px-6 md:px-12 lg:px-24 flex flex-col font-mono text-carbon relative overflow-hidden">
+            <canvas id="contactRippleCanvas" class="w-full h-full absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></canvas>
             
             <div class="max-w-[1600px] mx-auto w-full mb-20 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 xl:gap-16 items-start">
                 <div class="lg:col-span-7 flex flex-col justify-start">
@@ -1026,6 +1026,88 @@
                         
                         const ambient = Math.sin((x * 0.005) + (y * 0.007) - (this.time * 0.9));
                         const waveVal = (ambient + 1) * 0.5 * 0.55;
+
+                        const charIndex = Math.min(this.waveChars.length - 1, Math.max(0, Math.floor(waveVal * (this.waveChars.length - 1))));
+                        const char = this.waveChars[charIndex];
+                        
+                        if (char !== ' ') {
+                            const alpha = Math.min(0.85, 0.06 + (charIndex / (this.waveChars.length - 1)) * 0.65);
+                            this.ctx.fillStyle = `rgba(10, 11, 14, ${alpha})`;
+                            this.ctx.fillText(char, x, y);
+                        }
+                    }
+                }
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        class ContactFocusRipple {
+            constructor() {
+                this.canvas = document.getElementById('contactRippleCanvas');
+                if(!this.canvas) return;
+                this.ctx = this.canvas.getContext('2d');
+                this.waveChars = " .-+*=%@#"; 
+                this.time = 0;
+                this.localMouseX = -1000;
+                this.localMouseY = -1000;
+                
+                this.container = document.getElementById('contact') || this.canvas.parentElement;
+                
+                this.container.addEventListener('mousemove', (e) => {
+                    const rect = this.canvas.getBoundingClientRect();
+                    this.localMouseX = e.clientX - rect.left;
+                    this.localMouseY = e.clientY - rect.top;
+                });
+                this.container.addEventListener('mouseleave', () => {
+                    this.localMouseX = -1000;
+                    this.localMouseY = -1000;
+                });
+
+                window.addEventListener('resize', () => this.resize());
+                this.resize();
+                this.animate();
+            }
+
+            resize() {
+                if(!this.canvas || !this.container) return;
+                const rect = this.container.getBoundingClientRect();
+                this.canvas.width = rect.width;
+                this.canvas.height = rect.height;
+            }
+
+            animate() {
+                if(!this.canvas || !this.canvas.width) return;
+                this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                
+                const fontSize = 16;
+                this.ctx.font = `bold ${fontSize}px "JetBrains Mono", monospace`;
+                this.ctx.textBaseline = "top";
+                
+                const charWidth = fontSize * 0.6;
+                const cols = Math.floor(this.canvas.width / charWidth);
+                const rows = Math.floor(this.canvas.height / fontSize);
+                
+                this.time += 0.035;
+
+                for(let r = 0; r < rows; r++) {
+                    for(let c = 0; c < cols; c++) {
+                        const x = c * charWidth;
+                        const y = r * fontSize;
+                        
+                        const ambient = Math.sin((x * 0.005) + (y * 0.007) - (this.time * 0.9));
+                        let waveVal = (ambient + 1) * 0.5 * 0.22;
+                        
+                        if (this.localMouseX > 0) {
+                            const dist = Math.hypot(x - this.localMouseX, y - this.localMouseY);
+                            const maxDist = 380;
+                            
+                            if (dist < maxDist) {
+                                const ripple = Math.sin((dist * 0.038) - (this.time * 2.4));
+                                const amplitude = Math.pow(1 - (dist / maxDist), 1.4);
+                                const normalizedRipple = (ripple + 1) * 0.5;
+                                waveVal += normalizedRipple * amplitude * 0.78;
+                            }
+                        }
 
                         const charIndex = Math.min(this.waveChars.length - 1, Math.max(0, Math.floor(waveVal * (this.waveChars.length - 1))));
                         const char = this.waveChars[charIndex];
@@ -1594,6 +1676,7 @@
             try { new ScrollRevealScrambleManager(); } catch(e) { console.error('ScrollReveal error', e); }
             try { new ScrambleManager(); } catch(e) { console.error('ScrambleManager error', e); }
             try { new ASCIIWave(); } catch(e) { console.error('ASCIIWave error', e); }
+            try { new ContactFocusRipple(); } catch(e) { console.error('ContactFocusRipple error', e); }
             try { new GlitchEater(); } catch(e) { console.error('GlitchEater error', e); }
             try { new ProjectsGlitchBackground(); } catch(e) { console.error('ProjectsGlitch error', e); }
         }
