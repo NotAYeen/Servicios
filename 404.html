@@ -1,157 +1,222 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" class="dark scroll-smooth bg-[#0A0B0E]">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>404 - No Encontrado | Anton Flores</title>
-  <meta name="robots" content="noindex, follow">
-  <meta name="theme-color" content="#f0f0e6">
-  <link rel="icon" type="image/webp" href="assets/yo1.webp">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=38">
-  <script src="script.js?v=38" defer></script>
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      height: 100vh;
-      height: 100dvh;
-      width: 100vw;
-      overflow: hidden;
-      background-color: var(--bg-color);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      position: relative;
-    }
-
-    /* Main background texture matching index.html */
-    body::before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 1;
-      background-image: url('assets/fondo.webp');
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      opacity: 0.3;
-      filter: blur(7px);
-      pointer-events: none;
-    }
-
-    .error-container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      padding: 2rem;
-      position: relative;
-      z-index: 5;
-    }
-
-    /* Minimalist Dynamic 404 Title */
-    .error-title {
-      font-family: 'Anton', sans-serif;
-      font-size: clamp(7rem, 20vw, 16rem);
-      line-height: 0.85;
-      margin-bottom: 1.5rem;
-      color: var(--text-color);
-      position: relative;
-      display: inline-block;
-      user-select: none;
-      letter-spacing: -2px;
-      /* Dynamic Layered Shadow & Floating Animation */
-      animation: floatBreath 4s ease-in-out infinite alternate, shadowPulse 3s ease-in-out infinite alternate;
-    }
-
-    /* Subtle Accent Zero */
-    .error-title .zero {
-      color: var(--accent-color);
-      display: inline-block;
-      animation: zeroRotate 8s ease-in-out infinite alternate;
-    }
-
-    /* Floating & Breathing Animation */
-    @keyframes floatBreath {
-      0% {
-        transform: translateY(0px) scale(1);
-      }
-      100% {
-        transform: translateY(-12px) scale(1.02);
-      }
-    }
-
-    /* Dynamic Brutalist Shadow Shift */
-    @keyframes shadowPulse {
-      0% {
-        text-shadow: 4px 4px 0px var(--accent-color);
-      }
-      50% {
-        text-shadow: -4px 4px 0px var(--text-color);
-      }
-      100% {
-        text-shadow: 8px 8px 0px var(--accent-color);
-      }
-    }
-
-    /* Micro Rotation on Zero */
-    @keyframes zeroRotate {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(4deg); }
-    }
-
-    .error-subtitle {
-      font-family: 'Inter', sans-serif;
-      font-size: clamp(1.1rem, 2.5vw, 1.6rem);
-      margin-bottom: 2.5rem;
-      max-width: 550px;
-      line-height: 1.5;
-      color: #333333;
-    }
-
-    .error-button {
-      display: inline-block;
-      padding: 1rem 3rem;
-      background-color: var(--accent-color);
-      color: #ffffff;
-      font-family: 'Anton', sans-serif;
-      font-size: 1.35rem;
-      text-decoration: none;
-      text-transform: uppercase;
-      border-radius: 50px;
-      border: 2.5px solid var(--text-color);
-      box-shadow: 4px 4px 0px var(--text-color);
-      transition: transform 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.25s ease, background-color 0.25s ease;
-    }
-
-    .error-button:hover {
-      transform: translate(-2px, -2px) scale(1.03);
-      box-shadow: 7px 7px 0px var(--text-color);
-      background-color: var(--text-color);
-      color: var(--bg-color);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Recurso No Encontrado | Antonio Albarran</title>
+    <meta name="robots" content="noindex, follow">
+    <meta name="theme-color" content="#0A0B0E">
+    <link rel="icon" type="image/webp" href="assets/yo1.webp">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@500;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        carbon: '#0A0B0E',
+                        bone: '#E8E6DF',
+                        chalk: '#F3F4F6',
+                        zinc: '#A1A1AA',
+                        glitch: '#1A1B20'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace'],
+                        display: ['Space Grotesk', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .brutalist-border {
+            box-shadow: 4px 4px 0px 0px #F3F4F6;
+        }
+        .brutalist-border:hover {
+            box-shadow: 6px 6px 0px 0px #F3F4F6;
+        }
+        .brutalist-border:active {
+            box-shadow: 2px 2px 0px 0px #F3F4F6;
+        }
+        @media (max-width: 640px) {
+            .brutalist-border {
+                box-shadow: 3px 3px 0px 0px #F3F4F6;
+            }
+        }
+    </style>
 </head>
-<body>
-  <div class="cursor-dot" id="cursorDot"></div>
-  <div class="cursor-outline" id="cursorOutline"></div>
+<body class="bg-carbon text-chalk font-sans antialiased h-[100dvh] max-h-[100dvh] w-full overflow-hidden flex flex-col justify-between select-none scramble-container theme-dark">
+    <canvas class="absolute inset-0 w-full h-full pointer-events-none z-0 scramble-canvas opacity-60" aria-hidden="true"></canvas>
 
-  <main class="error-container">
-    <h1 class="error-title">4<span class="zero">0</span>4</h1>
-    <p class="error-subtitle">Ups... parece que te has perdido en el ciberespacio. La página que buscas no existe.</p>
-    <a href="index.html" class="error-button">VOLVER AL INICIO</a>
-  </main>
+    <header class="relative z-20 w-full flex justify-between items-center py-4 px-6 md:px-12 font-mono text-[11px] md:text-xs uppercase tracking-widest text-zinc border-b border-zinc/20 shrink-0">
+        <a href="index.html" class="text-chalk font-bold text-sm tracking-normal hover:text-white transition-colors flex items-center gap-2">
+            <span class="w-2 h-2 bg-chalk inline-block"></span>
+            ANTONIO ALBARRAN
+        </a>
+        <div class="flex items-center gap-4">
+            <span class="hidden sm:inline-block border border-zinc/30 px-2.5 py-1 text-zinc-400 bg-carbon/60">
+                HTTP 404 // NOT_FOUND
+            </span>
+            <a href="index.html" class="border border-chalk/40 px-3 py-1 text-chalk hover:bg-chalk hover:text-carbon transition-colors inline-flex items-center gap-1.5 focus-visible:ring-2 focus-visible:ring-chalk outline-none">
+                <i class="fa-solid fa-arrow-left"></i> [ ESC / INICIO ]
+            </a>
+        </div>
+    </header>
+
+    <main class="relative z-10 flex-1 min-h-0 flex flex-col items-center justify-center px-6 md:px-12 text-center my-auto">
+        <div class="max-w-2xl mx-auto flex flex-col items-center">
+            <div class="mb-2">
+                <span class="inline-block font-mono text-[10px] sm:text-xs font-bold uppercase tracking-[0.25em] text-zinc-400 border border-zinc/40 px-3 py-1 bg-carbon/80">
+                    DIAGNÓSTICO DE SISTEMA // ERROR 0x194
+                </span>
+            </div>
+
+            <div class="relative inline-block my-2">
+                <h1 class="font-display font-black text-[22vw] sm:text-[11rem] md:text-[14rem] lg:text-[16rem] leading-[0.82] tracking-tighter text-chalk uppercase mix-blend-difference">
+                    404
+                </h1>
+                <span class="absolute -bottom-2 sm:bottom-4 right-0 sm:-right-4 bg-chalk text-carbon px-3 py-1 font-mono text-[10px] sm:text-xs font-black uppercase tracking-wider transform -rotate-3 border-2 border-carbon shadow-[4px_4px_0px_0px_rgba(161,161,170,0.8)]">
+                    PÁGINA NO ENCONTRADA
+                </span>
+            </div>
+
+            <p class="font-sans text-sm sm:text-base md:text-lg text-zinc-300 max-w-lg mt-4 sm:mt-6 mb-8 sm:mb-10 leading-relaxed font-medium">
+                La dirección o recurso que intentas consultar no existe en este servidor o ha sido reubicada dentro del sistema.
+            </p>
+
+            <div class="flex flex-wrap items-center justify-center gap-3 sm:gap-4 font-mono text-xs sm:text-sm font-bold uppercase">
+                <a href="index.html" class="bg-chalk text-carbon px-6 sm:px-8 py-3.5 sm:py-4 brutalist-border hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 transition-all duration-150 inline-flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-chalk outline-none">
+                    <i class="fa-solid fa-house"></i> Retornar al Inicio
+                </a>
+                <a href="index.html#work" class="bg-transparent border-2 border-zinc/60 text-chalk px-5 sm:px-6 py-3.5 sm:py-4 hover:border-chalk hover:bg-chalk/10 hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 transition-all duration-150 inline-flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-chalk outline-none">
+                    <i class="fa-solid fa-code"></i> Ver Proyectos
+                </a>
+                <a href="index.html#contact" class="bg-carbon/80 border-2 border-zinc/40 text-zinc-300 px-5 sm:px-6 py-3.5 sm:py-4 hover:border-chalk hover:text-chalk hover:-translate-x-1 hover:-translate-y-1 active:translate-x-0 active:translate-y-0 transition-all duration-150 inline-flex items-center gap-2 focus-visible:ring-2 focus-visible:ring-chalk outline-none">
+                    <i class="fa-solid fa-envelope"></i> Contacto
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="relative z-20 w-full border-t border-zinc/20 py-3 px-6 md:px-12 flex flex-col sm:flex-row justify-between items-center font-mono text-[10px] md:text-xs text-zinc uppercase font-bold shrink-0 gap-2">
+        <div class="flex items-center gap-2">
+            <span class="w-1.5 h-1.5 bg-zinc-400 rounded-full animate-pulse"></span>
+            <span>NOTAYEEN // INGENIERÍA EN SISTEMAS</span>
+        </div>
+        <div class="flex items-center gap-6 text-zinc-400">
+            <span>CIUDAD DE MÉXICO</span>
+            <span>WASM &amp; REACT</span>
+        </div>
+    </footer>
+
+    <script>
+        const baseChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789+-=/*#.%:[]{} ";
+        let globalMouseX = -1000, globalMouseY = -1000;
+
+        window.addEventListener('mousemove', (e) => {
+            globalMouseX = e.clientX;
+            globalMouseY = e.clientY;
+        });
+
+        window.addEventListener('mouseleave', () => {
+            globalMouseX = -1000;
+            globalMouseY = -1000;
+        });
+
+        window.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                window.location.href = 'index.html';
+            }
+        });
+
+        class ScrambleManager {
+            constructor() {
+                this.nodes = document.querySelectorAll('.scramble-container');
+                this.canvases = [];
+                this.nodes.forEach(node => {
+                    const canvas = node.querySelector('.scramble-canvas');
+                    if (canvas) {
+                        this.canvases.push({
+                            node,
+                            canvas,
+                            ctx: canvas.getContext('2d'),
+                            grid: [],
+                            cols: 0,
+                            rows: 0
+                        });
+                    }
+                });
+                window.addEventListener('resize', () => this.resizeAll());
+                this.resizeAll();
+                this.animate();
+            }
+
+            resizeAll() {
+                this.canvases.forEach(c => {
+                    const rect = c.node.getBoundingClientRect();
+                    c.canvas.width = rect.width;
+                    c.canvas.height = rect.height;
+                    const fontSize = 14;
+                    c.cols = Math.floor(rect.width / (fontSize * 0.8));
+                    c.rows = Math.floor(rect.height / fontSize);
+                    c.grid = [];
+                    for (let r = 0; r < c.rows; r++) {
+                        let row = [];
+                        for (let col = 0; col < c.cols; col++) {
+                            row.push(baseChars[Math.floor(Math.random() * baseChars.length)]);
+                        }
+                        c.grid.push(row);
+                    }
+                });
+            }
+
+            animate() {
+                this.canvases.forEach(c => {
+                    const ctx = c.ctx;
+                    ctx.clearRect(0, 0, c.canvas.width, c.canvas.height);
+                    const fontSize = 14;
+                    const radius = 220;
+                    const rect = c.node.getBoundingClientRect();
+                    const localX = globalMouseX - rect.left;
+                    const localY = globalMouseY - rect.top;
+
+                    ctx.font = fontSize + 'px "JetBrains Mono", monospace';
+                    ctx.textBaseline = 'top';
+
+                    const startCol = Math.max(0, Math.floor((localX - radius) / (fontSize * 0.8)));
+                    const endCol = Math.min(c.cols, Math.ceil((localX + radius) / (fontSize * 0.8)));
+                    const startRow = Math.max(0, Math.floor((localY - radius) / fontSize));
+                    const endRow = Math.min(c.rows, Math.ceil((localY + radius) / fontSize));
+
+                    for (let r = startRow; r < endRow; r++) {
+                        for (let col = startCol; col < endCol; col++) {
+                            const x = col * (fontSize * 0.8);
+                            const y = r * fontSize;
+                            const dist = Math.hypot(x - localX, y - localY);
+                            if (dist < radius) {
+                                const intensity = 1 - (dist / radius);
+                                const alpha = intensity * 0.45;
+                                if (Math.random() < 0.03) {
+                                    c.grid[r][col] = baseChars[Math.floor(Math.random() * baseChars.length)];
+                                }
+                                ctx.fillStyle = 'rgba(243, 244, 246, ' + alpha + ')';
+                                ctx.fillText(c.grid[r][col], x, y);
+                            }
+                        }
+                    }
+                });
+                requestAnimationFrame(() => this.animate());
+            }
+        }
+
+        window.addEventListener('DOMContentLoaded', () => {
+            new ScrambleManager();
+        });
+    </script>
 </body>
 </html>
