@@ -74,7 +74,7 @@
                         display: ['Space Grotesk', 'sans-serif']
                     },
                     animation: {
-                        'marquee': 'marquee 40s linear infinite',
+                        'marquee': 'marquee 30s linear infinite',
                     },
                     keyframes: {
                         'marquee': {
@@ -1126,7 +1126,7 @@
                 this.wrappers = document.querySelectorAll('.glitch-eater-wrapper');
                 this.instances = [];
                 
-                this.invertedChips = ["[E]", "[F]", "[I]", "[T]", "C:6NTTTS:", "6A·T·S7N", "71XNGXN", "█", "░"];
+                this.invertedChips = ["[E]", "[F]", "[I]", "[T]", "C:6NTTTS:", "6A·T·S7N", "71XNGXN", "█", "░", "01", "::"];
                 
                 this.wrappers.forEach(wrapper => {
                     const canvas = wrapper.querySelector('.glitch-eater-canvas');
@@ -1174,11 +1174,11 @@
             }
 
             animate() {
-                this.time = (this.time || 0) + 0.0135;
+                this.time = (this.time || 0) + 0.0176;
                 this.instances.forEach(inst => {
                     if (!inst.canvas.width) return;
                     
-                    inst.progress = this.lerp(inst.progress, inst.targetProgress || 0.5, 0.0385);
+                    inst.progress = this.lerp(inst.progress, inst.targetProgress || 0.5, 0.05);
                     
                     const w = inst.canvas.width;
                     const h = inst.canvas.height;
@@ -1208,15 +1208,15 @@
                     for (let r = 0; r < borderY / charH; r++) {
                         if (r % 2 === 0) continue; 
                         for (let c = 0; c < cols; c++) {
-                            if (Math.sin(c * 0.7 + r * 1.3 + this.time) > 0.94) {
-                                ctx.fillText(baseChars[(c + r) % baseChars.length], c * charW, r * charH);
+                            if (Math.sin(c * 0.7 + r * 1.3 + this.time * 1.3) > 0.90 || Math.random() < 0.035) {
+                                ctx.fillText(baseChars[Math.floor(Math.random() * baseChars.length)], c * charW, r * charH);
                             }
                         }
                     }
 
                     for (let c = 0; c < cols; c++) {
                         const x = c * charW;
-                        const structuralNoise = Math.sin(c * 0.35 + this.time * 0.8) * 12 + Math.cos(c * 1.1 - this.time * 0.5) * 4;
+                        const structuralNoise = Math.sin(c * 0.35 + this.time * 1.05) * 13 + Math.cos(c * 1.1 - this.time * 0.65) * 5 + (Math.random() - 0.5) * 2.5;
                         const y = borderY + structuralNoise;
 
                         const rect = inst.canvas.getBoundingClientRect();
@@ -1224,13 +1224,16 @@
                         const localMouseY = globalMouseY - rect.top;
                         let distToMouse = Math.hypot(x - localMouseX, y - localMouseY);
                         let interactionOffset = 0;
-                        if(distToMouse < 60) {
-                            interactionOffset = (Math.sin(this.time * 6 + c) * 6);
+                        if(distToMouse < 65) {
+                            interactionOffset = (Math.sin(this.time * 8 + c) * 8) + (Math.random() - 0.5) * 4;
                         }
 
-                        if ((c % 16 === 0) && c < cols - 6) {
-                            const chipStr = this.invertedChips[Math.floor((c + Math.floor(this.time * 2)) % this.invertedChips.length)];
+                        if ((c % 13 === 0 || Math.random() < 0.02) && c < cols - 6) {
+                            const chipStr = this.invertedChips[Math.floor((c + Math.floor(this.time * 2.6) + Math.floor(Math.random() * 3)) % this.invertedChips.length)];
                             let displayChip = chipStr;
+                            if (Math.random() < 0.22) {
+                                displayChip = displayChip.split('').map(ch => Math.random() < 0.35 ? scrambleChars[Math.floor(Math.random() * scrambleChars.length)] : ch).join('');
+                            }
 
                             ctx.fillStyle = inst.themeTop === 'dark' ? '#F3F4F6' : '#0A0B0E'; 
                             ctx.fillRect(x, y - charH + interactionOffset, (chipStr.length * charW) + 4, charH + 4);
@@ -1242,11 +1245,12 @@
                             c += chipStr.length; 
                         } 
                         
-                        if (Math.sin(c * 0.5 + this.time * 1.2) > 0.88) {
-                            let debris = baseChars[(c * 3) % baseChars.length];
+                        if (Math.sin(c * 0.5 + this.time * 1.55) > 0.82 || Math.random() < 0.045) {
+                            let debris = baseChars[Math.floor(Math.random() * baseChars.length)];
+                            if (Math.random() < 0.3) debris = scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
                             ctx.fillStyle = inst.themeBottom === 'light' ? '#0A0B0E' : '#F3F4F6';
                             ctx.font = 'bold 10px "JetBrains Mono"';
-                            ctx.fillText(debris, x, y + 15 + ((c % 5) * 12) + interactionOffset);
+                            ctx.fillText(debris, x, y + 14 + ((c % 6) * 12) + (Math.random() * 20 - 10) + interactionOffset);
                         }
                     }
                 });
@@ -1260,7 +1264,8 @@
         
         
         
-        class ProjectsGlitchBackground {
+        
+class ProjectsGlitchBackground {
             constructor() {
                 this.canvas = document.getElementById('projectsGlitchCanvas');
                 if (!this.canvas) return;
@@ -1288,13 +1293,13 @@
 
             initParticles() {
                 this.particles = [];
-                const count = Math.floor((this.width * this.height) / 7000);
+                const count = Math.floor((this.width * this.height) / 6000);
                 for (let i = 0; i < count; i++) {
                     this.particles.push({
                         x: Math.random() * this.width,
                         y: Math.random() * this.height,
-                        vx: (Math.random() - 0.5) * 0.4,
-                        vy: (Math.random() - 0.5) * 0.4,
+                        vx: (Math.random() - 0.5) * 0.52,
+                        vy: (Math.random() - 0.5) * 0.52,
                         char: this.glitchChars[Math.floor(Math.random() * this.glitchChars.length)],
                         size: 9 + Math.random() * 10,
                         opacity: 0.3 + Math.random() * 0.4
@@ -1332,8 +1337,8 @@
                 const mouseX = globalMouseX - rect.left;
                 const mouseY = globalMouseY - rect.top;
 
-                const scrollSpeed = 0.38 + this.scrollProgress * 1.2;
-                const corruption = this.scrollProgress * 0.8;
+                const scrollSpeed = 0.48 + this.scrollProgress * 1.55;
+                const corruption = this.scrollProgress * 0.85;
 
                 for (let i = 0; i < this.particles.length; i++) {
                     const p = this.particles[i];
@@ -1342,8 +1347,8 @@
                     const dx = mouseX - p.x;
                     const dy = mouseY - p.y;
                     const dist = Math.hypot(dx, dy);
-                    if (dist < 90) {
-                        const force = (1 - dist / 90) * 3;
+                    if (dist < 95) {
+                        const force = (1 - dist / 95) * 4;
                         p.x += (Math.random() - 0.5) * force;
                         p.y += (Math.random() - 0.5) * force;
                     }
@@ -1353,10 +1358,10 @@
                     if (p.y > this.height) p.y = 0;
 
                     const alpha = p.opacity * (0.35 + corruption * 0.55);
-                    ctx.fillStyle = `rgba(161, 161, 170, ${alpha})`;
+                    ctx.fillStyle = 'rgba(161, 161, 170, ' + alpha + ')';
                     ctx.fillText(p.char, p.x, p.y);
 
-                    if (Math.random() > 0.985 - corruption * 0.1) {
+                    if (Math.random() > 0.975 - corruption * 0.14) {
                         p.char = this.glitchChars[Math.floor(Math.random() * this.glitchChars.length)];
                     }
                 }
