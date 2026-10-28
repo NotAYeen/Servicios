@@ -74,7 +74,7 @@
                         display: ['Space Grotesk', 'sans-serif']
                     },
                     animation: {
-                        'marquee': 'marquee 25s linear infinite',
+                        'marquee': 'marquee 45s linear infinite',
                     },
                     keyframes: {
                         'marquee': {
@@ -667,9 +667,9 @@
                     
                     </div>
             </div>
+        </section>
 
-            
-            <div id="services" class="w-full py-24 px-6 md:px-12 lg:px-24 relative z-10 border-b-2 border-carbon overflow-hidden">
+        <section id="services" class="w-full py-24 px-6 md:px-12 lg:px-24 relative z-10 bg-bone text-carbon border-b-2 border-carbon overflow-hidden">
                 <canvas id="ascii-wave-canvas" class="w-full h-full absolute inset-0 z-0 pointer-events-none" aria-hidden="true"></canvas>
                 <div class="max-w-[1600px] mx-auto">
                     <div class="mb-12 reveal-on-scroll">
@@ -717,12 +717,8 @@
             </div>
         </section>
 
-        
-        
-        
-        <footer id="contact" class="w-full bg-bone border-t-2 border-carbon pt-32 pb-12 px-6 md:px-12 lg:px-24 flex flex-col font-mono text-carbon relative overflow-hidden">
-            
-            <canvas class="glitch-separator footer-glitch-canvas" id="glitchFooter" aria-hidden="true"></canvas>
+        <footer id="contact" class="w-full bg-bone border-t-2 border-carbon pt-32 pb-12 px-6 md:px-12 lg:px-24 flex flex-col font-mono text-carbon relative overflow-hidden scramble-container theme-light">
+            <canvas class="absolute inset-0 w-full h-full pointer-events-none z-0 scramble-canvas opacity-40" aria-hidden="true"></canvas>
             
             <div class="max-w-[1600px] mx-auto w-full mb-20 relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
                 <div class="flex flex-col justify-start">
@@ -1130,10 +1126,11 @@
             }
 
             animate() {
+                this.time = (this.time || 0) + 0.012;
                 this.instances.forEach(inst => {
                     if (!inst.canvas.width) return;
                     
-                    inst.progress = this.lerp(inst.progress, inst.targetProgress || 0.5, 0.1);
+                    inst.progress = this.lerp(inst.progress, inst.targetProgress || 0.5, 0.035);
                     
                     const w = inst.canvas.width;
                     const h = inst.canvas.height;
@@ -1148,7 +1145,6 @@
                     const topColor = inst.themeTop === 'dark' ? colorDark : colorLight;
                     const bottomColor = inst.themeBottom === 'dark' ? colorDark : colorLight;
                     
-                    
                     ctx.fillStyle = topColor;
                     ctx.fillRect(0, 0, w, borderY);
                     ctx.fillStyle = bottomColor;
@@ -1159,41 +1155,34 @@
                     const charH = 16;
                     const cols = Math.floor(w / charW);
                     
-                    
                     ctx.fillStyle = inst.themeTop === 'dark' ? '#1A1B20' : '#A1A1AA';
                     ctx.font = '10px "JetBrains Mono"';
                     for (let r = 0; r < borderY / charH; r++) {
                         if (r % 2 === 0) continue; 
                         for (let c = 0; c < cols; c++) {
-                            if (Math.random() < 0.05) {
-                                ctx.fillText(baseChars[Math.floor(Math.random() * baseChars.length)], c * charW, r * charH);
+                            if (Math.sin(c * 0.7 + r * 1.3 + this.time) > 0.94) {
+                                ctx.fillText(baseChars[(c + r) % baseChars.length], c * charW, r * charH);
                             }
                         }
                     }
 
-                    
                     for (let c = 0; c < cols; c++) {
                         const x = c * charW;
-                        const structuralNoise = Math.sin(c * 0.5) * 15 + Math.cos(c * 2) * 5;
+                        const structuralNoise = Math.sin(c * 0.35 + this.time * 0.8) * 12 + Math.cos(c * 1.1 - this.time * 0.5) * 4;
                         const y = borderY + structuralNoise;
 
-                        
                         const rect = inst.canvas.getBoundingClientRect();
                         const localMouseX = globalMouseX - rect.left;
                         const localMouseY = globalMouseY - rect.top;
                         let distToMouse = Math.hypot(x - localMouseX, y - localMouseY);
                         let interactionOffset = 0;
                         if(distToMouse < 60) {
-                            interactionOffset = (Math.random() * 20 - 10);
+                            interactionOffset = (Math.sin(this.time * 6 + c) * 6);
                         }
 
-                        
-                        if ((c % 14 === 0 || Math.random() < 0.02) && c < cols - 5) {
-                            const chipStr = this.invertedChips[Math.floor(Math.random() * this.invertedChips.length)];
+                        if ((c % 16 === 0) && c < cols - 6) {
+                            const chipStr = this.invertedChips[Math.floor((c + Math.floor(this.time * 2)) % this.invertedChips.length)];
                             let displayChip = chipStr;
-                            if(this.isScrolling && Math.random() < 0.3) {
-                                displayChip = displayChip.split('').map(char => Math.random() < 0.5 ? scrambleChars[Math.floor(Math.random()*scrambleChars.length)] : char).join('');
-                            }
 
                             ctx.fillStyle = inst.themeTop === 'dark' ? '#F3F4F6' : '#0A0B0E'; 
                             ctx.fillRect(x, y - charH + interactionOffset, (chipStr.length * charW) + 4, charH + 4);
@@ -1205,14 +1194,11 @@
                             c += chipStr.length; 
                         } 
                         
-                        
-                        if (Math.random() < 0.08) {
-                            let debris = baseChars[Math.floor(Math.random() * baseChars.length)];
-                            if(this.isScrolling && Math.random() < 0.5) debris = scrambleChars[Math.floor(Math.random() * scrambleChars.length)];
-                            
+                        if (Math.sin(c * 0.5 + this.time * 1.2) > 0.88) {
+                            let debris = baseChars[(c * 3) % baseChars.length];
                             ctx.fillStyle = inst.themeBottom === 'light' ? '#0A0B0E' : '#F3F4F6';
                             ctx.font = 'bold 10px "JetBrains Mono"';
-                            ctx.fillText(debris, x, y + 15 + (Math.random() * 80) + interactionOffset);
+                            ctx.fillText(debris, x, y + 15 + ((c % 5) * 12) + interactionOffset);
                         }
                     }
                 });
@@ -1750,8 +1736,7 @@
             new ScrambleManager();
             new ASCIIWave();
             new GlitchEater();
-            new ProjectsTechDriftBackground();
-            new FooterGlitchSeparator();
+            new ProjectsGlitchBackground();
             new ScrollRevealScrambleManager();
         });
 
